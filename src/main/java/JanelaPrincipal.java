@@ -5,6 +5,6 @@ public class JanelaPrincipal {
     private JButton oficinaButton;
     private JButton eventosButton;
     private JButton transaçõesButton;
-    private JButton clientesButton;
-    private JButton estatísticasButton;
+    private JButton estatisticasButton;
+    private JButton clientesButton1;
 }
