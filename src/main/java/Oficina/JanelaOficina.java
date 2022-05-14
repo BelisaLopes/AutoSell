@@ -1,3 +1,5 @@
+package Oficina;
+
 import javax.swing.*;
 
 public class JanelaOficina {
@@ -7,9 +9,9 @@ public class JanelaOficina {
     private JButton clientesButton;
     private JButton estatisticasButton;
     private JButton transaçõesButton;
-    private JButton consultarPeçasConsumiveisEmButton;
+    private JButton consultarPeçasEmStockButton;
     private JButton atualizarNúmeroExistenteDeButton;
     private JButton registarTipoDePeçaButton;
-    private JButton transferirPeçasConsumíveisButton;
+    private JButton transferirPeçasButton;
     private JButton atualizarQuantidadeMínimaDeButton;
 }
