@@ -1,3 +1,5 @@
+package Veiculos;
+
 import javax.swing.*;
 
 public class JanelaVeiculos {
