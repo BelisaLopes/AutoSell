@@ -7,7 +7,7 @@ public class JanelaClientes {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton consultarClienteButton;
-    private JButton listarClienteButton;
-    private JButton removerClienteButton;
+    private JButton consultarClientesButton;
+    private JButton consultarTransaçõesButton;
+    private JButton atualizarClienteButton;
 }

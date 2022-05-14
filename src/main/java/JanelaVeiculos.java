@@ -7,8 +7,7 @@ public class JanelaVeiculos {
     private JButton transaçõesButton;
     private JButton estatisticasButton;
     private JButton clientesButton;
-    private JButton registarVeiculoButton;
-    private JButton consultarVeiculoButton;
+    private JButton consultarVeiculosButton;
     private JButton transferirVeiculosButton;
-    private JButton listaDeVeiculosDisponiveisButton;
+    private JButton definirVeículoComoReparadoButton;
 }

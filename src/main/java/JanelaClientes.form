@@ -29,28 +29,28 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d6e09" class="javax.swing.JButton" binding="consultarClienteButton" default-binding="true">
+          <component id="d6e09" class="javax.swing.JButton" binding="consultarClientesButton" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Consultar Cliente"/>
+              <text value="Consultar Clientes"/>
             </properties>
           </component>
-          <component id="6e46e" class="javax.swing.JButton" binding="listarClienteButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Listar Cliente"/>
-            </properties>
-          </component>
-          <component id="c192a" class="javax.swing.JButton" binding="removerClienteButton" default-binding="true">
+          <component id="c192a" class="javax.swing.JButton" binding="consultarTransaçõesButton" default-binding="true">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Remover Cliente"/>
+              <text value="Consultar transações "/>
+            </properties>
+          </component>
+          <component id="e2b59" class="javax.swing.JButton" binding="atualizarClienteButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Atualizar Cliente"/>
             </properties>
           </component>
         </children>
