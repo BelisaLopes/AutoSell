@@ -2,13 +2,16 @@ package Oficina;
 
 import javax.swing.*;
 
-public class JanelaQuantidadeMinimaPecas {
+public class JanelaTransferirPecas {
+    private JButton estatisticaButton;
     private JButton veiculosButton;
-    private JButton estatisticasButton;
     private JButton clientesButton;
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
     private JTextField textField1;
-    private JButton OKButton;
+    private JButton transferirButton;
+    private JList list1;
+    private JList list2;
+    private JList list3;
 }

@@ -9,5 +9,10 @@ public class JanelaRegistarPeca {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton confirmarButton;
+    private JButton adicionarButton;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
 }
