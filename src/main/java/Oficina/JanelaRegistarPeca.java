@@ -9,7 +9,7 @@ public class JanelaRegistarPeca {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton adicionarButton;
+    private JButton registarButton;
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;

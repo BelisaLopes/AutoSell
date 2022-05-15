@@ -1,3 +1,5 @@
+package Eventos;
+
 import javax.swing.*;
 
 public class JanelaEventos {
