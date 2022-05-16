@@ -1,3 +1,5 @@
+package Clientes;
+
 import javax.swing.*;
 
 public class JanelaClientes {

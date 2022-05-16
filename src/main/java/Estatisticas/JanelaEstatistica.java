@@ -1,3 +1,5 @@
+package Estatisticas;
+
 import javax.swing.*;
 
 public class JanelaEstatistica {
