@@ -1,3 +1,5 @@
+package Transacoes;
+
 import javax.swing.*;
 
 public class JanelaTransacoes {
