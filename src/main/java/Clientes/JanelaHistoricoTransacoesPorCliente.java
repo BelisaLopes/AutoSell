@@ -1,8 +1,8 @@
-package Transacoes;
+package Clientes;
 
 import javax.swing.*;
 
-public class JanelaHistoricoTransacoes {
+public class JanelaHistoricoTransacoesPorCliente {
     private JButton estatisticasButton;
     private JButton veiculosButton;
     private JButton clientesButton;

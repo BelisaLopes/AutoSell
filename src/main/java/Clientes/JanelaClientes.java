@@ -9,6 +9,6 @@ public class JanelaClientes {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton consultarClientesButton;
-    private JButton atualizarClienteButton;
+    private JButton consultarAtualizarClientesButton;
+    private JButton históricoDeTransaçõesPorButton;
 }
