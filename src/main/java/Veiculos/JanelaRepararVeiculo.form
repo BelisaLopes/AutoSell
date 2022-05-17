@@ -46,7 +46,11 @@
             <children>
               <component id="864b5" class="javax.swing.JList" binding="list2" default-binding="true">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <model>
+                    <item value="Parafuso"/>
+                  </model>
+                </properties>
               </component>
             </children>
           </scrollpane>
