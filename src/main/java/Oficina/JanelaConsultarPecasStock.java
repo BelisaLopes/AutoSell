@@ -11,4 +11,5 @@ public class JanelaConsultarPecasStock {
     private JButton oficinaButton;
     private JList list1;
     private JTextField textField1;
+    private JList list2;
 }
