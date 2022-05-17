@@ -2,7 +2,7 @@ package Estatisticas;
 
 import javax.swing.*;
 
-public class JanelaModelosMarcasMaiorUsoPecas {
+public class JanelaMelhoresClientes {
     private JButton veículosButton;
     private JButton oficinaButton;
     private JButton eventosButton;

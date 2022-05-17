@@ -10,9 +10,9 @@ public class JanelaRegistarPeca {
     private JButton eventosButton;
     private JButton oficinaButton;
     private JButton registarButton;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+    private JTextField a100TextField1;
+    private JTextField a50TextField;
+    private JTextField a80TextField;
+    private JTextField a120TextField;
+    private JTextField oléoDeMotor5LTextField;
 }
