@@ -20,4 +20,5 @@ public class JanelaRegistarVeiculo {
     private JTextField textField9;
     private JButton registarVeículoButton;
     private JTextField textField10;
+    private JTextField textField11;
 }

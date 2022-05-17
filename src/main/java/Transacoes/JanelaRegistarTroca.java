@@ -10,9 +10,9 @@ public class JanelaRegistarTroca {
     private JButton eventosButton;
     private JButton oficinaButton;
     private JButton registarNovoClienteButton;
-    private JButton registarVeiculosDaTrocaButton;
+    private JButton registarVeiculoAComprarButton;
     private JButton confirmarTrocaButton;
-    private JTextField textField1;
+    private JTextField automaticamenteTextField;
     private JList list1;
     private JList list2;
 }
