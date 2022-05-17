@@ -11,4 +11,5 @@ public class JanelaQuantidadeMinimaPecas {
     private JButton oficinaButton;
     private JTextField textField1;
     private JButton OKButton;
+    private JTextField textField2;
 }

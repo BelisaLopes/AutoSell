@@ -11,4 +11,5 @@ public class JanelaActualizarNumeroPecas {
     private JButton oficinaButton;
     private JTextField textField1;
     private JButton atualizarButton;
+    private JTextField textField2;
 }
