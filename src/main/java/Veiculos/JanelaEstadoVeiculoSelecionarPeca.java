@@ -9,6 +9,6 @@ public class JanelaEstadoVeiculoSelecionarPeca {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton confirmarButton;
+    private JButton confirmarVeiculoComoReparadoButton;
     private JTextField textField1;
 }

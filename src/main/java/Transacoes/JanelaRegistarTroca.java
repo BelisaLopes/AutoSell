@@ -12,4 +12,5 @@ public class JanelaRegistarTroca {
     private JButton registarNovoClienteButton;
     private JButton registarVeiculosDaTrocaButton;
     private JButton confirmarTrocaButton;
+    private JTextField textField1;
 }
