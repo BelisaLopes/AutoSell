@@ -14,4 +14,5 @@ public class JanelaTransferirPecas {
     private JList list1;
     private JList list2;
     private JList list3;
+    private JTextField textField2;
 }
