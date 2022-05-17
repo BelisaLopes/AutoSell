@@ -35,7 +35,17 @@
             </constraints>
             <properties/>
             <border type="none" title="Eventos Não Decorridos"/>
-            <children/>
+            <children>
+              <component id="7ecb" class="javax.swing.JList" binding="list1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Feira de Óbidos"/>
+                    <item value="Feira de Sintra"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <component id="8fd40" class="javax.swing.JButton" binding="removerEventoButton" default-binding="true">
             <constraints>

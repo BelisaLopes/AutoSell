@@ -11,4 +11,6 @@ public class JanelaRepararVeiculo {
     private JButton oficinaButton;
     private JButton repararButton;
     private JTextField textField1;
+    private JList list1;
+    private JList list2;
 }

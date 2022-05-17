@@ -9,4 +9,5 @@ public class JanelaConsultarVeiculos {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
+    private JList list1;
 }

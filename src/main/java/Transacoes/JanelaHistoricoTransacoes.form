@@ -35,7 +35,18 @@
             </constraints>
             <properties/>
             <border type="none" title="Clientes"/>
-            <children/>
+            <children>
+              <component id="ed562" class="javax.swing.JList" binding="list1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="João Silva"/>
+                    <item value="Manuel Rodrigues"/>
+                    <item value="Nuno Oliveira"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <scrollpane id="c1926">
             <constraints>
@@ -43,7 +54,18 @@
             </constraints>
             <properties/>
             <border type="none" title="Veiculos"/>
-            <children/>
+            <children>
+              <component id="626c9" class="javax.swing.JList" binding="list2" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Opel Corsa xx-12-ed"/>
+                    <item value="Toyota Yaris 34-fg-67"/>
+                    <item value="Mitsubishi Colt 34-hy-89"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
         </children>
       </grid>

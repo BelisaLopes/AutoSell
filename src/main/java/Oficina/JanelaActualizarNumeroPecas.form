@@ -48,7 +48,16 @@
                     </constraints>
                     <properties/>
                     <border type="none" title="Tipo de Peça"/>
-                    <children/>
+                    <children>
+                      <component id="19a91" class="javax.swing.JList" binding="list2" default-binding="true">
+                        <constraints/>
+                        <properties>
+                          <model>
+                            <item value="Parafuso"/>
+                          </model>
+                        </properties>
+                      </component>
+                    </children>
                   </scrollpane>
                   <scrollpane id="ed851">
                     <constraints>
@@ -56,7 +65,18 @@
                     </constraints>
                     <properties/>
                     <border type="none" title="Sede e Filiais"/>
-                    <children/>
+                    <children>
+                      <component id="6f159" class="javax.swing.JList" binding="list1" default-binding="true">
+                        <constraints/>
+                        <properties>
+                          <model>
+                            <item value="Filial Leiria"/>
+                            <item value="Sede Lisboa"/>
+                            <item value="Filial Santarém"/>
+                          </model>
+                        </properties>
+                      </component>
+                    </children>
                   </scrollpane>
                 </children>
               </grid>

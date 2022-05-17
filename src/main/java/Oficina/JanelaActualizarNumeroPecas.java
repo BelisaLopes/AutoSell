@@ -12,4 +12,6 @@ public class JanelaActualizarNumeroPecas {
     private JTextField textField1;
     private JButton atualizarButton;
     private JTextField textField2;
+    private JList list1;
+    private JList list2;
 }

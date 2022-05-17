@@ -10,4 +10,5 @@ public class JanelaRemoverEventoNaoDecorrido {
     private JButton oficinaButton;
     private JButton eventosButton;
     private JButton removerEventoButton;
+    private JList list1;
 }

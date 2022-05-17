@@ -10,4 +10,7 @@ public class JanelaTransferirVeiculos {
     private JButton eventosButton;
     private JButton oficinaButton;
     private JButton transferirButton;
+    private JList list1;
+    private JList list2;
+    private JList list3;
 }

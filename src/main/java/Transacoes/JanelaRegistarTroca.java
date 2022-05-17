@@ -13,4 +13,6 @@ public class JanelaRegistarTroca {
     private JButton registarVeiculosDaTrocaButton;
     private JButton confirmarTrocaButton;
     private JTextField textField1;
+    private JList list1;
+    private JList list2;
 }

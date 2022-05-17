@@ -35,7 +35,17 @@
             </constraints>
             <properties/>
             <border type="none" title="Evento Origem"/>
-            <children/>
+            <children>
+              <component id="f343f" class="javax.swing.JList" binding="list2" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Feira de Óbidos"/>
+                    <item value="Feira de Sintra"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <scrollpane id="ba682">
             <constraints>
@@ -43,7 +53,17 @@
             </constraints>
             <properties/>
             <border type="none" title="Evento Destino ou Sede"/>
-            <children/>
+            <children>
+              <component id="5df35" class="javax.swing.JList" binding="list3" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Feira de Óbidos"/>
+                    <item value="Feira de Sintra"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <scrollpane id="ebd35">
             <constraints>
@@ -51,7 +71,17 @@
             </constraints>
             <properties/>
             <border type="none" title="Veiculos no Evento Origem"/>
-            <children/>
+            <children>
+              <component id="a6841" class="javax.swing.JList" binding="list1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Opel Corsa xx-12-ed"/>
+                    <item value="Toyota Yaris 34-fg-67"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <component id="74ec0" class="javax.swing.JButton" binding="transferirButton" default-binding="true">
             <constraints>

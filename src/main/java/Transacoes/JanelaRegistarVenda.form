@@ -35,7 +35,18 @@
             </constraints>
             <properties/>
             <border type="none" title="Veiculos"/>
-            <children/>
+            <children>
+              <component id="e1d60" class="javax.swing.JList" binding="list2" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Opel Corsa xx-12-ed"/>
+                    <item value="Toyota Yaris 34-fg-67"/>
+                    <item value="Mitsubishi Colt 34-hy-89"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <scrollpane id="d871e">
             <constraints>
@@ -43,7 +54,18 @@
             </constraints>
             <properties/>
             <border type="none" title="Escolher Cliente existente"/>
-            <children/>
+            <children>
+              <component id="2b44f" class="javax.swing.JList" binding="list1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="João Silva"/>
+                    <item value="Manuel Rodrigues"/>
+                    <item value="Nuno Oliveira"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
           <component id="138ea" class="javax.swing.JButton" binding="confirmarVendaButton" default-binding="true">
             <constraints>

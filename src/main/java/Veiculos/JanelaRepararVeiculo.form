@@ -43,7 +43,12 @@
             </constraints>
             <properties/>
             <border type="none" title="Lista de peças"/>
-            <children/>
+            <children>
+              <component id="864b5" class="javax.swing.JList" binding="list2" default-binding="true">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
           </scrollpane>
           <component id="748f7" class="javax.swing.JLabel">
             <constraints>
@@ -67,7 +72,18 @@
             </constraints>
             <properties/>
             <border type="none" title="Veículos por reparar"/>
-            <children/>
+            <children>
+              <component id="3269c" class="javax.swing.JList" binding="list1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="Opel Corsa xx-12-ed"/>
+                    <item value="Toyota Yaris 34-fg-67"/>
+                    <item value="Mitsubishi Colt 34-hy-89"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
           </scrollpane>
         </children>
       </grid>

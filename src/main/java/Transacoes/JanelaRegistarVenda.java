@@ -11,4 +11,6 @@ public class JanelaRegistarVenda {
     private JButton eventosButton;
     private JButton registarNovoClienteButton;
     private JButton confirmarVendaButton;
+    private JList list1;
+    private JList list2;
 }

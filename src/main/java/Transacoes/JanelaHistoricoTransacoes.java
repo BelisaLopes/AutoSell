@@ -9,4 +9,6 @@ public class JanelaHistoricoTransacoes {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
+    private JList list1;
+    private JList list2;
 }

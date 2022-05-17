@@ -14,4 +14,5 @@ public class JanelaConsultarEventos {
     private JTextField a22072022TextField;
     private JTextField a26072022TextField;
     private JTextField a2TextField;
+    private JList list2;
 }
