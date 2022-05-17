@@ -13,6 +13,6 @@ public class JanelaConsultarEventos {
     private JTextField filialLeiriaTextField;
     private JTextField a22072022TextField;
     private JTextField a26072022TextField;
-    private JTextField a2TextField;
+    private JTextField a3TextField;
     private JList list2;
 }

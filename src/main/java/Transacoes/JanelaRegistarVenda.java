@@ -13,4 +13,5 @@ public class JanelaRegistarVenda {
     private JButton confirmarVendaButton;
     private JList list1;
     private JList list2;
+    private JTextField textField1;
 }
