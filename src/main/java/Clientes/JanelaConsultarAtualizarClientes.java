@@ -2,7 +2,7 @@ package Clientes;
 
 import javax.swing.*;
 
-public class JanelaAtualizarClientes {
+public class JanelaConsultarAtualizarClientes {
     private JButton estatísticasButton;
     private JButton veículosButton;
     private JButton clientesButton;
