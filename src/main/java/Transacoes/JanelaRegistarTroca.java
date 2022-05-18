@@ -15,4 +15,5 @@ public class JanelaRegistarTroca {
     private JTextField automaticamenteTextField;
     private JList list1;
     private JList list2;
+    private JTextField textField1;
 }
