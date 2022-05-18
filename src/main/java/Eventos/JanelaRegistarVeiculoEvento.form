@@ -61,9 +61,6 @@
                     <item value="Opel Corsa xx-12-ed"/>
                     <item value="Toyota Yaris 34-fg-67"/>
                     <item value="Mitsubishi Colt 34-hy-89"/>
-                    <item value=""/>
-                    <item value=""/>
-                    <item value="--só mostra os veiculos que estão na filial associada ao evento"/>
                   </model>
                 </properties>
               </component>
