@@ -16,9 +16,10 @@ public class JanelaRegistarVeiculo {
     private JTextField textField5;
     private JTextField textField6;
     private JTextField textField7;
-    private JTextField textField8;
+    private JTextField talvezDropdownParaOsTextField;
     private JTextField textField9;
     private JButton registarVeículoButton;
     private JTextField textField10;
     private JTextField textField11;
+    private JTextField textField12;
 }

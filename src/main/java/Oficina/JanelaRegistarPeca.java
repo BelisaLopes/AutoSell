@@ -12,7 +12,10 @@ public class JanelaRegistarPeca {
     private JButton registarButton;
     private JTextField a100TextField1;
     private JTextField a50TextField;
-    private JTextField a80TextField;
-    private JTextField a120TextField;
-    private JTextField oléoDeMotor5LTextField;
+    private JTextField óleoDeMotorTextField;
+    private JTextField dropdownParaAsCategoriasTextField;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField1;
 }

@@ -46,6 +46,7 @@
                     <properties>
                       <model>
                         <item value="Filial Leiria"/>
+                        <item value="Sede Lisboa"/>
                       </model>
                     </properties>
                   </component>
