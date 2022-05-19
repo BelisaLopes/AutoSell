@@ -14,4 +14,6 @@ public class JanelaRegistarEncomendaPecas {
     private JComboBox comboBox1;
     private JTextField textField3;
     private JButton registarEncomendaDePeçasButton;
+    private JTextField textField1;
+    private JButton filtrarPeçasButton;
 }

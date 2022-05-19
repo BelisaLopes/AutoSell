@@ -10,4 +10,9 @@ public class JanelaConsultarVeiculos {
     private JButton eventosButton;
     private JButton oficinaButton;
     private JList list1;
+    private JTextField filialLeiriaTextField;
+    private JComboBox comboBox1;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton filtrarVeículosButton;
 }

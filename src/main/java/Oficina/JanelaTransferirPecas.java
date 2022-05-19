@@ -11,8 +11,11 @@ public class JanelaTransferirPecas {
     private JButton oficinaButton;
     private JTextField textField1;
     private JButton transferirButton;
-    private JList list1;
-    private JList list2;
     private JList list3;
     private JTextField textField2;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JButton filtrarPeçasButton;
 }
