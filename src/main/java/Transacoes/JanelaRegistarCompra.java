@@ -9,8 +9,8 @@ public class JanelaRegistarCompra {
     private JButton transaçõesButton;
     private JButton clientesButton;
     private JButton estatísticasButton;
-    private JButton registarVeículoDaCompraButton;
-    private JButton confirmarCompraButton;
+    private JButton registarVeículoButton;
+    private JButton confirmarButton;
     private JButton registarNovoClienteButton;
     private JList list1;
     private JList list2;

@@ -11,5 +11,4 @@ public class JanelaTransacoes {
     private JButton oficinaButton;
     private JButton registarCompraButton;
     private JButton registarVendaButton;
-    private JButton registarCompraTrocaButton;
 }
