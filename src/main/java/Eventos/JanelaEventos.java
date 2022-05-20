@@ -12,8 +12,7 @@ public class JanelaEventos {
     private JButton registarEventoButton;
     private JButton atualizarEventoButton;
     private JButton registarVeiculoNumEventoButton;
-    private JButton listarVeiculosDeUmButton;
-    private JButton consultarEventosButton;
+    private JButton consultarEventoButton;
     private JButton removerEventoNãoDecorridoButton;
     private JButton transferirVeículosEntreFeirasButton;
 }

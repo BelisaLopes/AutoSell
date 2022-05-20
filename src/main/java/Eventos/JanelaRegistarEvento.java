@@ -13,5 +13,6 @@ public class JanelaRegistarEvento {
     private JTextField a03072022TextField;
     private JTextField a05072022TextField;
     private JButton registarButton;
-    private JList list1;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
 }

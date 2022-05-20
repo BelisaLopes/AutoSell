@@ -14,4 +14,5 @@ public class JanelaAtualizarEvento {
     private JTextField a26072022TextField;
     private JButton atualizarButton;
     private JList list1;
+    private JComboBox comboBox1;
 }

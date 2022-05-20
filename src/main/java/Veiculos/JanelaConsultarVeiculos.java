@@ -15,4 +15,6 @@ public class JanelaConsultarVeiculos {
     private JTextField textField1;
     private JTextField textField2;
     private JButton filtrarVeículosButton;
+    private JTextField textField3;
+    private JTextField textField4;
 }
