@@ -16,6 +16,6 @@ public class JanelaAtualizarEvento {
     private JList list1;
     private JComboBox comboBox1;
     private JTextField textField1;
-    private JTextField textField2;
     private JButton filtrarEventosButton;
+    private JTextField textField3;
 }

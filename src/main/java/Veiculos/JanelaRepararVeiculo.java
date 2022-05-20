@@ -21,4 +21,5 @@ public class JanelaRepararVeiculo {
     private JList list1;
     private JButton filtrarVeículosButton;
     private JButton filtrarButton;
+    private JTextField textField5;
 }

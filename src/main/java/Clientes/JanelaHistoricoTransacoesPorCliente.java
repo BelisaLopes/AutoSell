@@ -11,4 +11,7 @@ public class JanelaHistoricoTransacoesPorCliente {
     private JButton oficinaButton;
     private JList list1;
     private JList list2;
+    private JTextField textField1;
+    private JButton pesquisarClienteButton;
+    private JTextField textField2;
 }

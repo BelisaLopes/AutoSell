@@ -18,4 +18,6 @@ public class JanelaRegistarVeiculoEvento {
     private JButton filtrarEventosButton;
     private JTextField textField3;
     private JTextField textField4;
+    private JTextField textField5;
+    private JButton filtrarVeículosButton;
 }
