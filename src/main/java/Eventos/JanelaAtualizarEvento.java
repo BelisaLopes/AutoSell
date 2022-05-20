@@ -9,10 +9,13 @@ public class JanelaAtualizarEvento {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JTextField feiraDeÓbidosTextField;
+    private JTextField feiraDaBatalhaTextField;
     private JTextField a25072022TextField;
     private JTextField a26072022TextField;
     private JButton atualizarButton;
     private JList list1;
     private JComboBox comboBox1;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton filtrarEventosButton;
 }

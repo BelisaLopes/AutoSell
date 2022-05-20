@@ -9,8 +9,11 @@ public class JanelaOficina {
     private JButton clientesButton;
     private JButton estatisticasButton;
     private JButton transaçõesButton;
-    private JButton consultarAtualizarNúmeroDeButton;
-    private JButton registarTipoDePeçaButton;
+    private JButton consultarPeçasEmStockButton;
+    private JButton registarPeçaButton;
     private JButton transferirPeçasButton;
     private JButton atualizarQuantidadeMínimaDeButton;
+    private JButton registarEncomendaDePeçasButton;
+    private JButton registarCategoriaDePeçaButton;
+    private JButton removerCategoriaDePeçaButton;
 }
