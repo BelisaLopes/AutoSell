@@ -15,4 +15,5 @@ public class JanelaRegistarEvento {
     private JButton registarEventoButton;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
+    private JCheckBox associarFilialCheckBox;
 }
