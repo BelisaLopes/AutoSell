@@ -93,16 +93,6 @@
                       <text value="Localização:"/>
                     </properties>
                   </component>
-                  <component id="8fa96" class="javax.swing.JTextField" binding="filialLeiriaTextField" default-binding="true">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="Filial Leiria"/>
-                    </properties>
-                  </component>
                   <component id="d7b5c" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -221,6 +211,14 @@
                     </constraints>
                     <properties>
                       <text value="2"/>
+                    </properties>
+                  </component>
+                  <component id="51f59" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Filial Leiria"/>
                     </properties>
                   </component>
                 </children>
