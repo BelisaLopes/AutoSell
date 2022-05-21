@@ -15,6 +15,5 @@ public class JanelaTransferirPecas {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JButton apresentarPeçasButton;
-    private JCheckBox categoriaDaPeçaCheckBox;
     private JComboBox comboBox3;
 }

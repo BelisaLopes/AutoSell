@@ -15,6 +15,4 @@ public class JanelaConsultarEventosEVeiculos {
     private JButton apresentarEventosButton;
     private JList list1;
     private JList list2;
-    private JCheckBox distritoCheckBox;
-    private JCheckBox dataCheckBox;
 }
