@@ -10,7 +10,7 @@ public class JanelaRegistarCompra {
     private JButton clientesButton;
     private JButton estatísticasButton;
     private JButton registarVeículoButton;
-    private JButton confirmarButton;
+    private JButton registarCompraDeVeículoButton;
     private JButton registarNovoClienteButton;
     private JList list1;
     private JTextField textField1;
@@ -19,5 +19,6 @@ public class JanelaRegistarCompra {
     private JTextField textField3;
     private JTextField textField4;
     private JTextField textField5;
-    private JButton filtrarClientesButton;
+    private JButton apresentarClientesButton;
+    private JTextField textField6;
 }
