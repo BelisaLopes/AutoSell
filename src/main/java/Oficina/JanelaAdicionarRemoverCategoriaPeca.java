@@ -2,12 +2,15 @@ package Oficina;
 
 import javax.swing.*;
 
-public class JanelaRemoverCategoria {
-    private JButton veículosButton;
+public class JanelaAdicionarRemoverCategoriaPeca {
     private JButton estatísticasButton;
     private JButton clientesButton;
-    private JButton transaçõesButton;
     private JButton oficinaButton;
     private JButton eventosButton;
+    private JButton transaçõesButton;
+    private JButton veículosButton;
+    private JTextField textField1;
+    private JButton adicionarCategoriaButton;
     private JButton removerCategoriaButton;
+    private JList list1;
 }

@@ -10,5 +10,4 @@ public class JanelaMelhoresFiliaisFeiras {
     private JButton clientesButton;
     private JButton estatísticasButton;
     private JList list1;
-    private JTextField textField1;
 }
