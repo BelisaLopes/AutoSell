@@ -9,7 +9,7 @@ public class JanelaTransferirVeiculos {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton transferirButton;
+    private JButton transferirVeículoButton;
     private JList list1;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
@@ -17,5 +17,6 @@ public class JanelaTransferirVeiculos {
     private JTextField textField2;
     private JTextField textField3;
     private JButton filtrarVeículosButton;
-    private JCheckBox transferirParaASedeCheckBox;
+    private JCheckBox transportarParaASedeCheckBox;
+    private JCheckBox transportarParaOutroEventoCheckBox;
 }

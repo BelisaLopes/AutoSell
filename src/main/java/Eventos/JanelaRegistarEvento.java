@@ -12,7 +12,7 @@ public class JanelaRegistarEvento {
     private JTextField feiraDaBatalhaTextField;
     private JTextField a03072022TextField;
     private JTextField a05072022TextField;
-    private JButton registarButton;
+    private JButton registarEventoButton;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
 }

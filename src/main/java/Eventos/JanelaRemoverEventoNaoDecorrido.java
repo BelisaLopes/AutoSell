@@ -14,5 +14,5 @@ public class JanelaRemoverEventoNaoDecorrido {
     private JComboBox comboBox1;
     private JTextField textField1;
     private JTextField textField2;
-    private JButton filtrarEventosNãoDecorridosButton;
+    private JButton apresentarEventosNãoDecorridosButton;
 }
