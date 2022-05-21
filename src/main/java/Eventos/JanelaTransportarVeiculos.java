@@ -9,7 +9,7 @@ public class JanelaTransportarVeiculos {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton transferirVeículoButton;
+    private JButton transportarVeículoButton;
     private JList list1;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
