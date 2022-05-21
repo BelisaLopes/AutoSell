@@ -15,4 +15,6 @@ public class JanelaRemoverEventoNaoDecorrido {
     private JTextField textField1;
     private JTextField textField2;
     private JButton apresentarEventosNãoDecorridosButton;
+    private JCheckBox distritoCheckBox;
+    private JCheckBox dataCheckBox;
 }

@@ -17,6 +17,9 @@ public class JanelaTransportarVeiculos {
     private JTextField textField2;
     private JTextField textField3;
     private JButton apresentarVeículosButton;
-    private JCheckBox transportarParaASedeCheckBox;
-    private JCheckBox transportarParaOutroEventoCheckBox;
+    private JRadioButton transportarParaOutroEventoRadioButton;
+    private JRadioButton transportarParaASedeRadioButton;
+    private JCheckBox marcaCheckBox;
+    private JCheckBox modeloCheckBox;
+    private JCheckBox matrículaCheckBox;
 }

@@ -18,4 +18,6 @@ public class JanelaAtualizarEvento {
     private JTextField textField1;
     private JButton apresentarEventosButton;
     private JTextField textField3;
+    private JCheckBox distritoCheckBox;
+    private JCheckBox dataCheckBox;
 }
