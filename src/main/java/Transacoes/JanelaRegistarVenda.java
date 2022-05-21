@@ -23,7 +23,5 @@ public class JanelaRegistarVenda {
     private JButton filtrarClientesButton;
     private JCheckBox vendaComRetomaCheckBox;
     private JTextField textField5;
-    private JTextField textField6;
     private JTextField textField7;
-    private JTextField textField8;
 }
