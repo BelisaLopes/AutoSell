@@ -94,12 +94,12 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="2024f" class="javax.swing.JButton" binding="filtrarEventosButton" default-binding="true">
+              <component id="2024f" class="javax.swing.JButton" binding="apresentarEventosButton" default-binding="true">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Filtrar Eventos"/>
+                  <text value="Apresentar Eventos"/>
                 </properties>
               </component>
               <component id="43719" class="javax.swing.JLabel">
@@ -178,12 +178,12 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="36c7f" class="javax.swing.JButton" binding="filtrarVeículosButton" default-binding="true">
+              <component id="36c7f" class="javax.swing.JButton" binding="apresentarVeículosButton" default-binding="true">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Filtrar Veículos"/>
+                  <text value="Apresentar Veículos"/>
                 </properties>
               </component>
             </children>
