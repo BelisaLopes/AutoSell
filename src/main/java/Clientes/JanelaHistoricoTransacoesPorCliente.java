@@ -14,6 +14,4 @@ public class JanelaHistoricoTransacoesPorCliente {
     private JTextField textField1;
     private JButton apresentarClientesButton;
     private JTextField textField2;
-    private JCheckBox nomeCheckBox;
-    private JCheckBox NIFCheckBox;
 }
