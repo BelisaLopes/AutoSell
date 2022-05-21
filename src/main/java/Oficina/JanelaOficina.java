@@ -14,5 +14,6 @@ public class JanelaOficina {
     private JButton transferirPeçasButton;
     private JButton atualizarQuantidadeMínimaDeButton;
     private JButton registarEncomendaDePeçasButton;
-    private JButton registarOuRemoverCategoriaButton;
+    private JButton registarCategoriaDePeçaButton;
+    private JButton removerCategoriaDePeçaButton;
 }

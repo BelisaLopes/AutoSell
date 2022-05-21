@@ -9,8 +9,6 @@ public class JanelaAdicionarRemoverCategoriaPeca {
     private JButton eventosButton;
     private JButton transaçõesButton;
     private JButton veículosButton;
-    private JTextField textField1;
-    private JButton adicionarCategoriaButton;
     private JButton removerCategoriaButton;
     private JList list1;
 }

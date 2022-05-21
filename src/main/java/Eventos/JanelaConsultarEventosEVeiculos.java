@@ -9,14 +9,12 @@ public class JanelaConsultarEventosEVeiculos {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JTextField filialLeiriaTextField;
-    private JTextField a22072022TextField;
-    private JTextField a26072022TextField;
-    private JTextField a3TextField;
     private JComboBox comboBox1;
     private JTextField textField1;
     private JTextField textField2;
     private JButton apresentarEventosButton;
     private JList list1;
     private JList list2;
+    private JCheckBox distritoCheckBox;
+    private JCheckBox dataCheckBox;
 }

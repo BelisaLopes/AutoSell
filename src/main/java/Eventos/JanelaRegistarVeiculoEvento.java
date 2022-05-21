@@ -20,4 +20,9 @@ public class JanelaRegistarVeiculoEvento {
     private JTextField textField4;
     private JTextField textField5;
     private JButton apresentarVeículosButton;
+    private JCheckBox dsitritoCheckBox;
+    private JCheckBox dataCheckBox;
+    private JCheckBox marcaCheckBox;
+    private JCheckBox modeloCheckBox;
+    private JCheckBox matrículaCheckBox;
 }
