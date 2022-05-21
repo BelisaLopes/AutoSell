@@ -14,9 +14,11 @@ public class JanelaAtualizarCliente {
     private JTextField textField2;
     private JTextField textField4;
     private JTextField textField5;
-    private JButton atualizarButton;
+    private JButton atualizarClienteButton;
     private JTextField textField6;
     private JTextField textField8;
-    private JButton pesquisarClienteButton;
+    private JButton apresentarClientesButton;
     private JTextField textField9;
+    private JCheckBox nomeCheckBox;
+    private JCheckBox NIFCheckBox;
 }
