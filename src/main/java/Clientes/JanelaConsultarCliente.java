@@ -12,10 +12,7 @@ public class JanelaConsultarCliente {
     private JTextField textField1;
     private JList list1;
     private JTextField textField2;
-    private JButton pesquisarClienteButton;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
-    private JTextField textField10;
+    private JButton apresentarClientesButton;
+    private JCheckBox nomeCheckBox;
+    private JCheckBox NIFCheckBox;
 }
