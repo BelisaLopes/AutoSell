@@ -12,4 +12,5 @@ public class JanelaVeiculos {
     private JButton consultarVeiculosButton;
     private JButton transferirVeiculosButton;
     private JButton definirVeículoComoReparadoButton;
+    private JButton definirVeículoPorRepararButton;
 }
