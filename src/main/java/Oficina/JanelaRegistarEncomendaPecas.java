@@ -9,11 +9,11 @@ public class JanelaRegistarEncomendaPecas {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JTextField textField2;
     private JList list2;
     private JComboBox comboBox1;
     private JTextField textField3;
-    private JButton registarEncomendaDePeçasButton;
-    private JTextField textField1;
-    private JButton filtrarPeçasButton;
+    private JButton registarEncomendaDePeçaButton;
+    private JButton apresentarPeçasButton;
+    private JComboBox comboBox2;
+    private JCheckBox categoriaCheckBox;
 }

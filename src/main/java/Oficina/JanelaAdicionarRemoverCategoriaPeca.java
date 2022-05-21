@@ -2,7 +2,7 @@ package Oficina;
 
 import javax.swing.*;
 
-public class JanelaInserirCategoriaPeca {
+public class JanelaAdicionarRemoverCategoriaPeca {
     private JButton estatísticasButton;
     private JButton clientesButton;
     private JButton oficinaButton;
@@ -10,5 +10,7 @@ public class JanelaInserirCategoriaPeca {
     private JButton transaçõesButton;
     private JButton veículosButton;
     private JTextField textField1;
-    private JButton adicionarButton;
+    private JButton adicionarCategoriaButton;
+    private JButton removerCategoriaButton;
+    private JList list1;
 }
