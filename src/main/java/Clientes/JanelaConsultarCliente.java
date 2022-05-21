@@ -13,6 +13,4 @@ public class JanelaConsultarCliente {
     private JList list1;
     private JTextField textField2;
     private JButton apresentarClientesButton;
-    private JCheckBox nomeCheckBox;
-    private JCheckBox NIFCheckBox;
 }
