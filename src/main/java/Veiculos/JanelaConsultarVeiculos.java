@@ -16,8 +16,4 @@ public class JanelaConsultarVeiculos {
     private JTextField textField2;
     private JButton apresentarVeículosButton;
     private JTextField textField4;
-    private JCheckBox localCheckBox;
-    private JCheckBox marcaCheckBox;
-    private JCheckBox modeloCheckBox;
-    private JCheckBox matrículaCheckBox;
 }

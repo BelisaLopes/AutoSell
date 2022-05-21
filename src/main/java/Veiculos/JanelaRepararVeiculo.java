@@ -21,9 +21,5 @@ public class JanelaRepararVeiculo {
     private JButton apresentarVeículosButton;
     private JButton apresentarPeçasButton;
     private JTextField textField5;
-    private JCheckBox localCheckBox;
-    private JCheckBox marcaCheckBox;
-    private JCheckBox modeloCheckBox;
-    private JCheckBox matrículaCheckBox;
     private JComboBox comboBox2;
 }
