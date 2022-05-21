@@ -12,14 +12,14 @@ public class JanelaRepararVeiculo {
     private JButton registarVeículoComoReparadoButton;
     private JTextField textField1;
     private JList list2;
-    private JButton adicionarPeçaÀReparaçãoButton;
+    private JButton adicionarPeçaSButton;
     private JList list3;
     private JComboBox comboBox1;
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
     private JList list1;
-    private JButton filtrarVeículosButton;
-    private JButton filtrarButton;
+    private JButton apresentarVeículosButton;
+    private JButton apresentarPeçasButton;
     private JTextField textField5;
 }

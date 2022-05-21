@@ -11,11 +11,12 @@ public class JanelaTransferirVeiculos {
     private JButton oficinaButton;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
-    private JButton confirmarButton;
+    private JButton transferirVeículoButton;
     private JTextField a26344500TextField;
     private JTextField a2100TextField;
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
     private JButton filtrarVeículosButton;
+    private JList list1;
 }
