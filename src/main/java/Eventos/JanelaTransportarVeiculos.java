@@ -2,7 +2,7 @@ package Eventos;
 
 import javax.swing.*;
 
-public class JanelaTransferirVeiculos {
+public class JanelaTransportarVeiculos {
     private JButton estatisticasButton;
     private JButton veiculosButton;
     private JButton clientesButton;

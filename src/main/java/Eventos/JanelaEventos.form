@@ -69,12 +69,12 @@
               <text value="Consultar Evento"/>
             </properties>
           </component>
-          <component id="b66d9" class="javax.swing.JButton" binding="transferirVeículosEntreFeirasButton" default-binding="true">
+          <component id="b66d9" class="javax.swing.JButton" binding="transportarVeículosEntreEventosButton" default-binding="true">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Transferir Veículos entre Feiras/Sede"/>
+              <text value="Transportar Veículos entre Eventos ou para a Sede"/>
             </properties>
           </component>
         </children>
