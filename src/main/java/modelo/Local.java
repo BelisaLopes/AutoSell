@@ -1,5 +1,11 @@
 package modelo;
 
-public enum Local {
-    VIANA_DO_CASTELO, BRAGANCA, VILA_REAL, BRAGA, PORTO, VISEU, GUARDA, AVEIRO, COIMBRA, CASTELO_BRANCO, LEIRIA, LISBOA, SANTAREM, SETUBAL, PORTALEGRE, BEJA, EVORA, FARO;
+public abstract class Local {
+    protected Distrito distrito;
+
+    public Local(Distrito distrito) {
+        this.distrito = distrito;
+    }
+
+    public abstract void transportarVeiculo(Veiculo veiculo, Local localDestino);
 }

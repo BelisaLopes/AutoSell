@@ -10,35 +10,35 @@ public class DadosAplicacao {
     private Sede sede;
 
     public DadosAplicacao() {
-        sede = new Sede(Local.LISBOA);
+        sede = new Sede(Distrito.LISBOA, 4500);
         filiais = new ArrayList<>(18);
-        filiais.add(new Filial(Local.LISBOA));
-        filiais.add(new Filial(Local.LEIRIA));
-        filiais.add(new Filial(Local.PORTO));
-        filiais.add(new Filial(Local.COIMBRA));
-        filiais.add(new Filial(Local.SETUBAL));
-        filiais.add(new Filial(Local.FARO));
-        filiais.add(new Filial(Local.VIANA_DO_CASTELO));
-        filiais.add(new Filial(Local.VISEU));
-        filiais.add(new Filial(Local.VILA_REAL));
-        filiais.add(new Filial(Local.AVEIRO));
-        filiais.add(new Filial(Local.COIMBRA));
-        filiais.add(new Filial(Local.CASTELO_BRANCO));
-        filiais.add(new Filial(Local.BEJA));
-        filiais.add(new Filial(Local.PORTALEGRE));
-        filiais.add(new Filial(Local.EVORA));
-        filiais.add(new Filial(Local.BRAGA));
-        filiais.add(new Filial(Local.GUARDA));
-        filiais.add(new Filial(Local.BRAGANCA));
+        filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
+        filiais.add(new Filial(Distrito.VILA_REAL, 100));
+        filiais.add(new Filial(Distrito.BRAGANCA, 100));
+        filiais.add(new Filial(Distrito.BRAGA, 100));
+        filiais.add(new Filial(Distrito.VISEU, 100));
+        filiais.add(new Filial(Distrito.GUARDA, 100));
+        filiais.add(new Filial(Distrito.PORTO, 100));
+        filiais.add(new Filial(Distrito.AVEIRO, 100));
+        filiais.add(new Filial(Distrito.COIMBRA, 100));
+        filiais.add(new Filial(Distrito.CASTELO_BRANCO, 100));
+        filiais.add(new Filial(Distrito.LEIRIA, 100));
+        filiais.add(new Filial(Distrito.SANTAREM, 100));
+        filiais.add(new Filial(Distrito.LISBOA, 100));
+        filiais.add(new Filial(Distrito.SETUBAL, 100));
+        filiais.add(new Filial(Distrito.PORTALEGRE, 100));
+        filiais.add(new Filial(Distrito.BEJA, 100));
+        filiais.add(new Filial(Distrito.EVORA, 100));
+        filiais.add(new Filial(Distrito.FARO, 100));
     }
 
     public List<Filial> getFiliais() {
         return filiais;
     }
 
-    public Filial getFilial(Local local) {
+    public Filial getFilial(Distrito distrito) {
         for (Filial f : filiais) {
-            if (f.getLocal().equals(local)) {
+            if (f.getDistrito().equals(distrito)) {
                 return f;
             }
         }
