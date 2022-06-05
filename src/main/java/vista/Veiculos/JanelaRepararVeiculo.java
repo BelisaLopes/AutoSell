@@ -1,6 +1,9 @@
 package vista.Veiculos;
 
+import modelo.Peca;
+
 import javax.swing.*;
+import java.util.Hashtable;
 
 public class JanelaRepararVeiculo {
     private JButton estatisticasButton;
@@ -22,4 +25,7 @@ public class JanelaRepararVeiculo {
     private JButton apresentarPeçasButton;
     private JTextField textField5;
     private JComboBox comboBox2;
+    private JButton cancelarButton;
+
+    private Hashtable<Peca, Integer> pecasUsadasNaReparacao;
 }

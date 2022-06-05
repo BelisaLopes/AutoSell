@@ -1,6 +1,6 @@
 package modelo;
 
-public class Filial extends Empresa{
+public class Filial extends Estabelecimento {
     public Filial(Distrito distrito, int capacidadeMaximaVeiculos) {
         super(distrito, capacidadeMaximaVeiculos);
     }
@@ -9,7 +9,6 @@ public class Filial extends Empresa{
     public void transportarVeiculo(Veiculo veiculo, Local localDestino) {
 
     }
-
 
     @Override
     public String toString() {

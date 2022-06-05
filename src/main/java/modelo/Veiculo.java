@@ -7,12 +7,18 @@ public class Veiculo {
     private String cor;
     private TipoCombustivel combustivel;
     private Cliente donoAnterior;
-    private Distrito distrito;
+    private Local local;
     private int kilometragem;
     private int numeroDonos;
     private int numeroPortas;
 
+    private EstadoVeiculo estadoVeiculo;
+
+    private int pecasUsadasEmReparacoes;
+
     public Veiculo() {
+        pecasUsadasEmReparacoes = 0;
+        estadoVeiculo = EstadoVeiculo.POR_REPARAR; //sempre que se cria um veiculo, ele esta por reparar
     }
 
     @Override
@@ -55,12 +61,12 @@ public class Veiculo {
         this.donoAnterior = donoAnterior;
     }
 
-    public Distrito getDistrito() {
-        return distrito;
+    public Local getLocal() {
+        return local;
     }
 
-    public void setDistrito(Distrito distrito) {
-        this.distrito = distrito;
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     public void setKilometragem(int kilometragem) {

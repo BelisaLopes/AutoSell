@@ -1,6 +1,6 @@
 package modelo;
 
-public class Sede extends Empresa{
+public class Sede extends Estabelecimento {
     public Sede(Distrito distrito, int capacidadeMaximaVeiculos) {
         super(distrito, capacidadeMaximaVeiculos);
     }

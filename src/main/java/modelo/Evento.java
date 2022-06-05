@@ -6,7 +6,6 @@ import java.util.List;
 public class Evento extends Local {
     private String nome;
     private Local local;
-    private List<Veiculo> veiculos;
     private Data dataInicio;
     private Data dataFim;
 

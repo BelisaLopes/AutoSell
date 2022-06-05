@@ -9,6 +9,14 @@ public class DadosAplicacao {
     private List<Filial> filiais;
     private Sede sede;
 
+    private List<Cliente> clientes;
+
+    private List<Veiculo> veiculosVendidos;
+    private List<Veiculo> veiculosPorReparar;
+    private List<Veiculo> veiculosProntosParaVenda;
+
+    private List<Categoria> catalogo;
+
     public DadosAplicacao() {
         sede = new Sede(Distrito.LISBOA, 4500);
         filiais = new ArrayList<>(18);
@@ -25,15 +33,17 @@ public class DadosAplicacao {
         filiais.add(new Filial(Distrito.LEIRIA, 100));
         filiais.add(new Filial(Distrito.SANTAREM, 100));
         filiais.add(new Filial(Distrito.LISBOA, 100));
-        filiais.add(new Filial(Distrito.SETUBAL, 100));
         filiais.add(new Filial(Distrito.PORTALEGRE, 100));
+        filiais.add(new Filial(Distrito.SETUBAL, 100));
         filiais.add(new Filial(Distrito.BEJA, 100));
         filiais.add(new Filial(Distrito.EVORA, 100));
         filiais.add(new Filial(Distrito.FARO, 100));
+        clientes = new ArrayList<>();
+        catalogo = new ArrayList<>();
     }
 
     public List<Filial> getFiliais() {
-        return filiais;
+        return new ArrayList<>(filiais);
     }
 
     public Filial getFilial(Distrito distrito) {
@@ -47,5 +57,14 @@ public class DadosAplicacao {
 
     public Sede getSede() {
         return sede;
+    }
+
+    public void adicionarCategoria(String nome) {
+        Categoria categoria = new Categoria(nome);
+        catalogo.add(categoria);
+    }
+
+    public List<Categoria> getCatalogo() {
+        return new ArrayList<>(catalogo);
     }
 }
