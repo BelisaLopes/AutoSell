@@ -11,4 +11,5 @@ public class JanelaAdicionarCategoria {
     private JButton estatísticasButton;
     private JTextField textField1;
     private JButton adicionarCategoriaButton;
+    private JButton cancelarButton;
 }

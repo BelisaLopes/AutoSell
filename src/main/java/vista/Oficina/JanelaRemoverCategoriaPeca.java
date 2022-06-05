@@ -11,4 +11,5 @@ public class JanelaRemoverCategoriaPeca {
     private JButton veículosButton;
     private JButton removerCategoriaButton;
     private JList list1;
+    private JButton cancelarButton;
 }

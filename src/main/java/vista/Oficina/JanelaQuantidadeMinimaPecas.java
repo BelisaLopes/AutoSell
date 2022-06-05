@@ -15,4 +15,5 @@ public class JanelaQuantidadeMinimaPecas {
     private JComboBox comboBox1;
     private JButton apresentarPeçasButton;
     private JComboBox comboBox2;
+    private JButton cancelarButton;
 }

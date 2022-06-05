@@ -18,4 +18,5 @@ public class JanelaRegistarPeca {
     private JTextField textField4;
     private JTextField textField1;
     private JComboBox comboBox1;
+    private JButton cancelarButton;
 }

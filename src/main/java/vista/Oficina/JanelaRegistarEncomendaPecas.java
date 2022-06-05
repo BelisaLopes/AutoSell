@@ -15,4 +15,5 @@ public class JanelaRegistarEncomendaPecas {
     private JButton registarEncomendaDePeçaButton;
     private JButton apresentarPeçasButton;
     private JComboBox comboBox2;
+    private JButton cancelarButton;
 }

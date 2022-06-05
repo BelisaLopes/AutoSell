@@ -95,15 +95,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="vista.Veiculos"/>
-        </properties>
-      </component>
-      <component id="42099" class="javax.swing.JButton" binding="oficinaButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="vista.Oficina"/>
+          <text value="Veiculos"/>
         </properties>
       </component>
       <component id="bf0e7" class="javax.swing.JButton" binding="eventosButton" default-binding="true">
@@ -111,7 +103,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="vista.Eventos"/>
+          <text value="Eventos"/>
         </properties>
       </component>
       <component id="4449b" class="javax.swing.JButton" binding="clientesButton" default-binding="true">
@@ -119,7 +111,7 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="vista.Clientes"/>
+          <text value="Clientes"/>
         </properties>
       </component>
       <component id="1d9f5" class="javax.swing.JButton" binding="estatisticasButton" default-binding="true">
@@ -127,7 +119,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="vista.Estatisticas"/>
+          <text value="Estatisticas"/>
         </properties>
       </component>
       <component id="3bed" class="javax.swing.JButton" binding="transaçõesButton" default-binding="true">
@@ -136,6 +128,14 @@
         </constraints>
         <properties>
           <text value="Transações"/>
+        </properties>
+      </component>
+      <component id="42099" class="javax.swing.JButton" binding="oficinaButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Oficina"/>
         </properties>
       </component>
     </children>
