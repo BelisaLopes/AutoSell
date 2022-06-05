@@ -15,4 +15,7 @@ public class JanelaConsultarVeiculos {
     private JTextField textField2;
     private JButton apresentarVeículosButton;
     private JTextField textField4;
+    private JLabel txtDonoAnterior;
+    private JLabel txtEstadoVeiculo;
+    private JLabel txtModeloVeiculo;
 }
