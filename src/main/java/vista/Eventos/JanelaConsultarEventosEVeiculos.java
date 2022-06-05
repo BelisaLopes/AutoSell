@@ -12,7 +12,7 @@ public class JanelaConsultarEventosEVeiculos {
     private JComboBox comboBox1;
     private JTextField textField1;
     private JTextField textField2;
-    private JButton apresentarEventosButton;
+    private JButton eventosButton1;
     private JList list1;
     private JList list2;
 }
