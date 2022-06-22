@@ -31,11 +31,21 @@ public class JanelaEventos extends JFrame{
         clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
 
-        registarEventoButton.addActionListener(this::btnAdicionarEventoActionPerformed);
-
+        registarEventoButton.addActionListener(this::btnRegistarEventoActionPerformed);
+        atualizarEventoButton.addActionListener(this::btnAtualizarEventoActionPerformed);
     }
 
-    private void btnAdicionarEventoActionPerformed(ActionEvent evt) {
+    private void btnAtualizarEventoActionPerformed(ActionEvent evt) {
+        System.out.println("Click no btnAtualizarEventoActionPerformed");
+        this.setVisible(false);
+        dispose();
+
+        JanelaAtualizarEvento j = new JanelaAtualizarEvento();
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
+    }
+
+    private void btnRegistarEventoActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnRegistarEventoButtonActionPerformed");
         this.setVisible(false);
         dispose();

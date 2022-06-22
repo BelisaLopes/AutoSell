@@ -16,6 +16,9 @@ public class Data {
     }
 
     public static Data parseData(String data){
+        if(data.isEmpty()){
+            return null;
+        }
 
         var formato = new SimpleDateFormat("dd/MM/yyyy");
         formato.setLenient(false);

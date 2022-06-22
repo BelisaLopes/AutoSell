@@ -62,6 +62,7 @@ public class Erros {
             case EVENTO_DUPLICADO:
                 JOptionPane.showMessageDialog(parent, "Evento duplicado. Já existe um evento com o mesmo nome, no mesmo local e com as mesmas datas especificadas");
                 break;
+
             case NOME_INVALIDO:
                 JOptionPane.showMessageDialog(parent, "Nome inválido. O nome deve conter entre 2 e 100 carateres não-brancos");
                 break;
@@ -122,7 +123,6 @@ public class Erros {
             case SELECIONAR_CLIENTE_COMPRAR_VEICULO:
                 JOptionPane.showMessageDialog(parent, "Para concluir a venda, selecione o cliente que pretende comprar o veículo");
                 break;
-
             default:
         }
     }
