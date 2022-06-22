@@ -31,6 +31,7 @@ public class JanelaAtualizarEvento extends JFrame{
     private JButton escolherEventoButton;
 
     private DefaultComboBoxModel modeloComboBoxDistritos;
+    private List<Evento> eventos;
 
     public JanelaAtualizarEvento() {
         setContentPane(painel);
@@ -87,7 +88,7 @@ public class JanelaAtualizarEvento extends JFrame{
         }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        List<Evento> eventos = da.getEventos(distrito, inicio,fim);
+        eventos = da.getEventos(distrito, inicio,fim);
 
     }
 
