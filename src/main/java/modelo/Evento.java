@@ -5,32 +5,30 @@ import java.util.List;
 
 public class Evento extends Local {
     private String nome;
-    private Local local;
+//    private Local local;
     private Data dataInicio;
     private Data dataFim;
 
     public Evento(Distrito distrito, String nome) {
         super(distrito);
         this.nome = nome;
-        this.local = local;
-        veiculos = new ArrayList<>();
+//        this.local = local;
+//        veiculos = new ArrayList<>();
     }
 
     public void adicionarVeiculo(Veiculo veiculo){
-        veiculos.add(veiculo);
+//        veiculos.add(veiculo);
     }
 
     public void removerVeiculo(Veiculo veiculo){
-        veiculos.remove(veiculo);
+//        veiculos.remove(veiculo);
     }
 
 
-    public Local getLocal() {
-        return local;
-    }
 
     public List<Veiculo> getVeiculos() {
-        return veiculos;
+//        return veiculos;
+        return null;
     }
 
     @Override

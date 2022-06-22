@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class DadosAplicacao {
@@ -10,6 +11,8 @@ public class DadosAplicacao {
     private Sede sede;
 
     private List<Cliente> clientes;
+    private Hashtable<Local, List<Veiculo>> listaVeiculosPorLocal;
+    private Hashtable<String, GestorVeiculosPorModelo> listaPecasUsadasEmReparacaoPorMarca;
 
     private List<Veiculo> veiculosVendidos;
     private List<Veiculo> veiculosPorReparar;
@@ -40,6 +43,8 @@ public class DadosAplicacao {
         filiais.add(new Filial(Distrito.FARO, 100));
         clientes = new ArrayList<>();
         catalogo = new ArrayList<>();
+        listaVeiculosPorLocal = new Hashtable<>();
+        listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
     }
 
     public List<Filial> getFiliais() {
@@ -66,5 +71,17 @@ public class DadosAplicacao {
 
     public List<Categoria> getCatalogo() {
         return new ArrayList<>(catalogo);
+    }
+
+    public List<String> getPecasUsadasDaMarca(String marca){
+        GestorVeiculosPorModelo gestor = listaPecasUsadasEmReparacaoPorMarca.get(marca);
+        //TODO
+        return null;
+    }
+
+    public List<String> getPecasUsadasTodasAsMarcas(){
+        //TODO
+        //iterar hashtable para ir buscar cada modelo das marcas
+        return null;
     }
 }

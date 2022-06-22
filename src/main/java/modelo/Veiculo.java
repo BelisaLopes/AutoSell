@@ -37,6 +37,10 @@ public class Veiculo {
 //        }
     }
 
+    public int getPecasUsadasEmReparacoes() {
+        return pecasUsadasEmReparacoes;
+    }
+
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }

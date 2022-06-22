@@ -6,7 +6,6 @@ public class Oficina {
     private Hashtable<Peca, Integer> stockPecas;
     private Hashtable<Peca, Integer> limiteMinimoStockPecas;
 
-    private Hashtable<String, GestorVeiculosPorModelo> veiculosPorMarca;
 
     public Oficina() {
         stockPecas = new Hashtable<>();
@@ -33,5 +32,7 @@ public class Oficina {
     public int getLimiteMinimoPeca(Peca peca) {
         return limiteMinimoStockPecas.get(peca);
     }
+
+    //colocar nos DadosAplicacao que se reparou um veiculo de certa marca e modelo
 
 }
