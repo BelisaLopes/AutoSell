@@ -1,14 +1,19 @@
 package vista.Transacoes;
 
 import modelo.Cliente;
-import modelo.DadosAplicacao;
 import modelo.Data;
+import vista.Clientes.JanelaClientes;
+import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class JanelaRegistarNovoCliente extends JFrame {
+public class JanelaRegistarNovoCliente extends JDialog {
     private JButton estatisticasButton;
     private JButton veiculosButton;
     private JButton clientesButton;
@@ -26,18 +31,123 @@ public class JanelaRegistarNovoCliente extends JFrame {
 
     private Cliente cliente;
 
-    public JanelaRegistarNovoCliente(){
-        //todo
-        setContentPane(painelPrincipal); //vai ter um componente visual, entao cria-se no form
+    public JanelaRegistarNovoCliente(Frame parent, boolean modal) {
+        super(parent, modal);
+        setContentPane(painelPrincipal);
         pack();
-        setVisible(true);
+
+        veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
+        oficinaButton.addActionListener(this::btnOficinaButtonActionPerformed);
+        eventosButton.addActionListener(this::btnEventosButtonActionPerformed);
+        transaçõesButton.addActionListener(this::btnTransacoesButtonActionPerformed);
+        clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
+        estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
         registarClienteButton.addActionListener(this::registarClienteButtonActionPerformed);
         cancelarButton.addActionListener(this::cancelarButtonActionPerformed);
     }
 
-    private void registarClienteButtonActionPerformed(ActionEvent evt) {
+    public static Cliente mostrarCliente(Frame parent) {
+        var registoNovoCliente = new JanelaRegistarNovoCliente(parent, true);
+        registoNovoCliente.setLocationRelativeTo(parent);
+        registoNovoCliente.setVisible(true);
+        return registoNovoCliente.getCliente();
+    }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    private void btnEventosButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Eventos");
+        this.setVisible(false);
+        dispose();
+
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
+    }
+
+    private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Transações");
+        this.setVisible(false);
+        dispose();
+
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
+    }
+
+    private void btnClientesButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Clientes");
+        this.setVisible(false);
+        dispose();
+
+        JanelaClientes j = new JanelaClientes();
+        //j.setVisible(true);
+    }
+
+    private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Estatisticas");
+        this.setVisible(false);
+        dispose();
+
+        JanelaEstatistica j = new JanelaEstatistica();
+        //j.setVisible(true);
+    }
+
+    private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Veiculos");
+        this.setVisible(false);
+        dispose();
+
+        JanelaVeiculos j = new JanelaVeiculos();
+        //j.setVisible(true);
+    }
+
+    private void btnOficinaButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no botão Oficina");
+        this.setVisible(false);
+        dispose();
+
+        JanelaOficina j = new JanelaOficina();
+        //j.setVisible(true);
+    }
+
+
+    private void registarClienteButtonActionPerformed(ActionEvent evt) {
+        boolean valido = isNomeValido(textNome.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NOME_INVALIDO);
+            return;
+        }
+        valido = isDataNascimentoValida(textDataNascimento.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.DATA_NASCIMENTO_INVALIDA);
+            return;
+        }
+        Data data = Data.parseData(textDataNascimento.getText());
+
+        valido = isMoradaValida(textMorada.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.MORADA_INVALIDA);
+            return;
+        }
+
+        valido = isNIFValido(textNIF.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NIF_INVALIDO);
+            return;
+        }
+
+        valido = isContactoValido(textContacto.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.CONTACTO_INVALIDO);
+            return;
+        }
+
+        cliente = new Cliente(textNome.getText(), textMorada.getText(), data, textNIF.getText(), textContacto.getText());
+        /*DadosAplicacao dados = DadosAplicacao.INSTANCE;
+        dados.adicionarCliente(cliente); --> na janela Registar Venda*/
         System.out.println("Registar Cliente");
+        fechar();
     }
 
     private void cancelarButtonActionPerformed(ActionEvent evt) {
@@ -46,7 +156,7 @@ public class JanelaRegistarNovoCliente extends JFrame {
     }
 
     private void fechar(){
-        dispose();
+        setVisible(false);
     }
 
     private boolean isNomeValido(String nome){
@@ -56,7 +166,7 @@ public class JanelaRegistarNovoCliente extends JFrame {
         return !(morada.trim().length() < 10 || morada.trim().length() > 256);
     }
     private boolean isNIFValido(String nif){
-        return !(nif.trim().length() < 9 || nif.trim().length() > 9);
+        return !(nif.trim().length() < 9 || nif.trim().length() > 9 || !nif.matches("(1)?[0-9]{8}"));
     }
 
     private boolean isDataNascimentoValida(String data){
@@ -72,7 +182,7 @@ public class JanelaRegistarNovoCliente extends JFrame {
     }
 
     private boolean isContactoValido(String contacto){
-        return !(contacto.trim().length() < 9 || contacto.trim().length() > 9);
+        return !(contacto.trim().length() < 9 || contacto.trim().length() > 9 || !contacto.trim().matches("(2|9)?[0-9]{8}"));
     }
 
     /*private boolean existeCriancaComNome(String nome){ //tem de ir aos DadosAplicacao

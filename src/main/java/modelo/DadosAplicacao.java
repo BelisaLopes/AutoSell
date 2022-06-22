@@ -135,4 +135,16 @@ public class DadosAplicacao {
         }
         return false;
     }
+
+    public void adicionarCliente(Cliente cliente) {
+        clientes.add(cliente);
+    }
+
+    public void adicionarVeiculoPorReparar(Veiculo veiculo) {
+        veiculosPorReparar.add(veiculo);
+    }
+
+    public List<Cliente> getClientes() {
+        return new ArrayList<>(clientes);
+    }
 }

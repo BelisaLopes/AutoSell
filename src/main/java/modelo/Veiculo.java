@@ -5,18 +5,35 @@ public class Veiculo {
     private String marca;
     private String modelo;
     private String cor;
+
+    private int ano;
     private TipoCombustivel combustivel;
     private Cliente donoAnterior;
     private Local local;
-    private int kilometragem;
+    private int quilometros;
     private int numeroDonos;
     private int numeroPortas;
+
+    private String condicaoVeiculo;
+
+    private int valorVeiculo;
 
     private EstadoVeiculo estadoVeiculo;
 
     private int pecasUsadasEmReparacoes;
 
-    public Veiculo() {
+    public Veiculo(String marca, String modelo, int ano, String matricula, String cor, int numeroPortas, TipoCombustivel combustivel, int quilometros, int numeroDonos, String condicaoVeiculo, int valorVeiculo) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.matricula = matricula;
+        this.cor = cor;
+        this.numeroPortas = numeroPortas;
+        this.combustivel = combustivel;
+        this.quilometros = quilometros;
+        this.numeroDonos = numeroDonos;
+        this.condicaoVeiculo = condicaoVeiculo;
+        this.valorVeiculo = valorVeiculo;
         pecasUsadasEmReparacoes = 0;
         estadoVeiculo = EstadoVeiculo.POR_REPARAR; //sempre que se cria um veiculo, ele esta por reparar
     }
@@ -73,8 +90,8 @@ public class Veiculo {
         this.local = local;
     }
 
-    public void setKilometragem(int kilometragem) {
-        this.kilometragem = kilometragem;
+    public void setQuilometros(int quilometros) {
+        this.quilometros = quilometros;
     }
 
     public void setNumeroDonos(int numeroDonos) {
@@ -105,8 +122,8 @@ public class Veiculo {
         return donoAnterior;
     }
 
-    public int getKilometragem() {
-        return kilometragem;
+    public int getQuilometros() {
+        return quilometros;
     }
 
     public int getNumeroDonos() {
