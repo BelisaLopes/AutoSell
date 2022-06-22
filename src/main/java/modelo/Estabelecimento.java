@@ -10,7 +10,7 @@ public class Estabelecimento extends Local{
     public Estabelecimento(Distrito distrito, int capacidadeMaximaVeiculos) {
         super(distrito);
         this.capacidadeMaximaVeiculos = capacidadeMaximaVeiculos;
-        veiculos = new ArrayList<>();
+//        veiculos = new ArrayList<>();
         oficina = new Oficina();
     }
 
@@ -26,9 +26,9 @@ public class Estabelecimento extends Local{
         return capacidadeMaximaVeiculos;
     }
 
-    public List<Veiculo> getVeiculos() {
-        return veiculos;
-    }
+//    public List<Veiculo> getVeiculos() {
+//        return veiculos;
+//    }
 
     public Distrito getDistrito() {
         return distrito;
