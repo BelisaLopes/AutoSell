@@ -47,8 +47,8 @@ public class JanelaEventos extends JFrame{
 
     private void btnRegistarEventoActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnRegistarEventoButtonActionPerformed");
-//        this.setVisible(false);
-//        dispose();
+        this.setVisible(false);
+        dispose();
 
         JanelaRegistarEvento j = new JanelaRegistarEvento();
         j.setVisible(true);

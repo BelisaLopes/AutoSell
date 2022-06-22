@@ -36,13 +36,13 @@ public class JanelaRegistarEvento extends JDialog{
         pack();
 //        setVisible(true);
 
-        veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
-        oficinaButton.addActionListener(this::btnOficinaButtonActionPerformed);
-        eventosButton.addActionListener(this::btnEventosButtonActionPerformed);
-        transaçõesButton.addActionListener(this::btnTransacoesButtonActionPerformed);
-        clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
-        estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
-        cancelarButton.addActionListener(this::btnEventosButtonActionPerformed);
+        veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
+        oficinaButton.addActionListener(this::btnOficinaActionPerformed);
+        eventosButton.addActionListener(this::btnEventosActionPerformed);
+        transaçõesButton.addActionListener(this::btnTransacoesActionPerformed);
+        clientesButton.addActionListener(this::btnClientesActionPerformed);
+        estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
+        cancelarButton.addActionListener(this::btnEventosActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
         modeloComboBoxFiliais = new DefaultComboBoxModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
@@ -115,10 +115,11 @@ public class JanelaRegistarEvento extends JDialog{
 
     private void fechar() {
         setVisible(false);
+        dispose(); //não sei se pode ficar aqui
 
-//        JanelaEventos j = new JanelaEventos();
-//        j.setVisible(true);
-        dispose();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
+
     }
 
     private boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
@@ -162,15 +163,15 @@ public class JanelaRegistarEvento extends JDialog{
         }
     }
 
-    private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
+    private void btnVeiculosActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnVeiculosButtonActionPerformed");
     }
 
-    private void btnOficinaButtonActionPerformed(ActionEvent evt) {
+    private void btnOficinaActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnOficinaButtonActionPerformed");
     }
 
-    private void btnEventosButtonActionPerformed(ActionEvent evt) {
+    private void btnEventosActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnEventosButtonActionPerformed");
 //        this.setVisible(false);
 //        dispose();
@@ -181,15 +182,15 @@ public class JanelaRegistarEvento extends JDialog{
 
     }
 
-    private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
+    private void btnTransacoesActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnTransacoesButtonActionPerformed");
     }
 
-    private void btnClientesButtonActionPerformed(ActionEvent evt) {
+    private void btnClientesActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnClientesButtonActionPerformed");
     }
 
-    private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
+    private void btnEstatisticasActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnEstatisticasButtonActionPerformed");
     }
 

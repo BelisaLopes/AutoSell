@@ -87,8 +87,40 @@ public class DadosAplicacao {
         return null;
     }
 
-    public List<Evento> getEventos() {
-        return new ArrayList<>(eventos);
+    public List<Evento> getEventos(Distrito distrito, Data dataInicio, Data dataFim) {
+        List<Evento> eventosFiltrados = new ArrayList<>();
+        Evento e;
+
+        for (Evento evento : eventos) {
+            e = null;
+            if(distrito != null){
+                if(evento.getDistrito() == distrito){
+                    e = evento;
+                }else{
+                    continue;
+                }
+            }
+
+            if(dataInicio != null){
+               if(evento.getDataInicio() == dataInicio){
+                   e = evento;
+               }else{
+                   continue;
+               }
+            }
+
+            if(dataFim != null){
+                if(evento.getDataFim() == dataFim){
+                    e = evento;
+                }else{
+                    continue;
+                }
+            }
+
+            eventosFiltrados.add(e);
+        }
+
+        return eventosFiltrados;
     }
 
     public void adicionarEvento (Evento evento){
