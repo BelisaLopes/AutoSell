@@ -13,7 +13,7 @@ public class Erros {
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
             case NOME_EVENTO_INVALIDO:
-                JOptionPane.showMessageDialog(parent, "Nome do evento inválido. O nome deve conter pelo menos 2 carateres não-brancos");
+                JOptionPane.showMessageDialog(parent, "Nome do evento inválido. O nome deve conter entre 3 e 50 carateres não-brancos");
                 break;
             case DATA_INICIO_INVALIDA:
                 JOptionPane.showMessageDialog(parent, "Data de início inválida. A data deve ter o formato dd/mm/aaaa");

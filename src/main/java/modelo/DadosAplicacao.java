@@ -94,4 +94,13 @@ public class DadosAplicacao {
     public void adicionarEvento (Evento evento){
         eventos.add(evento);
     }
+
+    public boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
+        for (Evento e : eventos) {
+            if(e.getNome() == nome && e.getDataInicio() == inicio && e.getDataFim() == fim){
+                return true;
+            }
+        }
+        return false;
+    }
 }
