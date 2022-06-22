@@ -25,6 +25,7 @@ public class DadosAplicacao {
         sede = new Sede(Distrito.LISBOA, 4500);
         filiais = new ArrayList<>(18);
         eventos = new ArrayList<>();
+        veiculosPorReparar = new ArrayList<>();
         filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
         filiais.add(new Filial(Distrito.VILA_REAL, 100));
         filiais.add(new Filial(Distrito.BRAGANCA, 100));

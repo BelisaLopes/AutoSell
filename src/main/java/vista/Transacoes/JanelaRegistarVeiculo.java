@@ -158,27 +158,39 @@ public class JanelaRegistarVeiculo extends JDialog{
             Erros.mostrarErro(this, Erros.COR_INVALIDA);
             return;
         }
-
-        valido = isPortasValidas(textPortas.getText());
-        if(!valido){
+        if(textPortas.getText().isEmpty()){
             Erros.mostrarErro(this, Erros.PORTAS_INVALIDO);
             return;
         }
         int numeroPortas = Integer.parseInt(textPortas.getText());
 
-        valido = isQuilometrosValido(textQuilometros.getText());
+        valido = isPortasValidas(numeroPortas);
         if(!valido){
-            Erros.mostrarErro(this, Erros.VALOR_NEGATIVO_INVALIDO); ///mudar
+            Erros.mostrarErro(this, Erros.PORTAS_INVALIDO);
             return;
         }
+        if(textQuilometros.getText().isEmpty()){
+            Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO); //MUDAR PARA O ERRO A ADICIONAR
+            return;
+        }
+
         int quilometros = Integer.parseInt(textQuilometros.getText());
 
-        valido = isDonosValido(textDonos.getText());
+        valido = isQuilometrosValido(quilometros);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO); ///mudar
+            return;
+        }
+        if(textDonos.getText().isEmpty()){
+            Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO);
+        }
+
+        int numeroDonos = Integer.parseInt(textDonos.getText());
+        valido = isDonosValido(numeroDonos);
         if(!valido){
             Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO);
             return;
         }
-        int numeroDonos = Integer.parseInt(textDonos.getText());
 
         valido = isCondicaoValida(textCondicao.getText());
         if(!valido){
@@ -186,12 +198,17 @@ public class JanelaRegistarVeiculo extends JDialog{
             return;
         }
 
-        valido = isValorValido(textValor.getText());
+        if(textValor.getText().isEmpty()) {
+            Erros.mostrarErro(this, Erros.VALOR_VEICULO_INVALIDO);
+        }
+
+        int valorVeiculo = Integer.parseInt(textValor.getText());
+        valido = isValorValido(valorVeiculo);
         if(!valido){
             Erros.mostrarErro(this, Erros.VALOR_VEICULO_INVALIDO);
             return;
         }
-        int valorVeiculo = Integer.parseInt(textValor.getText());
+
 
         veiculo = new Veiculo(textMarca.getText(), textModelo.getText(), ano, textMatricula.getText(), textCor.getText(), numeroPortas, (TipoCombustivel) comboBoxCombustivel.getSelectedItem(), quilometros, numeroDonos, textCondicao.getText(), valorVeiculo);
 
@@ -209,11 +226,11 @@ public class JanelaRegistarVeiculo extends JDialog{
     }
 
     private boolean isMarcaValida(String marca){
-        return !(marca.trim().length() < 2 || marca.trim().length() > 100);
+        return !(marca.trim().length() < 2 || marca.trim().length() > 50);
     }
 
     private boolean isModeloValido(String modelo){
-        return !(modelo.trim().length() < 2 || modelo.trim().length() > 100);
+        return !(modelo.trim().length() < 2 || modelo.trim().length() > 50);
     }
 
     private boolean isAnoValido(String ano){
@@ -221,34 +238,34 @@ public class JanelaRegistarVeiculo extends JDialog{
     }
 
     private boolean isMatriculaValida(String matricula){
-        return !(matricula.trim().matches("[A-Z]{2}-[0-9]{2}-[A-Z]{2}"));
+        return (matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([A-Z]{2})$")||
+                matricula.trim().matches("^([0-9]{2})[-]([0-9]{2})[-]([A-Z]{2})$") ||
+                matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([0-9]{2})$") ||
+                matricula.trim().matches("^([0-9]{2})[-]([A-Z]{2})[-]([0-9]{2})$"));
     }
 
     private boolean isCorValida(String cor){
-        return !(cor.trim().length() < 2 || cor.trim().length() > 100);
+        return !(cor.trim().length() < 2 || cor.trim().length() > 50);
     }
 
-    private boolean isPortasValidas(String portas){
-        return !(portas.trim().matches("(3|5)"));
+    private boolean isPortasValidas(int portas){
+        return (portas == 3 || portas == 5);
     }
 
-    private boolean isQuilometrosValido(String quilometros){
-        return !(quilometros.trim().matches("^[1-9]*$"));
+    private boolean isQuilometrosValido(int quilometros){
+        return (quilometros >= 0);
     }
 
-    private boolean isDonosValido(String donos){
-        return !(donos.trim().matches("^[1-9]*$"));
+    private boolean isDonosValido(int donos){
+        return (donos >= 0);
     }
 
     private boolean isCondicaoValida(String condicao){
-        return !(condicao.trim().length() < 2 || condicao.trim().length() > 100);
+        return !(condicao.trim().length() < 2 || condicao.trim().length() > 50);
     }
 
-    private boolean isValorValido(String valor){
-        return !(valor.trim().matches("^[1-9]*$"));
+    private boolean isValorValido(int valor){
+        return (valor >= 0);
     }
-
-
-
 
 }
