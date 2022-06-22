@@ -7,11 +7,11 @@ public class Cliente {
     private String nome;
     private String morada;
     private Data dataNascimento;
-    private double NIF;
-    private double contacto;
+    private String NIF;
+    private String contacto;
     private List<Transacao> transacoes;
 
-    public Cliente(String nome, String morada, Data dataNascimento, double NIF, double contacto) {
+    public Cliente(String nome, String morada, Data dataNascimento, String NIF, String contacto) {
         this.nome = nome;
         this.morada = morada;
         this.dataNascimento = dataNascimento;
@@ -44,19 +44,19 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public double getNIF() {
+    public String getNIF() {
         return NIF;
     }
 
-    public void setNIF(double NIF) {
+    public void setNIF(String NIF) {
         this.NIF = NIF;
     }
 
-    public double getContacto() {
+    public String getContacto() {
         return contacto;
     }
 
-    public void setContacto(double contacto) {
+    public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 

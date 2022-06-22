@@ -94,4 +94,16 @@ public class DadosAplicacao {
     public void adicionarEvento (Evento evento){
         eventos.add(evento);
     }
+
+    public void adicionarCliente(Cliente cliente) {
+        clientes.add(cliente);
+    }
+
+    public void adicionarVeiculoPorReparar(Veiculo veiculo) {
+        veiculosPorReparar.add(veiculo);
+    }
+
+    public List<Cliente> getClientes() {
+        return new ArrayList<>(clientes);
+    }
 }
