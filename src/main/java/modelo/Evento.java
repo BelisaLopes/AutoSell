@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Evento extends Local {
     private String nome;
+    private Estabelecimento estabelecimento; //
 //    private Local local;
     private Data dataInicio;
     private Data dataFim;

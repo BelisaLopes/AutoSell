@@ -3,7 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Estabelecimento extends Local{
+public abstract class Estabelecimento extends Local{
     private int capacidadeMaximaVeiculos;
     private Oficina oficina;
 

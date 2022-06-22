@@ -9,6 +9,7 @@ public class DadosAplicacao {
 
     private List<Filial> filiais;
     private Sede sede;
+    private List<Evento> eventos;
 
     private List<Cliente> clientes;
     private Hashtable<Local, List<Veiculo>> listaVeiculosPorLocal;
@@ -23,6 +24,7 @@ public class DadosAplicacao {
     public DadosAplicacao() {
         sede = new Sede(Distrito.LISBOA, 4500);
         filiais = new ArrayList<>(18);
+        eventos = new ArrayList<>();
         filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
         filiais.add(new Filial(Distrito.VILA_REAL, 100));
         filiais.add(new Filial(Distrito.BRAGANCA, 100));
@@ -47,7 +49,7 @@ public class DadosAplicacao {
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
     }
 
-    public List<Filial> getFiliais() {
+    public ArrayList<Filial> getFiliais() {
         return new ArrayList<>(filiais);
     }
 
@@ -83,5 +85,13 @@ public class DadosAplicacao {
         //TODO
         //iterar hashtable para ir buscar cada modelo das marcas
         return null;
+    }
+
+    public List<Evento> getEventos() {
+        return new ArrayList<>(eventos);
+    }
+
+    public void adicionarEvento (Evento evento){
+        eventos.add(evento);
     }
 }
