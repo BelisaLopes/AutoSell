@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class Data {
     private Calendar calendar;
@@ -16,9 +17,9 @@ public class Data {
     }
 
     public static Data parseData(String data){
-        if(data.isEmpty()){
-            return null;
-        }
+//        if(data.isEmpty()){
+//            return null;
+//        }
 
         var formato = new SimpleDateFormat("dd/MM/yyyy");
         formato.setLenient(false);
@@ -54,5 +55,18 @@ public class Data {
         int mes = calendar.get(Calendar.MONTH);
         int ano = calendar.get(Calendar.YEAR);
         return dia + "/" + mes + "/" + ano;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Data)) return false;
+        Data data = (Data) o;
+        return this.getDia() == data.getDia() && this.getMes() == data.getMes() && this.getAno() == data.getAno();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(calendar);
     }
 }

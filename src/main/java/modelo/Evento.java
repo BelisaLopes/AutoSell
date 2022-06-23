@@ -44,6 +44,22 @@ public class Evento extends Local {
         return dataFim;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataInicio(Data dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDataFim(Data dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
     public List<Veiculo> getVeiculos() {
 //        return veiculos;
         return null;
@@ -52,5 +68,10 @@ public class Evento extends Local {
     @Override
     public void transportarVeiculo(Veiculo veiculo, Local localDestino) {
 
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
 }
