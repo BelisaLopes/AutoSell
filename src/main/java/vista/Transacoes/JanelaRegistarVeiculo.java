@@ -169,8 +169,9 @@ public class JanelaRegistarVeiculo extends JDialog{
             Erros.mostrarErro(this, Erros.PORTAS_INVALIDO);
             return;
         }
+
         if(textQuilometros.getText().isEmpty()){
-            Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO); //MUDAR PARA O ERRO A ADICIONAR
+            Erros.mostrarErro(this, Erros.QUILOMETROS_INVALIDOS);
             return;
         }
 
@@ -178,7 +179,7 @@ public class JanelaRegistarVeiculo extends JDialog{
 
         valido = isQuilometrosValido(quilometros);
         if(!valido){
-            Erros.mostrarErro(this, Erros.NUMERO_DONOS_INVALIDO); ///mudar
+            Erros.mostrarErro(this, Erros.QUILOMETROS_INVALIDOS);
             return;
         }
         if(textDonos.getText().isEmpty()){

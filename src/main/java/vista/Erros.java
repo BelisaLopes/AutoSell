@@ -28,7 +28,7 @@ public class Erros {
 
     public static final int PALAVRA_INVALIDA = 14;
 
-    public static final int VALOR_NEGATIVO_INVALIDO = 15;
+    public static final int QUILOMETROS_INVALIDOS = 15;
 
     public static final int PORTAS_INVALIDO = 16;
     public static final int NENHUM_RESULTADO = 17;
@@ -98,13 +98,16 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Condição do veículo inválida. A condição do veículo deve conter entre 2 e 50 carateres não-brancos");
                 break;
             case NUMERO_DONOS_INVALIDO:
-                JOptionPane.showMessageDialog(parent, "Número inválido. Insira um número positivo");
+                JOptionPane.showMessageDialog(parent, "Número de donos inválido. Insira um número positivo");
                 break;
             case VALOR_VEICULO_INVALIDO:
-                JOptionPane.showMessageDialog(parent, "Número inválido. Insira um número positivo");
+                JOptionPane.showMessageDialog(parent, "Valor do veiculo inválido. Insira um número positivo");
+                break;
+            case QUILOMETROS_INVALIDOS:
+                JOptionPane.showMessageDialog(parent, "Número de quilómetros inválido. Insira um número positivo");
                 break;
             case PORTAS_INVALIDO:
-                JOptionPane.showMessageDialog(parent, "Número inválido. Insira 3 ou 5 portas");
+                JOptionPane.showMessageDialog(parent, "Número de portas inválido. Insira 3 ou 5 portas");
                 break;
             case NENHUM_RESULTADO:
                 JOptionPane.showMessageDialog(parent, "Não foi encontrado nenhum resultado para a pesquisa efetuada");
