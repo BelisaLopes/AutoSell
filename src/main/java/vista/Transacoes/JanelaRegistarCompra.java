@@ -19,4 +19,5 @@ public class JanelaRegistarCompra {
     private JTextField textField4;
     private JButton apresentarClientesButton;
     private JTextField textField6;
+    private JButton cancelarButton;
 }

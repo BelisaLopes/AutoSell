@@ -32,7 +32,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d5d96" class="javax.swing.JButton" binding="registarPeçaButton" default-binding="true">
+          <component id="d5d96" class="javax.swing.JButton" binding="registarPecaButton">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -40,7 +40,7 @@
               <text value="Registar Peça"/>
             </properties>
           </component>
-          <component id="8d5dd" class="javax.swing.JButton" binding="atualizarQuantidadeMínimaDeButton" default-binding="true">
+          <component id="8d5dd" class="javax.swing.JButton" binding="atualizarQuantidadeMínimaButton">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -48,7 +48,7 @@
               <text value="Atualizar Quantidade Mínima de Peças"/>
             </properties>
           </component>
-          <component id="cd90a" class="javax.swing.JButton" binding="transferirPeçasButton" default-binding="true">
+          <component id="cd90a" class="javax.swing.JButton" binding="transferirPecasButton">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -56,7 +56,7 @@
               <text value="Transferir Peças"/>
             </properties>
           </component>
-          <component id="884e5" class="javax.swing.JButton" binding="consultarPeçasEmStockButton" default-binding="true">
+          <component id="884e5" class="javax.swing.JButton" binding="consultarStockButton">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -64,7 +64,7 @@
               <text value="Consultar Peças Em Stock"/>
             </properties>
           </component>
-          <component id="678d3" class="javax.swing.JButton" binding="registarEncomendaDePeçasButton" default-binding="true">
+          <component id="678d3" class="javax.swing.JButton" binding="registarEncomendaButton">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -72,7 +72,7 @@
               <text value="Registar Encomenda de Peças"/>
             </properties>
           </component>
-          <component id="861d8" class="javax.swing.JButton" binding="registarCategoriaDePeçaButton" default-binding="true">
+          <component id="861d8" class="javax.swing.JButton" binding="registarCategoriaButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -80,7 +80,7 @@
               <text value="Registar Categoria de Peça"/>
             </properties>
           </component>
-          <component id="42e64" class="javax.swing.JButton" binding="removerCategoriaDePeçaButton" default-binding="true">
+          <component id="42e64" class="javax.swing.JButton" binding="removerCategoriaButton">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
