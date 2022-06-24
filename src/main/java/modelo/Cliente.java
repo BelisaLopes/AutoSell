@@ -63,4 +63,8 @@ public class Cliente {
     public void addTransacao(Transacao transacao) {
         transacoes.add(transacao);
     }
+
+    public String toString() {
+        return nome;
+    }
 }

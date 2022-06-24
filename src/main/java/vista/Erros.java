@@ -44,6 +44,8 @@ public class Erros {
     public static final int SELECIONAR_VEICULO_VENDER = 26;
     public static final int SELECIONAR_CLIENTE_COMPRAR_VEICULO = 27;
     public static final int SELECIONAR_EVENTO = 28;
+    public static final int SELECIONAR_CLIENTE = 29;
+    public static final int CLIENTE_EXISTENTE = 30;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -129,6 +131,12 @@ public class Erros {
                 break;
             case SELECIONAR_EVENTO:
                 JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar um evento primeiro");
+                break;
+            case SELECIONAR_CLIENTE:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar um cliente primeiro");
+                break;
+            case CLIENTE_EXISTENTE:
+                JOptionPane.showMessageDialog(parent, "Já existe um cliente com o mesmo nif.");
                 break;
             default:
         }
