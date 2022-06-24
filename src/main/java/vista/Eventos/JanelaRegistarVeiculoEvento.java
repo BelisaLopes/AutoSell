@@ -21,4 +21,5 @@ public class JanelaRegistarVeiculoEvento {
     private JTextField textField5;
     private JButton apresentarVeículosButton;
     private JButton cancelarButton;
+    private JPanel painel;
 }
