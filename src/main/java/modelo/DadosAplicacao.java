@@ -3,6 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Objects;
 
 public class DadosAplicacao {
     public static DadosAplicacao INSTANCE = new DadosAplicacao();
@@ -25,6 +26,7 @@ public class DadosAplicacao {
         sede = new Sede(Distrito.LISBOA, 4500);
         filiais = new ArrayList<>(18);
         eventos = new ArrayList<>();
+        veiculosPorReparar = new ArrayList<>();
         filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
         filiais.add(new Filial(Distrito.VILA_REAL, 100));
         filiais.add(new Filial(Distrito.BRAGANCA, 100));
@@ -47,6 +49,12 @@ public class DadosAplicacao {
         catalogo = new ArrayList<>();
         listaVeiculosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
+
+        eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
+        List<Veiculo> v = new ArrayList<>();
+        v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
+        v.add(new Veiculo("Mitsubishi", "Colt", 2005, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000));
+        listaVeiculosPorLocal.put(eventos.get(0), v);
     }
 
     public ArrayList<Filial> getFiliais() {
@@ -92,35 +100,23 @@ public class DadosAplicacao {
         Evento e;
 
         for (Evento evento : eventos) {
-            e = null;
-            if(distrito != null){
-                if(evento.getDistrito() == distrito){
-                    e = evento;
-                }else{
-                    continue;
-                }
+            e = evento;
+            if(distrito != null && evento.getDistrito() != distrito){
+                continue;
             }
 
-            if(dataInicio != null){
-               if(evento.getDataInicio() == dataInicio){
-                   e = evento;
-               }else{
-                   continue;
-               }
+            if(dataInicio != null && !evento.getDataInicio().equals(dataInicio)){
+               continue;
             }
 
-            if(dataFim != null){
-                if(evento.getDataFim() == dataFim){
-                    e = evento;
-                }else{
-                    continue;
-                }
+            if(dataFim != null && !evento.getDataFim().equals(dataFim)){
+                continue;
             }
 
             eventosFiltrados.add(e);
         }
 
-        return eventosFiltrados;
+        return eventosFiltrados.isEmpty() ? null : eventosFiltrados;
     }
 
     public void adicionarEvento (Evento evento){
@@ -129,11 +125,15 @@ public class DadosAplicacao {
 
     public boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
         for (Evento e : eventos) {
-            if(e.getNome() == nome && e.getDataInicio() == inicio && e.getDataFim() == fim){
+            if(Objects.equals(e.getNome(), nome) && e.getDataInicio().equals(inicio) && e.getDataFim().equals(fim)){
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Veiculo> getVeiculosLocal(Local local){
+        return listaVeiculosPorLocal.get(local);
     }
 
     public void adicionarCliente(Cliente cliente) {

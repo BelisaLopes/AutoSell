@@ -1,5 +1,7 @@
 package vista.Eventos;
 
+import vista.Veiculos.JanelaVeiculos;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -22,6 +24,7 @@ public class JanelaEventos extends JFrame{
     public JanelaEventos() {
         setContentPane(painelPrincipal);
         pack();
+        setLocationRelativeTo(null); //fazer isto só na janela principal
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
@@ -33,6 +36,16 @@ public class JanelaEventos extends JFrame{
 
         registarEventoButton.addActionListener(this::btnRegistarEventoActionPerformed);
         atualizarEventoButton.addActionListener(this::btnAtualizarEventoActionPerformed);
+        consultarEventoButton.addActionListener(this::btnConsultarEventoActionPerformed);
+    }
+
+    private void btnConsultarEventoActionPerformed(ActionEvent evt) {
+        this.setVisible(false);
+        dispose();
+
+        JanelaConsultarEventosEVeiculos j = new JanelaConsultarEventosEVeiculos();
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
     }
 
     private void btnAtualizarEventoActionPerformed(ActionEvent evt) {
@@ -51,11 +64,15 @@ public class JanelaEventos extends JFrame{
         dispose();
 
         JanelaRegistarEvento j = new JanelaRegistarEvento();
+        j.setLocationRelativeTo(this);
         j.setVisible(true);
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaVeiculos j = new JanelaVeiculos();
+        j.setVisible(true);
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {

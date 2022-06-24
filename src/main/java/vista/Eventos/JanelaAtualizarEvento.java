@@ -5,6 +5,7 @@ import modelo.Data;
 import modelo.Distrito;
 import modelo.Evento;
 import vista.Erros;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +22,7 @@ public class JanelaAtualizarEvento extends JFrame{
     private JTextField novaDataInicioTextField;
     private JTextField novaDataFimTextField;
     private JButton atualizarEventoButton;
-    private JList listaEventos;
+    private JList<Evento> listaEventos;
     private JComboBox comboBoxDistritos;
     private JTextField dataInicioTextField;
     private JButton apresentarEventosButton;
@@ -31,7 +32,8 @@ public class JanelaAtualizarEvento extends JFrame{
     private JButton escolherEventoButton;
 
     private DefaultComboBoxModel modeloComboBoxDistritos;
-    private List<Evento> eventos;
+    private DefaultListModel modeloListaEventos;
+    private Evento evento;
 
     public JanelaAtualizarEvento() {
         setContentPane(painel);
@@ -46,7 +48,9 @@ public class JanelaAtualizarEvento extends JFrame{
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
         cancelarButton.addActionListener(this::btnEventosActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
+        modeloListaEventos = new DefaultListModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
+        listaEventos.setModel(modeloListaEventos);
         initComponents();
 
         apresentarEventosButton.addActionListener(this::btnApresentarEventosActionPerformed);
@@ -55,11 +59,74 @@ public class JanelaAtualizarEvento extends JFrame{
     }
 
     private void btnEscolherEventoActionPerformed(ActionEvent evt) {
+        boolean valido = !listaEventos.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
+            return;
+        }
+
+        evento = listaEventos.getSelectedValue();
+        nomeEventoTextField.setText(evento.getNome());
+        novaDataInicioTextField.setText(evento.getDataInicio().toString());
+        novaDataFimTextField.setText(evento.getDataFim().toString());
 
     }
 
     private void btnAtualizarEventoActionPerformed(ActionEvent evt) {
+        String nome = nomeEventoTextField.getText();
+        boolean valido = isNomeValido(nome);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NOME_EVENTO_INVALIDO);
+            return;
+        }
 
+        String dataInicioAtualizar = novaDataInicioTextField.getText();
+        valido = isDataValida(dataInicioAtualizar);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA);
+            return;
+        }
+
+        Data inicioAtualizar = Data.parseData(dataInicioAtualizar);
+
+        String dataFimAtualizar = novaDataFimTextField.getText();
+        valido = isDataValida(dataFimAtualizar);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.DATA_FIM_INVALIDA);
+            return;
+        }
+
+        Data fimAtualizar = Data.parseData(dataFimAtualizar);
+
+        valido = isDataFimAfterDataInicio(inicioAtualizar, fimAtualizar);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.ORDEM_DATAS);
+            return;
+        }
+
+        var alterado = isEventoAlterado(evento, nome, inicioAtualizar, fimAtualizar);
+        if(alterado){
+            valido = !isEventoDuplicado(nome, inicioAtualizar, fimAtualizar);
+            if(!valido){
+                Erros.mostrarErro(this, Erros.EVENTO_DUPLICADO);
+                return;
+            }
+        }
+
+        evento.setNome(nome);
+        evento.setDataInicio(inicioAtualizar);
+        evento.setDataFim(fimAtualizar);
+
+        fechar();
+    }
+
+    private boolean isEventoAlterado(Evento evento, String nome, Data inicio, Data fim){
+        return !evento.getNome().equals(nome) || !evento.getDataInicio().equals(inicio) || !evento.getDataFim().equals(fim);
+    }
+
+    private boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        return da.isEventoDuplicado(nome,inicio,fim);
     }
 
     private void btnApresentarEventosActionPerformed(ActionEvent evt) {
@@ -88,8 +155,31 @@ public class JanelaAtualizarEvento extends JFrame{
         }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        eventos = da.getEventos(distrito, inicio,fim);
+        List<Evento> eventos = da.getEventos(distrito, inicio,fim);
+        if(eventos == null){
+            modeloListaEventos.removeAllElements();
+            Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
+            return;
+        }
+        modeloListaEventos.removeAllElements();
+        for (Evento evento : eventos) {
+            modeloListaEventos.add(modeloListaEventos.getSize(),evento);
+        }
+    }
 
+    private boolean isDataFimAfterDataInicio(Data inicio, Data fim) {
+        if(fim.getAno() > inicio.getAno()){
+            return true;
+        }
+        if(fim.getMes() > inicio.getMes()){
+            return true;
+        }
+
+        return fim.getDia() >= inicio.getDia();
+    }
+
+    private boolean isNomeValido(String nome){
+        return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
 
     private boolean isDataValida(String data) {
@@ -121,7 +211,11 @@ public class JanelaAtualizarEvento extends JFrame{
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaVeiculos j = new JanelaVeiculos();
+        j.setVisible(true);
+
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {

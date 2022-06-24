@@ -2,7 +2,7 @@ package vista.Veiculos;
 
 import javax.swing.*;
 
-public class JanelaVeiculos {
+public class JanelaVeiculos extends JFrame{
     private JButton veiculosButton;
     private JButton oficinaButton;
     private JButton eventosButton;
@@ -13,4 +13,11 @@ public class JanelaVeiculos {
     private JButton transferirVeiculosButton;
     private JButton definirVeículoComoReparadoButton;
     private JButton definirVeículoPorRepararButton;
+    private JPanel painel;
+
+    public JanelaVeiculos(){
+        setContentPane(painel);
+        pack();
+        setVisible(true);
+    }
 }

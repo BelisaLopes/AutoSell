@@ -1,11 +1,10 @@
 package vista.Transacoes;
 
-import modelo.Cliente;
-import modelo.DadosAplicacao;
-import modelo.Veiculo;
+import modelo.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class JanelaRegistarVenda extends JFrame {
     private JButton estatisticasButton;
@@ -16,11 +15,11 @@ public class JanelaRegistarVenda extends JFrame {
     private JButton oficinaButton;
     private JButton registarNovoClienteButton;
     private JButton registarVeiculoAReceberButton;
-    private JTextField TextFieldPreco;
+    private JTextField TextPreco;
     private JList listVeiculos;
     private JList listClientes;
-    private JComboBox comboBoxFiliais;
-    private JTextField textData; //adicionei pois estava a dar erro a dizer que não existia
+    private JComboBox<Estabelecimento> comboBoxFiliais;
+    private JTextField textData;
     private JTextField textMarca;
     private JTextField textModelo;
     private JTextField textMatricula;
@@ -32,6 +31,9 @@ public class JanelaRegistarVenda extends JFrame {
     private JButton confirmarVendaDeVeiculoButton;
     private JButton cancelarButton;
     private JPanel painelPrincipal;
+    private JButton escolherVeiculoButton;
+    private JButton escolherClienteButton;
+    private DefaultComboBoxModel modeloComboBoxFiliais;
 
     public JanelaRegistarVenda() {
         setContentPane(painelPrincipal);
@@ -50,7 +52,19 @@ public class JanelaRegistarVenda extends JFrame {
         filtrarClientesButton.addActionListener(this::btnFiltrarClientesButtonActionPerformed);
         confirmarVendaDeVeiculoButton.addActionListener(this::btnConfirmarVendaDeVeiculoButtonActionPerformed);
         cancelarButton.addActionListener(this::btnCancelarButtonActionPerformed);
+        escolherVeiculoButton.addActionListener(this::btnEscolherVeiculoButtonActionPerformed);
+        escolherClienteButton.addActionListener(this::btnEscolherClienteButtonActionPerformed);
+        modeloComboBoxFiliais = new DefaultComboBoxModel();
+        comboBoxFiliais.setModel(modeloComboBoxFiliais);
+        initComponents();
 
+    }
+
+    private void initComponents() {
+        ArrayList<Filial> listafiliais = DadosAplicacao.INSTANCE.getFiliais();
+        for (Filial filial : listafiliais) {
+            modeloComboBoxFiliais.addElement(filial);
+        }
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
@@ -107,5 +121,13 @@ public class JanelaRegistarVenda extends JFrame {
 
     private void btnCancelarButtonActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnCancelarButtonActionPerformed");
+    }
+
+    private void btnEscolherVeiculoButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no btnEscolherVeiculoButtonActionPerformed");
+    }
+
+    private void btnEscolherClienteButtonActionPerformed(ActionEvent evt) {
+        System.out.println("Click no btnEscolherClienteButtonActionPerformed");
     }
 }

@@ -2,6 +2,7 @@ package vista.Eventos;
 
 import modelo.*;
 import vista.Erros;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -164,7 +165,10 @@ public class JanelaRegistarEvento extends JDialog{
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaVeiculos j = new JanelaVeiculos();
+        j.setVisible(true);
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
