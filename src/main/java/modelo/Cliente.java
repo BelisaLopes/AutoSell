@@ -18,6 +18,10 @@ public class Cliente {
         this.NIF = NIF;
         this.contacto = contacto;
         transacoes = new ArrayList<>();
+        /*transacoes.add(new Transacao(TipoTransacao.VENDA, this, dataNascimento, 10,
+                new Veiculo("BMW", "X5", 2000, "00-XF-00", "azul",
+                        5, TipoCombustivel.GASOLEO, 100, 2,
+                        "usado", 100)));*/
     }
 
     public String getNome() {
@@ -58,6 +62,10 @@ public class Cliente {
 
     public void setContacto(String contacto) {
         this.contacto = contacto;
+    }
+
+    public List<Transacao> getTransacoes() {
+        return transacoes;
     }
 
     public void addTransacao(Transacao transacao) {
