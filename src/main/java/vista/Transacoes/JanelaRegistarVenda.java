@@ -1,10 +1,12 @@
 package vista.Transacoes;
 
 import modelo.*;
+import vista.Erros;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JanelaRegistarVenda extends JFrame {
     private JButton estatisticasButton;
@@ -16,8 +18,8 @@ public class JanelaRegistarVenda extends JFrame {
     private JButton registarNovoClienteButton;
     private JButton registarVeiculoAReceberButton;
     private JTextField TextPreco;
-    private JList listVeiculos;
-    private JList listClientes;
+    private JList<Veiculo> listVeiculos;
+    private JList<Cliente> listClientes;
     private JComboBox<Estabelecimento> comboBoxFiliais;
     private JTextField textData;
     private JTextField textMarca;
@@ -34,6 +36,10 @@ public class JanelaRegistarVenda extends JFrame {
     private JButton escolherVeiculoButton;
     private JButton escolherClienteButton;
     private DefaultComboBoxModel modeloComboBoxFiliais;
+
+    private DefaultListModel modeloListaClientes;
+
+    private DefaultListModel modeloListaVeiculos;
 
     public JanelaRegistarVenda() {
         setContentPane(painelPrincipal);
@@ -56,6 +62,10 @@ public class JanelaRegistarVenda extends JFrame {
         escolherClienteButton.addActionListener(this::btnEscolherClienteButtonActionPerformed);
         modeloComboBoxFiliais = new DefaultComboBoxModel();
         comboBoxFiliais.setModel(modeloComboBoxFiliais);
+        modeloListaClientes = new DefaultListModel();
+        listClientes.setModel(modeloListaClientes);
+        modeloListaVeiculos = new DefaultListModel();
+        listVeiculos.setModel(modeloListaVeiculos);
         initComponents();
 
     }
@@ -107,12 +117,90 @@ public class JanelaRegistarVenda extends JFrame {
         dados.adicionarVeiculoPorReparar(veiculo);
     }
 
-    private void btnFiltrarVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnFiltrarVeiculosButtonActionPerformed");
+    private void btnFiltrarClientesButtonActionPerformed(ActionEvent evt) {
+        String nome = textNome.getText();
+        boolean valido = isNomeValido(nome);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NOME_INVALIDO);
+            return;
+        }
+
+        String nif = textNIF.getText();
+        valido = isNIFValido(nif);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NIF_INVALIDO);
+            return;
+        }
+
+        DadosAplicacao dados = DadosAplicacao.INSTANCE;
+        List<Cliente> clientes = dados.getClientes(nome, nif);
+        if(clientes == null){
+            modeloListaClientes.removeAllElements();
+            Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
+            return;
+        }
+        modeloListaClientes.removeAllElements();
+        for (Cliente cliente : clientes) {
+            modeloListaClientes.add(modeloListaClientes.getSize(),cliente);
+        }
     }
 
-    private void btnFiltrarClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnFiltrarClientesButtonActionPerformed");
+    private boolean isNomeValido(String nome){
+        return !(nome.trim().length() < 2 || nome.trim().length() > 100);
+    }
+
+    private boolean isNIFValido(String nif){
+        return !(nif.trim().length() < 9 || nif.trim().length() > 9 || !nif.matches("(1)?[0-9]{8}"));
+    }
+
+    private void btnFiltrarVeiculosButtonActionPerformed(ActionEvent evt) {
+        String marca = textMarca.getText();
+        boolean valido = isMarcaValida(marca);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.MARCA_INVALIDA);
+            return;
+        }
+
+        String modelo = textModelo.getText();
+        valido = isModeloValido(modelo);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.MODELO_INVALIDO);
+            return;
+        }
+
+        String matricula = textMatricula.getText();
+        valido = isMatriculaValida(matricula);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.MATRICULA_INVALIDA);
+            return;
+        }
+
+        DadosAplicacao dados = DadosAplicacao.INSTANCE;
+        List<Veiculo> veiculos = dados.getVeiculosProntosParaVenda();
+        if(veiculos == null){
+            modeloListaVeiculos.removeAllElements();
+            Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
+            return;
+        }
+        modeloListaVeiculos.removeAllElements();
+        for (Veiculo veiculo : veiculos) {
+            modeloListaVeiculos.add(modeloListaVeiculos.getSize(),veiculo);
+        }
+    }
+
+    private boolean isMarcaValida(String marca){
+        return !(marca.trim().length() < 2 || marca.trim().length() > 50);
+    }
+
+    private boolean isModeloValido(String modelo){
+        return !(modelo.trim().length() < 2 || modelo.trim().length() > 50);
+    }
+
+    private boolean isMatriculaValida(String matricula){
+        return (matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([A-Z]{2})$")||
+                matricula.trim().matches("^([0-9]{2})[-]([0-9]{2})[-]([A-Z]{2})$") ||
+                matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([0-9]{2})$") ||
+                matricula.trim().matches("^([0-9]{2})[-]([A-Z]{2})[-]([0-9]{2})$"));
     }
 
     private void btnConfirmarVendaDeVeiculoButtonActionPerformed(ActionEvent evt) {

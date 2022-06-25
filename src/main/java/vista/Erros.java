@@ -47,6 +47,7 @@ public class Erros {
     public static final int SELECIONAR_CLIENTE = 29;
     public static final int CLIENTE_EXISTENTE = 30;
 
+    public static final int CATEGORIA_EXISTE = 31;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -118,7 +119,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Apenas pode selecionar um cliente");
                 break;
             case DATA_VENDA_INVALIDA:
-                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual");
+                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual"); //Se é para inserir a data atual é uma ação do cliente?
                 break;
             case SELECIONAR_VEICULO_A_RECEBER:
                 JOptionPane.showMessageDialog(parent, "Por favor selecione a opção “Registar veículo a receber");
@@ -137,6 +138,9 @@ public class Erros {
                 break;
             case CLIENTE_EXISTENTE:
                 JOptionPane.showMessageDialog(parent, "Já existe um cliente com o mesmo nif.");
+                break;
+            case CATEGORIA_EXISTE:
+                JOptionPane.showMessageDialog(parent, "Já existe uma categoria com esse nome. Por favor introduza um nome diferente.");
                 break;
             default:
         }

@@ -1,6 +1,10 @@
 package vista.Clientes;
 
 
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
+import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -42,8 +46,8 @@ public class JanelaClientes extends JFrame{
         dispose();
 
         JanelaConsultarCliente j = new JanelaConsultarCliente();
-        //j.setLocationRelativeTo(this);
-        //j.setVisible(true);
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
     }
 
     private void btnHistoricoDeTransacoesPorActionPerformed(ActionEvent evt) {
@@ -51,8 +55,8 @@ public class JanelaClientes extends JFrame{
         dispose();
 
         JanelaHistoricoTransacoesPorCliente j = new JanelaHistoricoTransacoesPorCliente();
-        //j.setLocationRelativeTo(this);
-        //j.setVisible(true);
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
     }
 
     private void btnAtualizarClientesActionPerformed(ActionEvent evt) {
@@ -71,23 +75,38 @@ public class JanelaClientes extends JFrame{
         j.setVisible(true);
     }
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaOficina j = new JanelaOficina();
+        //j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
     }
 
     private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
     }
 
     private void btnClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaClientes j = new JanelaClientes();
+        j.setVisible(true);
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaEstatistica j = new JanelaEstatistica();
+        //j.setVisible(true);
     }
 
     public static void main(String[] args) {

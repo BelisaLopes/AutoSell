@@ -27,6 +27,7 @@ public class DadosAplicacao {
         filiais = new ArrayList<>(18);
         eventos = new ArrayList<>();
         veiculosPorReparar = new ArrayList<>();
+        veiculosProntosParaVenda = new ArrayList<>();
         filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
         filiais.add(new Filial(Distrito.VILA_REAL, 100));
         filiais.add(new Filial(Distrito.BRAGANCA, 100));
@@ -50,6 +51,7 @@ public class DadosAplicacao {
         listaVeiculosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
 
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
         eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
@@ -140,6 +142,10 @@ public class DadosAplicacao {
         return listaVeiculosPorLocal.get(local);
     }
 
+    public List<Veiculo> getVeiculosProntosParaVenda(){
+        return veiculosProntosParaVenda;
+    }
+
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
     }
@@ -173,6 +179,15 @@ public class DadosAplicacao {
     public boolean isNIFDuplicado(String nif) {
         for (Cliente c : clientes) {
             if(c.getNIF().equals(nif)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
                 return true;
             }
         }

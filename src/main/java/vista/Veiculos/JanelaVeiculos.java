@@ -1,5 +1,7 @@
 package vista.Veiculos;
 
+import vista.Oficina.JanelaAdicionarCategoria;
+
 import javax.swing.*;
 
 public class JanelaVeiculos extends JFrame{
@@ -18,6 +20,12 @@ public class JanelaVeiculos extends JFrame{
     public JanelaVeiculos(){
         setContentPane(painel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public static void abrir() {
+        System.out.println("abrir Veículos");
+        new JanelaVeiculos();
     }
 }

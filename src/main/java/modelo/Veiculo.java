@@ -40,7 +40,7 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return marca + " " + modelo + " - "+ matricula;
+        return marca + " " + modelo + " - Matricula: "+ matricula;
     }
 
     public void transportarVeiculo(Local localDestino){
