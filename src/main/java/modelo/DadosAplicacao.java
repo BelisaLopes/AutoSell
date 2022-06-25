@@ -125,6 +125,8 @@ public class DadosAplicacao {
 
     public void adicionarEvento (Evento evento){
         eventos.add(evento);
+        List<Veiculo> veiculos = new ArrayList<>();
+        listaVeiculosPorLocal.put(evento,veiculos);
     }
 
     public boolean isEventoDuplicado(String nome, Data inicio, Data fim) {

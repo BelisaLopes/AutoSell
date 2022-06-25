@@ -16,4 +16,5 @@ public class JanelaRemoverEventoNaoDecorrido {
     private JTextField textField2;
     private JButton apresentarEventosNãoDecorridosButton;
     private JButton cancelarButton;
+    private JPanel painel;
 }

@@ -20,4 +20,5 @@ public class JanelaTransportarVeiculos {
     private JRadioButton transportarParaOutroEventoRadioButton;
     private JRadioButton transportarParaASedeRadioButton;
     private JButton cancelarButton;
+    private JPanel painel;
 }
