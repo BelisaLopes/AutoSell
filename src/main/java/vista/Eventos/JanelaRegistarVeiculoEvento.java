@@ -5,6 +5,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -79,6 +80,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         da.adicionarVeiculoAoLocal(evento, veiculo);
         modeloListaVeiculos.removeAllElements();
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {

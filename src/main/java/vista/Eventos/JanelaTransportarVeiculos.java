@@ -5,6 +5,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -32,12 +33,15 @@ public class JanelaTransportarVeiculos extends JFrame{
     private JButton cancelarButton;
     private JPanel painel;
     private JButton confirmarEventosButton;
+    private JLabel eventoOrigemLabel;
+    private JLabel localDestinoLabel;
 
     private DefaultComboBoxModel modeloListaEventosOrigem;
     private DefaultComboBoxModel modeloListaEventosDestino;
     private DefaultListModel modeloListaVeiculos;
     private Evento eventoOrigem;
     private Local eventoDestino;
+    private Veiculo veiculo;
 
     public JanelaTransportarVeiculos(){
         setContentPane(painel);
@@ -61,6 +65,27 @@ public class JanelaTransportarVeiculos extends JFrame{
 
         confirmarEventosButton.addActionListener(this::btnConfirmarEventosActionPerformed);
         apresentarVeiculosButton.addActionListener(this::btnApresentarVeiculosActionPerformed);
+        transportarVeículoButton.addActionListener(this::btnTransportarVeiculoActionPerformed);
+    }
+
+    private void btnTransportarVeiculoActionPerformed(ActionEvent evt) {
+        boolean valido = !modeloListaVeiculos.isEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            return;
+        }
+        veiculo = listaVeiculosEvento.getSelectedValue();
+        valido = veiculo != null;
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            return;
+        }
+
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        da.transportarVeiculo(veiculo,eventoDestino);
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
+        modeloListaVeiculos.removeAllElements();
+
     }
 
     private void btnConfirmarEventosActionPerformed(ActionEvent evt) {
@@ -92,6 +117,7 @@ public class JanelaTransportarVeiculos extends JFrame{
                 return;
             }
             eventoDestino = (Evento) modeloListaEventosDestino.getSelectedItem();
+            localDestinoLabel.setText(((Evento) eventoDestino).getNome());
         }
 
         local_destino = transportarParaASedeRadioButton.isSelected();
@@ -104,7 +130,11 @@ public class JanelaTransportarVeiculos extends JFrame{
                 return;
             }
             eventoDestino = sede;
+            localDestinoLabel.setText("Sede");
         }
+
+        eventoOrigemLabel.setText(eventoOrigem.getNome());
+
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
@@ -136,19 +166,19 @@ public class JanelaTransportarVeiculos extends JFrame{
             return;
         }
 
-//        DadosAplicacao da = DadosAplicacao.INSTANCE;
-//        List<Veiculo> veiculos = da.getVeiculos(evento, marca, modelo, matricula);
-//
-//        valido = veiculos != null;
-//        if(!valido){
-//            Erros.mostrarErro(this,Erros.NENHUM_RESULTADO);
-//            return;
-//        }
-//
-//        modeloListaVeiculos.removeAllElements();
-//        for (Veiculo veiculo : veiculos) {
-//            modeloListaVeiculos.add(modeloListaVeiculos.getSize(), veiculo);
-//        }
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        List<Veiculo> veiculos = da.getVeiculosParaTransportar(eventoOrigem, eventoDestino, marca, modelo, matricula);
+
+        valido = veiculos != null;
+        if(!valido){
+            Erros.mostrarErro(this,Erros.NENHUM_RESULTADO);
+            return;
+        }
+
+        modeloListaVeiculos.removeAllElements();
+        for (Veiculo veiculo : veiculos) {
+            modeloListaVeiculos.add(modeloListaVeiculos.getSize(), veiculo);
+        }
     }
 
     private boolean isMatriculaValida(String matricula) {
