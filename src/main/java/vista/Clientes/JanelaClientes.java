@@ -25,8 +25,7 @@ public class JanelaClientes extends JFrame{
     public JanelaClientes() {
         setContentPane(painelPrincipal);
         pack();
-        setLocationRelativeTo(null); //fazer isto só na janela principal
-        setVisible(true);
+        abrir();
 
         veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaButtonActionPerformed);
@@ -38,6 +37,11 @@ public class JanelaClientes extends JFrame{
         consultarClientesButton.addActionListener(this::btnConsultarClientesActionPerformed);
         históricoDeTransaçõesPorButton.addActionListener(this::btnHistoricoDeTransacoesPorActionPerformed);
         atualizarClientesButton.addActionListener(this::btnAtualizarClientesActionPerformed);
+    }
+
+    private void abrir() {
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
 
@@ -78,7 +82,7 @@ public class JanelaClientes extends JFrame{
         setVisible(false);
         dispose();
         JanelaOficina j = new JanelaOficina();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
@@ -106,7 +110,7 @@ public class JanelaClientes extends JFrame{
         setVisible(false);
         dispose();
         JanelaEstatistica j = new JanelaEstatistica();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     public static void main(String[] args) {

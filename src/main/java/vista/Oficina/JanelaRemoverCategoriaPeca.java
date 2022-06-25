@@ -7,6 +7,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -67,6 +68,7 @@ public class JanelaRemoverCategoriaPeca extends JFrame{
         }
 
         DadosAplicacao.INSTANCE.removerCategoria(categoria);
+        Sucesso.mostrarSucesso(this, Sucesso.CATEGORIA_REMOVIDA);
         fechar();
         new JanelaOficina();
     }

@@ -129,7 +129,7 @@ public class JanelaHistoricoTransacoesPorCliente extends JFrame{
         setVisible(false);
         dispose();
         JanelaOficina j = new JanelaOficina();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
@@ -157,6 +157,6 @@ public class JanelaHistoricoTransacoesPorCliente extends JFrame{
         setVisible(false);
         dispose();
         JanelaEstatistica j = new JanelaEstatistica();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 }

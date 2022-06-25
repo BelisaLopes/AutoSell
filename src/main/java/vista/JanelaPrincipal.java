@@ -1,5 +1,6 @@
 package vista;
 
+import vista.Clientes.JanelaClientes;
 import vista.Eventos.JanelaEventos;
 import vista.Transacoes.JanelaTransacoes;
 
@@ -56,7 +57,11 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
+        this.setVisible(false);
+        dispose();
+
+        JanelaClientes j = new JanelaClientes();
+        j.setVisible(true);
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
