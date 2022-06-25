@@ -2,7 +2,12 @@ package vista.Oficina;
 
 import modelo.Categoria;
 import modelo.DadosAplicacao;
+import vista.Clientes.JanelaClientes;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Transacoes.JanelaTransacoes;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,22 +26,59 @@ public class JanelaAdicionarCategoria extends JDialog {
     private JPanel panel;
     private JPanel painelPrincipal;
 
-    private Categoria categoria;
-
-    public JanelaAdicionarCategoria(Frame parent, boolean modal) {
-        super(parent, modal);
+    public JanelaAdicionarCategoria() {
         setContentPane(painelPrincipal);
-        parent.setVisible(false);
         pack();
-        setLocationRelativeTo(parent);
-        setVisible(true);
 
         btnAdicionar.addActionListener(this::adicionarCategoria);
-        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+        btnCancelar.addActionListener(this::cancelar);
+
+        btnVeiculos.addActionListener(this::abrirVeiculos);
+        btnOficina.addActionListener(this::abrirOficina);
+        btnEventos.addActionListener(this::abrirEventos);
+        btnClientes.addActionListener(this::abrirClientes);
+        btnEstatisticas.addActionListener(this::abrirEstatisticas);
+        btnTransacoes.addActionListener(this::abrirTransacoes);
+    }
+
+    private void abrirTransacoes(ActionEvent actionEvent) {
+        System.out.println("Click no abrirTransacoes");
+        fechar();
+        new JanelaTransacoes();
+    }
+
+    private void abrirEstatisticas(ActionEvent actionEvent) {
+        System.out.println("Click no abrirEstatisticas");
+        fechar();
+        new JanelaEstatistica();
+    }
+
+    private void abrirClientes(ActionEvent actionEvent) {
+        System.out.println("Click no abrirClientes");
+        fechar();
+        new JanelaClientes();
+    }
+
+    private void abrirEventos(ActionEvent actionEvent) {
+        System.out.println("Click no abrirEventos");
+        fechar();
+        new JanelaEventos();
+    }
+
+    private void abrirOficina(ActionEvent actionEvent) {
+        System.out.println("Click no abrirOficina");
+        fechar();
+        new JanelaOficina();
+    }
+
+    private void abrirVeiculos(ActionEvent actionEvent) {
+        System.out.println("Click no abrirVeiculos");
+        fechar();
+        new JanelaVeiculos();
     }
 
     private void adicionarCategoria(ActionEvent actionEvent) {
-        System.out.println("Adicionar Categoria");
+        System.out.println("Click no adicionarCategoria");
         String novaCategoria = novaCategoriaText.getText();
         boolean valido = isCategoriaValida(novaCategoria);
         if(!valido) {
@@ -52,6 +94,7 @@ public class JanelaAdicionarCategoria extends JDialog {
 
         DadosAplicacao.INSTANCE.adicionarCategoria(novaCategoria);
         fechar();
+        new JanelaOficina();
     }
 
     private boolean existeCategoria(String nomeCategoria) {
@@ -62,15 +105,14 @@ public class JanelaAdicionarCategoria extends JDialog {
         return !(nomeCategoria.trim().length() < 2) || (nomeCategoria.trim().length() > 100);
     }
 
-    private void btnCancelarActionPerformed(ActionEvent evt){
-        //todo
-        System.out.println("Click no cancelarCriacaoCrianca");
+    private void cancelar(ActionEvent actionEvent){
+        System.out.println("Click no cancelar");
         fechar();
+        new JanelaOficina();
     }
 
     private void fechar(){
-        //todo
         setVisible(false);
-        super.getParent().setVisible(true);
+        dispose();
     }
 }

@@ -205,6 +205,15 @@ public class DadosAplicacao {
         return false;
     }
 
+    public boolean existemCategoriasSemPecas(){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getPecas().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
         List<Veiculo> veiculos = new ArrayList<>();
         List<Veiculo> veiculosEvento = getVeiculosLocal(evento);
@@ -276,4 +285,7 @@ public class DadosAplicacao {
         return listaVeiculosPorLocal.get(local).size();
     }
 
+    public void removerCategoria(Categoria categoria) {
+        catalogo.remove(categoria);
+    }
 }

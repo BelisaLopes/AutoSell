@@ -48,6 +48,7 @@ public class Erros {
     public static final int CLIENTE_EXISTENTE = 30;
 
     public static final int CATEGORIA_EXISTE = 31;
+
     public static final int SELECIONAR_VEICULO = 32;
     public static final int EVENTO_SEM_CARROS = 33;
     public static final int SEM_LOCAL_DESTINO = 34;
@@ -55,6 +56,9 @@ public class Erros {
     public static final int SEM_EVENTOS_TERMINADOS = 36;
     public static final int SEM_EVENTOS_A_DECORRER_OU_AGENDADOS = 37;
     public static final int SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO = 38;
+
+    public static final int CATEGORIA_SEM_PECA_NAO_EXISTE = 39;
+    public static final int SELECIONAR_CATEGORIA = 40;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -169,6 +173,12 @@ public class Erros {
                 break;
             case SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "Para avançar é necessário primeiro escolher um evento origem e um local destino.");
+                break;
+            case CATEGORIA_SEM_PECA_NAO_EXISTE:
+                JOptionPane.showMessageDialog(parent, "Não existem categorias sem peças associadas.");
+                break;
+            case SELECIONAR_CATEGORIA:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma categoria primeiro");
                 break;
             default:
         }
