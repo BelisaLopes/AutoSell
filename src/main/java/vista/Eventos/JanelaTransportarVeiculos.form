@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.Eventos.JanelaTransportarVeiculos">
-  <grid id="27dc6" binding="painel" layout-manager="GridLayoutManager" row-count="9" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="painel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="734" height="550"/>
@@ -27,7 +27,7 @@
       <grid id="1e17f" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="8" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="6" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -40,7 +40,7 @@
               <text value="Transportar veículo"/>
             </properties>
           </component>
-          <grid id="814d6" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="814d6" layout-manager="GridLayoutManager" row-count="9" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -51,12 +51,12 @@
               <grid id="645b5" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none" title="Filtros"/>
                 <children>
-                  <component id="cec99" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                  <component id="cec99" class="javax.swing.JTextField" binding="marcaTextField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="fe5b" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                  <component id="fe5b" class="javax.swing.JTextField" binding="modeloTextField">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -72,7 +72,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="919bc" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+                  <component id="919bc" class="javax.swing.JTextField" binding="matriculaTextField">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -108,25 +108,22 @@
               </grid>
               <scrollpane id="ebd35">
                 <constraints>
-                  <grid row="4" column="3" row-span="4" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="3" row-span="4" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
                 <border type="none" title="Veiculos no Evento Origem"/>
                 <children>
-                  <component id="a6841" class="javax.swing.JList" binding="list1" default-binding="true">
+                  <component id="a6841" class="javax.swing.JList" binding="listaVeiculosEvento">
                     <constraints/>
                     <properties>
-                      <model>
-                        <item value="Opel Corsa xx-12-ed"/>
-                        <item value="Toyota Yaris 34-fg-67"/>
-                      </model>
+                      <model/>
                     </properties>
                   </component>
                 </children>
               </scrollpane>
               <vspacer id="d9a45">
                 <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                     <preferred-size width="79" height="14"/>
                   </grid>
                 </constraints>
@@ -139,14 +136,12 @@
                 <properties/>
                 <border type="none" title="Evento Origem:"/>
                 <children>
-                  <component id="8abb7" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                  <component id="8abb7" class="javax.swing.JComboBox" binding="eventoOrigemComboBox">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <model>
-                        <item value="Feira da Batalha"/>
-                      </model>
+                      <model/>
                     </properties>
                   </component>
                 </children>
@@ -159,14 +154,12 @@
                 <properties/>
                 <border type="none" title="Local Destino:"/>
                 <children>
-                  <component id="fc70" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+                  <component id="fc70" class="javax.swing.JComboBox" binding="eventoDestinoComboBox">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <model>
-                        <item value="Feira de Óbidos"/>
-                      </model>
+                      <model/>
                     </properties>
                   </component>
                   <component id="44648" class="javax.swing.JRadioButton" binding="transportarParaOutroEventoRadioButton" default-binding="true">
@@ -196,15 +189,23 @@
               </vspacer>
               <hspacer id="d373d">
                 <constraints>
-                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
-              <component id="b9e9b" class="javax.swing.JButton" binding="apresentarVeículosButton" default-binding="true">
+              <component id="b9e9b" class="javax.swing.JButton" binding="apresentarVeiculosButton">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="Apresentar Veículos"/>
+                </properties>
+              </component>
+              <component id="b48c2" class="javax.swing.JButton" binding="confirmarEventosButton" default-binding="true">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Confirmar Eventos"/>
                 </properties>
               </component>
             </children>
@@ -226,7 +227,7 @@
       </grid>
       <component id="f1b33" class="javax.swing.JButton" binding="estatisticasButton" default-binding="true">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Estatisticas"/>

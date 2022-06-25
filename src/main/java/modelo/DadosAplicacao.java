@@ -1,9 +1,7 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class DadosAplicacao {
     public static DadosAplicacao INSTANCE = new DadosAplicacao();
@@ -61,6 +59,17 @@ public class DadosAplicacao {
         v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
         v.add(new Veiculo("Mitsubishi", "Colt", 2005, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000));
         listaVeiculosPorLocal.put(eventos.get(0), v);
+
+        initListaVeiculosEstabelecimento();
+    }
+
+    private void initListaVeiculosEstabelecimento() {
+        List<Veiculo> veiculos = new ArrayList<>();
+        listaVeiculosPorLocal.putIfAbsent(sede, veiculos);
+        for (Filial f : filiais) {
+            veiculos = new ArrayList<>();
+            listaVeiculosPorLocal.putIfAbsent(f,veiculos);
+        }
     }
 
     public ArrayList<Filial> getFiliais() {
@@ -229,4 +238,42 @@ public class DadosAplicacao {
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(local);
         veiculos.add(veiculo);
     }
+
+    public List<Evento> getEventosTerminados(){
+        List<Evento> eventosTerminados = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(dataAtual, evento.getDataFim())){
+               eventosTerminados.add(evento);
+            }
+        }
+        return eventosTerminados;
+    }
+
+    public List<Evento> getEventosNaoTerminados(){
+        List<Evento> eventosNaoTerminados = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(evento.getDataFim(), dataAtual)){
+                eventosNaoTerminados.add(evento);
+            }
+        }
+        return eventosNaoTerminados;
+    }
+
+    public int getLugaresLivres(Estabelecimento estabelecimento){
+        int lotacao = estabelecimento.getCapacidadeMaximaVeiculos();
+        List<Veiculo> veiculos = listaVeiculosPorLocal.get(estabelecimento);
+
+        return lotacao - veiculos.size();
+    }
+
+    public int getNumeroVeiculosNoLocal(Local local){
+        return listaVeiculosPorLocal.get(local).size();
+    }
+
 }
