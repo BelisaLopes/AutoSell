@@ -33,4 +33,8 @@ public abstract class Estabelecimento extends Local{
     public Distrito getDistrito() {
         return distrito;
     }
+
+    public Oficina getOficina() {
+        return oficina;
+    }
 }

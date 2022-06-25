@@ -1,5 +1,11 @@
 package vista.Oficina;
 
+import modelo.DadosAplicacao;
+import vista.Clientes.JanelaClientes;
+import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -25,22 +31,100 @@ public class JanelaOficina extends JFrame {
     public JanelaOficina(){
         setContentPane(painelPrincipal);
         pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+        abrir();
 
         btnRegistarCategoria.addActionListener(this::registarCategoria);
+        btnRemoverCategoria.addActionListener(this::removerCategoria);
+        btnRegistarPeca.addActionListener(this::registarPeca);
+
         btnVeiculos.addActionListener(this::abrirVeiculos);
+        btnOficina.addActionListener(this::abrirOficina);
+        btnEventos.addActionListener(this::abrirEventos);
+        btnClientes.addActionListener(this::abrirClientes);
+        btnEstatisticas.addActionListener(this::abrirEstatisticas);
+        btnTransacoes.addActionListener(this::abrirTransacoes);
+    }
+
+    public static void main(String[] args) {
+        new JanelaOficina();
+    }
+
+    private void abrirTransacoes(ActionEvent actionEvent) {
+        System.out.println("Click no abrirTransacoes");
+        fechar();
+        new JanelaTransacoes();
+    }
+
+    private void abrirEstatisticas(ActionEvent actionEvent) {
+        System.out.println("Click no abrirEstatisticas");
+        fechar();
+        new JanelaEstatistica();
+    }
+
+    private void abrirClientes(ActionEvent actionEvent) {
+        System.out.println("Click no abrirClientes");
+        fechar();
+        new JanelaClientes();
+    }
+
+    private void abrirEventos(ActionEvent actionEvent) {
+        System.out.println("Click no abrirEventos");
+        fechar();
+        new JanelaEventos();
+    }
+
+    private void abrirOficina(ActionEvent actionEvent) {
+        // TODO - manter??
+        System.out.println("Click no abrirOficina");
+        fechar();
+        new JanelaOficina();
     }
 
     private void abrirVeiculos(ActionEvent actionEvent) {
+        System.out.println("Click no abrirVeiculos");
         fechar();
         new JanelaVeiculos();
     }
 
     public void registarCategoria(ActionEvent actionEvent){
-        //TODO
         System.out.println("Click no registarCategoriaButton");
-        new JanelaAdicionarCategoria(this, true);
+        fechar();
+        JanelaAdicionarCategoria j = new JanelaAdicionarCategoria();
+        abrir(j);
+    }
+
+    private void removerCategoria(ActionEvent actionEvent) {
+        System.out.println("Click no removerCategoria");
+        boolean valido = existemCategoriasSemPecas();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.CATEGORIA_SEM_PECA_NAO_EXISTE);
+            return;
+        }
+
+        fechar();
+        JanelaRemoverCategoriaPeca j = new JanelaRemoverCategoriaPeca();
+        abrir(j);
+    }
+
+    private boolean existemCategoriasSemPecas() {
+        return DadosAplicacao.INSTANCE.existemCategoriasSemPecas();
+    }
+
+    private void registarPeca(ActionEvent actionEvent) {
+        System.out.println("Click no registarPeca");
+        boolean valido = existemCategorias();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NAO_EXISTEM_CATEGORIAS);
+            return;
+        }
+
+        fechar();
+        JanelaRegistarPeca j = new JanelaRegistarPeca();
+        abrir(j);
+    }
+
+    private boolean existemCategorias() {
+        return DadosAplicacao.INSTANCE.existemCategorias();
     }
 
     public void fechar(){
@@ -48,7 +132,14 @@ public class JanelaOficina extends JFrame {
         dispose();
     }
 
-    public static void main(String[] args) {
-        new JanelaOficina();
+    private void abrir(JFrame j) {
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
+    }
+
+
+    private void abrir() {
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

@@ -48,6 +48,7 @@ public class Erros {
     public static final int CLIENTE_EXISTENTE = 30;
 
     public static final int CATEGORIA_EXISTE = 31;
+
     public static final int SELECIONAR_VEICULO = 32;
     public static final int EVENTO_SEM_CARROS = 33;
     public static final int SEM_LOCAL_DESTINO = 34;
@@ -55,6 +56,16 @@ public class Erros {
     public static final int SEM_EVENTOS_TERMINADOS = 36;
     public static final int SEM_EVENTOS_A_DECORRER_OU_AGENDADOS = 37;
     public static final int SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO = 38;
+
+    public static final int CATEGORIA_SEM_PECA_NAO_EXISTE = 39;
+    public static final int SELECIONAR_CATEGORIA = 40;
+    public static final int NAO_EXISTEM_CATEGORIAS = 41;
+    public static final int CAMPO_VAZIO = 42;
+    public static final int PECA_EXISTE = 43;
+    public static final int PRECO_INVALIDO = 44;
+    public static final int QUANTIDADE_INVALIDA = 45;
+    public static final int DIMENSAO_INVALIDA = 46;
+    public static final int QUANTIDADE_SEDE_INFERIOR_FILIAIS = 47;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -169,6 +180,33 @@ public class Erros {
                 break;
             case SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "Para avançar é necessário primeiro escolher um evento origem e um local destino.");
+                break;
+            case CATEGORIA_SEM_PECA_NAO_EXISTE:
+                JOptionPane.showMessageDialog(parent, "Não existem categorias sem peças associadas.");
+                break;
+            case SELECIONAR_CATEGORIA:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma categoria primeiro");
+                break;
+            case NAO_EXISTEM_CATEGORIAS:
+                JOptionPane.showMessageDialog(parent, "Não existem categorias registadas. Registe primeiro uma categoria");
+                break;
+            case CAMPO_VAZIO:
+                JOptionPane.showMessageDialog(parent, "O preenchimento de todos os campos é obrigatório.");
+                break;
+            case PECA_EXISTE:
+                JOptionPane.showMessageDialog(parent, "Já existe uma peça com esse nome. Por favor introduza um nome diferente.");
+                break;
+            case PRECO_INVALIDO:
+                JOptionPane.showMessageDialog(parent, "Preço inválido. O preço deve conter apenas números e, no máximo, uma vírugla (representada com '.').");
+                break;
+            case QUANTIDADE_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade deve conter apenas números.");
+                break;
+            case DIMENSAO_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Dimensão inválida. A dimensão deve conter entre 1 e 25 carateres não-brancos.");
+                break;
+            case QUANTIDADE_SEDE_INFERIOR_FILIAIS:
+                JOptionPane.showMessageDialog(parent, "A quantidade mínima para a sede deve ser superior à das filiais.");
                 break;
             default:
         }

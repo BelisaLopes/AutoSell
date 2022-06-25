@@ -45,9 +45,9 @@ public class JanelaEventos extends JFrame{
         this.setVisible(false);
         dispose();
 
-        JanelaTransportarVeiculos j = new JanelaTransportarVeiculos();
-        j.setLocationRelativeTo(this);
-        j.setVisible(true);
+        JanelaTransportarVeiculos jt = new JanelaTransportarVeiculos();
+        jt.setLocationRelativeTo(this);
+        jt.setVisible(true);
     }
 
     private void btnRegistarVeiculoNoEventoActionPerformed(ActionEvent evt) {
