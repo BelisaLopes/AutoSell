@@ -8,6 +8,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -41,8 +42,9 @@ public class JanelaAtualizarEvento extends JFrame{
 
     public JanelaAtualizarEvento() {
         setContentPane(painel);
+        setLocationRelativeTo(null);
         pack();
-        setVisible(true);
+//        setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaActionPerformed);
@@ -127,7 +129,19 @@ public class JanelaAtualizarEvento extends JFrame{
         evento.setDataInicio(inicioAtualizar);
         evento.setDataFim(fimAtualizar);
 
-        fechar();
+//        fechar();
+//        Sucesso.mostrarSucesso(this,Sucesso.EVENTO_ATUALIZADO);
+        limpar();
+    }
+
+    private void limpar() {
+        dataInicioTextField.setText("");
+        dataFimTextField.setText("");
+        evento = null;
+        novaDataInicioTextField.setText("");
+        novaDataFimTextField.setText("");
+        nomeEventoTextField.setText("");
+        modeloListaEventos.removeAllElements();
     }
 
     private boolean isEventoAlterado(Evento evento, String nome, Data inicio, Data fim){
@@ -217,52 +231,42 @@ public class JanelaAtualizarEvento extends JFrame{
     public void fechar(){
         setVisible(false);
         dispose();
-        JanelaEventos j = new JanelaEventos();
-        j.setVisible(true);
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {
-        setVisible(false);
-        dispose();
-        JanelaVeiculos j = new JanelaVeiculos();
-        j.setVisible(true);
+        fechar();
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaOficina j = new JanelaOficina();
-//        j.setVisible(true);
+        fechar();
+        JanelaOficina jo = new JanelaOficina();
+        jo.setVisible(true);
     }
 
     private void btnEventosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
         fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
     private void btnTransacoesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaTransacoes j = new JanelaTransacoes();
-        j.setVisible(true);
+        fechar();
+        JanelaTransacoes jt = new JanelaTransacoes();
+        jt.setVisible(true);
     }
 
     private void btnClientesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaClientes j = new JanelaClientes();
-        j.setVisible(true);
+        fechar();
+        JanelaClientes jc = new JanelaClientes();
+        jc.setVisible(true);
     }
 
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaEstatistica j = new JanelaEstatistica();
-//        j.setVisible(true);
+        fechar();
+        JanelaEstatistica je = new JanelaEstatistica();
+//        je.setVisible(true);
     }
 
     public static void main(String[] args) {

@@ -69,7 +69,7 @@ public class JanelaTransportarVeiculos extends JFrame{
     }
 
     private void btnTransportarVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = !modeloListaVeiculos.isEmpty();
+        boolean valido = !listaVeiculosEvento.isSelectionEmpty();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -103,14 +103,14 @@ public class JanelaTransportarVeiculos extends JFrame{
             return;
         }
 
-        valido = transportarParaOutroEventoRadioButton.isSelected() || transportarParaASedeRadioButton.isSelected();
+        valido = isRadioButtonSelected();
         if(!valido){
             Erros.mostrarErro(this, Erros.SEM_LOCAL_DESTINO);
             return;
         }
 
-        boolean local_destino = transportarParaOutroEventoRadioButton.isSelected();
-        if(local_destino){
+//        boolean local_destino = transportarParaOutroEventoRadioButton.isSelected();
+        if(transportarParaOutroEventoRadioButton.isSelected()){
             valido = modeloListaEventosDestino.getSize() != 0;
             if(!valido){
                 Erros.mostrarErro(this, Erros.SEM_EVENTOS_A_DECORRER_OU_AGENDADOS);
@@ -118,12 +118,8 @@ public class JanelaTransportarVeiculos extends JFrame{
             }
             eventoDestino = (Evento) modeloListaEventosDestino.getSelectedItem();
             localDestinoLabel.setText(((Evento) eventoDestino).getNome());
-        }
-
-        local_destino = transportarParaASedeRadioButton.isSelected();
-
-        Sede sede = da.getSede();
-        if(local_destino){
+        }else{
+            Sede sede = da.getSede();
             valido = da.getLugaresLivres(sede) > 0;
             if(!valido){
                 Erros.mostrarErro(this, Erros.JA_ATINGIU_LIMITE_OCUPACAO);
@@ -131,10 +127,8 @@ public class JanelaTransportarVeiculos extends JFrame{
             }
             eventoDestino = sede;
             localDestinoLabel.setText("Sede");
+            eventoOrigemLabel.setText(eventoOrigem.getNome());
         }
-
-        eventoOrigemLabel.setText(eventoOrigem.getNome());
-
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
@@ -198,16 +192,19 @@ public class JanelaTransportarVeiculos extends JFrame{
         return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
 
+    private boolean isRadioButtonSelected(){
+        return transportarParaOutroEventoRadioButton.isSelected() || transportarParaASedeRadioButton.isSelected();
+    }
 
     private void initComponents() {
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        List<Evento> eventos = da.getEventosTerminados();
-        for (Evento e : eventos) {
+        List<Evento> eventosT = da.getEventosTerminados();
+        for (Evento e : eventosT) {
             modeloListaEventosOrigem.addElement(e);
         }
 
-        eventos = da.getEventosNaoTerminados();
-        for (Evento e : eventos) {
+        List<Evento> eventosNT = da.getEventosNaoTerminados();
+        for (Evento e : eventosNT) {
             modeloListaEventosDestino.addElement(e);
         }
 
@@ -218,57 +215,48 @@ public class JanelaTransportarVeiculos extends JFrame{
 
     private void btnCancelarActionPerformed(ActionEvent evt) {
         fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
+    }
+
+    public void fechar(){
+        setVisible(false);
+        dispose();
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {
-        setVisible(false);
-        dispose();
-        JanelaVeiculos j = new JanelaVeiculos();
-        j.setVisible(true);
+        fechar();
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaOficina j = new JanelaOficina();
-//        j.setVisible(true);
+        fechar();
+        JanelaOficina jo = new JanelaOficina();
+        jo.setVisible(true);
     }
 
     private void btnEventosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
         fechar();
-    }
-
-    private void fechar() {
-        setVisible(false);
-        dispose();
-        JanelaEventos j = new JanelaEventos();
-        j.setVisible(true);
-
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
     private void btnTransacoesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaTransacoes j = new JanelaTransacoes();
-        j.setVisible(true);
+        fechar();
+        JanelaTransacoes jt = new JanelaTransacoes();
+        jt.setVisible(true);
     }
 
     private void btnClientesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaClientes j = new JanelaClientes();
-        j.setVisible(true);
+        fechar();
+        JanelaClientes jc = new JanelaClientes();
+        jc.setVisible(true);
     }
 
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
-        setVisible(false);
-        dispose();
-        JanelaEstatistica j = new JanelaEstatistica();
-//        j.setVisible(true);
+        fechar();
+        JanelaEstatistica je = new JanelaEstatistica();
+//        je.setVisible(true);
     }
 }

@@ -2,6 +2,7 @@ package vista.Eventos;
 
 import modelo.*;
 import vista.Erros;
+import vista.Sucesso;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -43,7 +44,7 @@ public class JanelaRegistarEvento extends JDialog{
         transaçõesButton.addActionListener(this::btnTransacoesActionPerformed);
         clientesButton.addActionListener(this::btnClientesActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
-        cancelarButton.addActionListener(this::btnEventosActionPerformed);
+        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
         modeloComboBoxFiliais = new DefaultComboBoxModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
@@ -53,6 +54,7 @@ public class JanelaRegistarEvento extends JDialog{
         registarEventoButton.addActionListener(this::btnAdicionarEventoActionPerformed);
 
     }
+
 
 //    public static Evento mostrarCriacaoEvento(Frame parent){
 //        System.out.println("mostrarCriacaoEvento");
@@ -106,20 +108,30 @@ public class JanelaRegistarEvento extends JDialog{
         if(isSelecionado){
             Estabelecimento e = (Estabelecimento) modeloComboBoxFiliais.getSelectedItem();
             distrito = e.getDistrito();
-            novoEvento = new Evento(distrito, nome, inicio, fim, e);
+            novoEvento.setDistrito(distrito);
+//            novoEvento = new Evento(distrito, nome, inicio, fim, e);
         }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         da.adicionarEvento(novoEvento);
-        fechar();
+//        Sucesso.mostrarSucesso(this, Sucesso.EVENTO_REGISTADO);
+        limpar();
+//        fechar();
+    }
+
+    private void limpar() {
+        nomeEventoTextField.setText("");
+        dataInicioTextField.setText("");
+        dataFimTextField.setText("");
+        associarFilialCheckBox.setSelected(false);
+
     }
 
     private void fechar() {
         setVisible(false);
         dispose(); //não sei se pode ficar aqui
 
-        JanelaEventos je = new JanelaEventos();
-        je.setVisible(true);
+
 
     }
 
@@ -167,8 +179,14 @@ public class JanelaRegistarEvento extends JDialog{
     private void btnVeiculosActionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
-        JanelaVeiculos j = new JanelaVeiculos();
-        j.setVisible(true);
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
+    }
+
+    private void btnCancelarActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
@@ -181,8 +199,8 @@ public class JanelaRegistarEvento extends JDialog{
 //        dispose();
         fechar();
 
-//        JanelaEventos j = new JanelaEventos();
-//        j.setVisible(true);
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
 
     }
 
