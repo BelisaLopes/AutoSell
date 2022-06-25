@@ -1,9 +1,7 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class DadosAplicacao {
     public static DadosAplicacao INSTANCE = new DadosAplicacao();
@@ -51,7 +49,9 @@ public class DadosAplicacao {
         listaVeiculosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
 
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
+//        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
         eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
@@ -59,6 +59,17 @@ public class DadosAplicacao {
         v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
         v.add(new Veiculo("Mitsubishi", "Colt", 2005, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000));
         listaVeiculosPorLocal.put(eventos.get(0), v);
+
+        initListaVeiculosEstabelecimento();
+    }
+
+    private void initListaVeiculosEstabelecimento() {
+        List<Veiculo> veiculos = new ArrayList<>();
+        listaVeiculosPorLocal.putIfAbsent(sede, veiculos);
+        for (Filial f : filiais) {
+            veiculos = new ArrayList<>();
+            listaVeiculosPorLocal.putIfAbsent(f,veiculos);
+        }
     }
 
     public ArrayList<Filial> getFiliais() {
@@ -125,6 +136,8 @@ public class DadosAplicacao {
 
     public void adicionarEvento (Evento evento){
         eventos.add(evento);
+        List<Veiculo> veiculos = new ArrayList<>();
+        listaVeiculosPorLocal.put(evento,veiculos);
     }
 
     public boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
@@ -182,4 +195,85 @@ public class DadosAplicacao {
         }
         return false;
     }
+
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
+        List<Veiculo> veiculos = new ArrayList<>();
+        List<Veiculo> veiculosEvento = getVeiculosLocal(evento);
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosProntosParaVenda) {
+            v = veiculo;
+            if(veiculosEvento.contains(v)){ //se o veiculo já estiver registado no evento
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public void adicionarVeiculoAoLocal(Local local, Veiculo veiculo){
+        List<Veiculo> veiculos = listaVeiculosPorLocal.get(local);
+        veiculos.add(veiculo);
+    }
+
+    public List<Evento> getEventosTerminados(){
+        List<Evento> eventosTerminados = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(dataAtual, evento.getDataFim())){
+               eventosTerminados.add(evento);
+            }
+        }
+        return eventosTerminados;
+    }
+
+    public List<Evento> getEventosNaoTerminados(){
+        List<Evento> eventosNaoTerminados = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(evento.getDataFim(), dataAtual)){
+                eventosNaoTerminados.add(evento);
+            }
+        }
+        return eventosNaoTerminados;
+    }
+
+    public int getLugaresLivres(Estabelecimento estabelecimento){
+        int lotacao = estabelecimento.getCapacidadeMaximaVeiculos();
+        List<Veiculo> veiculos = listaVeiculosPorLocal.get(estabelecimento);
+
+        return lotacao - veiculos.size();
+    }
+
+    public int getNumeroVeiculosNoLocal(Local local){
+        return listaVeiculosPorLocal.get(local).size();
+    }
+
 }

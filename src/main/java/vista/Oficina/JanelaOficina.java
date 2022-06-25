@@ -1,19 +1,54 @@
 package vista.Oficina;
 
-import javax.swing.*;
+import vista.Veiculos.JanelaVeiculos;
 
-public class JanelaOficina {
-    private JButton veiculosButton;
-    private JButton oficinaButton;
-    private JButton eventosButton;
-    private JButton clientesButton;
-    private JButton estatisticasButton;
-    private JButton transaçõesButton;
-    private JButton consultarPeçasEmStockButton;
-    private JButton registarPeçaButton;
-    private JButton transferirPeçasButton;
-    private JButton atualizarQuantidadeMínimaDeButton;
-    private JButton registarEncomendaDePeçasButton;
-    private JButton registarCategoriaDePeçaButton;
-    private JButton removerCategoriaDePeçaButton;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
+public class JanelaOficina extends JFrame {
+    private JButton btnVeiculos;
+    private JButton btnOficina;
+    private JButton btnEventos;
+    private JButton btnClientes;
+    private JButton btnEstatisticas;
+    private JButton btnTransacoes;
+    private JButton btnConsultar;
+    private JButton btnRegistarPeca;
+    private JButton btnTransferir;
+    private JButton btnAtualizarQuantidadeMin;
+    private JButton btnRegistarEncomenda;
+    private JButton btnRegistarCategoria;
+    private JButton btnRemoverCategoria;
+    private JPanel panel;
+    private JPanel painelPrincipal;
+
+    public JanelaOficina(){
+        setContentPane(painelPrincipal);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        btnRegistarCategoria.addActionListener(this::registarCategoria);
+        btnVeiculos.addActionListener(this::abrirVeiculos);
+    }
+
+    private void abrirVeiculos(ActionEvent actionEvent) {
+        fechar();
+        new JanelaVeiculos();
+    }
+
+    public void registarCategoria(ActionEvent actionEvent){
+        //TODO
+        System.out.println("Click no registarCategoriaButton");
+        new JanelaAdicionarCategoria(this, true);
+    }
+
+    public void fechar(){
+        setVisible(false);
+        dispose();
+    }
+
+    public static void main(String[] args) {
+        new JanelaOficina();
+    }
 }

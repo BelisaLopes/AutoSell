@@ -47,6 +47,14 @@ public class Erros {
     public static final int SELECIONAR_CLIENTE = 29;
     public static final int CLIENTE_EXISTENTE = 30;
 
+    public static final int CATEGORIA_EXISTE = 31;
+    public static final int SELECIONAR_VEICULO = 32;
+    public static final int EVENTO_SEM_CARROS = 33;
+    public static final int SEM_LOCAL_DESTINO = 34;
+    public static final int JA_ATINGIU_LIMITE_OCUPACAO = 35;
+    public static final int SEM_EVENTOS_TERMINADOS = 36;
+    public static final int SEM_EVENTOS_A_DECORRER_OU_AGENDADOS = 37;
+    public static final int SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO = 38;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -118,7 +126,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Apenas pode selecionar um cliente");
                 break;
             case DATA_VENDA_INVALIDA:
-                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual");
+                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual"); //Se é para inserir a data atual é uma ação do cliente?
                 break;
             case SELECIONAR_VEICULO_A_RECEBER:
                 JOptionPane.showMessageDialog(parent, "Por favor selecione a opção “Registar veículo a receber");
@@ -137,6 +145,30 @@ public class Erros {
                 break;
             case CLIENTE_EXISTENTE:
                 JOptionPane.showMessageDialog(parent, "Já existe um cliente com o mesmo nif.");
+                break;
+            case CATEGORIA_EXISTE:
+                JOptionPane.showMessageDialog(parent, "Já existe uma categoria com esse nome. Por favor introduza um nome diferente.");
+                break;
+            case SELECIONAR_VEICULO:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar um veículo primeiro");
+                break;
+            case EVENTO_SEM_CARROS:
+                JOptionPane.showMessageDialog(parent, "O evento selecionado não tem carros registados.");
+                break;
+            case SEM_LOCAL_DESTINO:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar um local destino primeiro.");
+                break;
+            case JA_ATINGIU_LIMITE_OCUPACAO:
+                JOptionPane.showMessageDialog(parent, "O local destino já atingiu o limite de ocupação");
+                break;
+            case SEM_EVENTOS_TERMINADOS:
+                JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
+                break;
+            case SEM_EVENTOS_A_DECORRER_OU_AGENDADOS:
+                JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
+                break;
+            case SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO:
+                JOptionPane.showMessageDialog(parent, "Para avançar é necessário primeiro escolher um evento origem e um local destino.");
                 break;
             default:
         }

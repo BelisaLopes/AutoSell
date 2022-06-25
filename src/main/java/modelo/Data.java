@@ -37,6 +37,20 @@ public class Data {
             return null;
         }
     }
+
+    public static boolean isFirstDateAfterSecondDate(Data first, Data second){
+        if(first.getAno() > second.getAno()){
+            return true;
+        }
+
+        if(first.getMes() > second.getMes()){
+            return true;
+        }
+
+        return first.getDia() > second.getDia();
+    }
+
+
     public int getDia(){
         return calendar.get(Calendar.DAY_OF_MONTH);
     }

@@ -37,6 +37,26 @@ public class JanelaEventos extends JFrame{
         registarEventoButton.addActionListener(this::btnRegistarEventoActionPerformed);
         atualizarEventoButton.addActionListener(this::btnAtualizarEventoActionPerformed);
         consultarEventoButton.addActionListener(this::btnConsultarEventoActionPerformed);
+        registarVeiculoNumEventoButton.addActionListener(this::btnRegistarVeiculoNoEventoActionPerformed);
+        transportarVeículosEntreEventosButton.addActionListener(this::btnTransportarVeiculosEntreEventosActionPerformed);
+    }
+
+    private void btnTransportarVeiculosEntreEventosActionPerformed(ActionEvent evt) {
+        this.setVisible(false);
+        dispose();
+
+        JanelaTransportarVeiculos j = new JanelaTransportarVeiculos();
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
+    }
+
+    private void btnRegistarVeiculoNoEventoActionPerformed(ActionEvent evt) {
+        this.setVisible(false);
+        dispose();
+
+        JanelaRegistarVeiculoEvento j = new JanelaRegistarVeiculoEvento();
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
     }
 
     private void btnConsultarEventoActionPerformed(ActionEvent evt) {
