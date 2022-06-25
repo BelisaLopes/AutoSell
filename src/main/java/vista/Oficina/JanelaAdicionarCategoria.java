@@ -5,6 +5,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -78,7 +79,7 @@ public class JanelaAdicionarCategoria extends JFrame{
     private void adicionarCategoria(ActionEvent actionEvent) {
         System.out.println("Click no adicionarCategoria");
         String novaCategoria = textCategoria.getText();
-        boolean valido = isCategoriaValida(novaCategoria);
+        boolean valido = isNomeValido(novaCategoria);
         if(!valido) {
             Erros.mostrarErro(this, Erros.NOME_INVALIDO);
             return;
@@ -91,16 +92,18 @@ public class JanelaAdicionarCategoria extends JFrame{
         }
 
         DadosAplicacao.INSTANCE.adicionarCategoria(novaCategoria);
+        //TODO - criar mensagens de sucesso
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
         fechar();
         new JanelaOficina();
     }
 
-    private boolean existeCategoria(String nomeCategoria) {
-        return DadosAplicacao.INSTANCE.existeCategoria(nomeCategoria);
+    private boolean existeCategoria(String nome) {
+        return DadosAplicacao.INSTANCE.existeCategoria(nome);
     }
 
-    private boolean isCategoriaValida(String nomeCategoria) {
-        return !(nomeCategoria.trim().length() < 2) || (nomeCategoria.trim().length() > 100);
+    private boolean isNomeValido(String nome) {
+        return !(nome.trim().length() < 2) || (nome.trim().length() > 100);
     }
 
     private void cancelar(ActionEvent actionEvent){

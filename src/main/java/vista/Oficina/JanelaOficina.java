@@ -74,7 +74,6 @@ public class JanelaOficina extends JFrame {
     }
 
     private void abrirOficina(ActionEvent actionEvent) {
-        // TODO - manter??
         System.out.println("Click no abrirOficina");
         fechar();
         new JanelaOficina();

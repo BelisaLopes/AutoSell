@@ -7,6 +7,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -67,6 +68,8 @@ public class JanelaRemoverCategoriaPeca extends JFrame{
         }
 
         DadosAplicacao.INSTANCE.removerCategoria(categoria);
+        //TODO - criar mensagens de sucesso
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
         fechar();
         new JanelaOficina();
     }
