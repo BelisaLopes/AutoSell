@@ -8,6 +8,7 @@ import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -167,6 +168,7 @@ public class JanelaRegistarPeca extends JFrame{
         int qtdFiliaisInt = Integer.parseInt(qtdFiliais);
 
         DadosAplicacao.INSTANCE.adicionarPeca(categoria, nome, marca, modelo, dimensao, precoDouble, qtdSedeInt, qtdFiliaisInt);
+        Sucesso.mostrarSucesso(this, Sucesso.PECA_REGISTADA);
         fechar();
         new JanelaOficina();
     }

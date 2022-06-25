@@ -92,8 +92,7 @@ public class JanelaAdicionarCategoria extends JFrame{
         }
 
         DadosAplicacao.INSTANCE.adicionarCategoria(novaCategoria);
-        //TODO - criar mensagens de sucesso
-        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
+        Sucesso.mostrarSucesso(this, Sucesso.CATEGORIA_REGISTADA);
         fechar();
         new JanelaOficina();
     }

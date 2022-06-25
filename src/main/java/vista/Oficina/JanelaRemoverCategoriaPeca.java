@@ -68,8 +68,7 @@ public class JanelaRemoverCategoriaPeca extends JFrame{
         }
 
         DadosAplicacao.INSTANCE.removerCategoria(categoria);
-        //TODO - criar mensagens de sucesso
-        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
+        Sucesso.mostrarSucesso(this, Sucesso.CATEGORIA_REMOVIDA);
         fechar();
         new JanelaOficina();
     }
