@@ -34,7 +34,7 @@ public class JanelaRemoverCategoriaPeca extends JFrame{
 
         modeloListaCategorias = new DefaultListModel();
         listCategorias.setModel(modeloListaCategorias);
-        mostrarCategorias();
+        initComponents();
 
         btnRemover.addActionListener(this::removerCategoria);
         btnCancelar.addActionListener(this::cancelar);
@@ -47,12 +47,13 @@ public class JanelaRemoverCategoriaPeca extends JFrame{
         btnTransacoes.addActionListener(this::abrirTransacoes);
     }
 
-    private void mostrarCategorias() {
+    private void initComponents() {
         modeloListaCategorias.removeAllElements();
         List<Categoria> catalogo = DadosAplicacao.INSTANCE.getCatalogo();
         for (Categoria categoria : catalogo) {
-            if(categoria.getPecas().isEmpty())
-            modeloListaCategorias.add(modeloListaCategorias.getSize(),categoria);
+            if(categoria.getPecas().isEmpty()) {
+                modeloListaCategorias.add(modeloListaCategorias.getSize(), categoria);
+            }
         }
     }
 

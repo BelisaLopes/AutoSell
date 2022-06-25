@@ -196,24 +196,6 @@ public class DadosAplicacao {
         return false;
     }
 
-    public boolean existeCategoria(String nomeCategoria){
-        for (Categoria categoria: catalogo) {
-            if (categoria.getNome().equals(nomeCategoria)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean existemCategoriasSemPecas(){
-        for (Categoria categoria: catalogo) {
-            if (categoria.getPecas().isEmpty()){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
         List<Veiculo> veiculos = new ArrayList<>();
         List<Veiculo> veiculosEvento = getVeiculosLocal(evento);
@@ -285,7 +267,51 @@ public class DadosAplicacao {
         return listaVeiculosPorLocal.get(local).size();
     }
 
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existemCategoriasSemPecas(){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getPecas().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void removerCategoria(Categoria categoria) {
         catalogo.remove(categoria);
+    }
+
+    public boolean existemCategorias() {
+        return !catalogo.isEmpty();
+    }
+
+    public boolean existePeca(String nome) {
+        for (Categoria categoria: catalogo) {
+            for (Peca peca: categoria.getPecas()) {
+                if (peca.getNome().equals(nome)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
+        Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
+        categoria.adicionarPeca(novaPeca);
+
+        sede.getOficina().registarPeca(novaPeca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.getOficina().registarPeca(novaPeca, qtdFiliais);
+        }
     }
 }

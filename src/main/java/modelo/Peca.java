@@ -4,11 +4,11 @@ public class Peca {
     private String nome;
     private String marca;
     private String modelo;
-    private int dimensao;
-    private int preco;
+    private String dimensao;
+    private double preco;
     private Categoria categoria;
 
-    public Peca(String nome, String marca, String modelo, int dimensao, int preco, Categoria categoria) {
+    public Peca(String nome, String marca, String modelo, String dimensao, double preco, Categoria categoria) {
         this.nome = nome;
         this.marca = marca;
         this.modelo = modelo;
@@ -30,11 +30,11 @@ public class Peca {
         return modelo;
     }
 
-    public int getDimensao() {
+    public String getDimensao() {
         return dimensao;
     }
 
-    public int getPreco() {
+    public double getPreco() {
         return preco;
     }
 

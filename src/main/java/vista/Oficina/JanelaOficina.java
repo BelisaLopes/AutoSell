@@ -31,11 +31,11 @@ public class JanelaOficina extends JFrame {
     public JanelaOficina(){
         setContentPane(painelPrincipal);
         pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+        abrir();
 
         btnRegistarCategoria.addActionListener(this::registarCategoria);
         btnRemoverCategoria.addActionListener(this::removerCategoria);
+        btnRegistarPeca.addActionListener(this::registarPeca);
 
         btnVeiculos.addActionListener(this::abrirVeiculos);
         btnOficina.addActionListener(this::abrirOficina);
@@ -90,8 +90,7 @@ public class JanelaOficina extends JFrame {
         System.out.println("Click no registarCategoriaButton");
         fechar();
         JanelaAdicionarCategoria j = new JanelaAdicionarCategoria();
-        j.setLocationRelativeTo(this);
-        j.setVisible(true);
+        abrir(j);
     }
 
     private void removerCategoria(ActionEvent actionEvent) {
@@ -101,18 +100,46 @@ public class JanelaOficina extends JFrame {
             Erros.mostrarErro(this, Erros.CATEGORIA_SEM_PECA_NAO_EXISTE);
             return;
         }
+
         fechar();
         JanelaRemoverCategoriaPeca j = new JanelaRemoverCategoriaPeca();
-        j.setLocationRelativeTo(this);
-        j.setVisible(true);
+        abrir(j);
     }
 
     private boolean existemCategoriasSemPecas() {
         return DadosAplicacao.INSTANCE.existemCategoriasSemPecas();
     }
 
+    private void registarPeca(ActionEvent actionEvent) {
+        System.out.println("Click no registarPeca");
+        boolean valido = existemCategorias();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NAO_EXISTEM_CATEGORIAS);
+            return;
+        }
+
+        fechar();
+        JanelaRegistarPeca j = new JanelaRegistarPeca();
+        abrir(j);
+    }
+
+    private boolean existemCategorias() {
+        return DadosAplicacao.INSTANCE.existemCategorias();
+    }
+
     public void fechar(){
         setVisible(false);
         dispose();
+    }
+
+    private void abrir(JFrame j) {
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
+    }
+
+
+    private void abrir() {
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

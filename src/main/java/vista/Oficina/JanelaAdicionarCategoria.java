@@ -1,6 +1,5 @@
 package vista.Oficina;
 
-import modelo.Categoria;
 import modelo.DadosAplicacao;
 import vista.Clientes.JanelaClientes;
 import vista.Erros;
@@ -10,23 +9,22 @@ import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class JanelaAdicionarCategoria extends JDialog {
+public class JanelaAdicionarCategoria extends JFrame{
     private JButton btnVeiculos;
     private JButton btnOficina;
     private JButton btnEventos;
     private JButton btnTransacoes;
     private JButton btnClientes;
     private JButton btnEstatisticas;
-    private JTextField novaCategoriaText;
+    private JTextField textCategoria;
     private JButton btnAdicionar;
     private JButton btnCancelar;
     private JPanel panel;
     private JPanel painelPrincipal;
 
-    public JanelaAdicionarCategoria() {
+    public JanelaAdicionarCategoria(){
         setContentPane(painelPrincipal);
         pack();
 
@@ -79,7 +77,7 @@ public class JanelaAdicionarCategoria extends JDialog {
 
     private void adicionarCategoria(ActionEvent actionEvent) {
         System.out.println("Click no adicionarCategoria");
-        String novaCategoria = novaCategoriaText.getText();
+        String novaCategoria = textCategoria.getText();
         boolean valido = isCategoriaValida(novaCategoria);
         if(!valido) {
             Erros.mostrarErro(this, Erros.NOME_INVALIDO);
