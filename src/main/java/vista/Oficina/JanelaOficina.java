@@ -34,17 +34,18 @@ public class JanelaOficina extends JFrame {
 
     private void abrirVeiculos(ActionEvent actionEvent) {
         fechar();
-        JanelaVeiculos.abrir();
+        new JanelaVeiculos();
     }
 
     public void registarCategoria(ActionEvent actionEvent){
         //TODO
         System.out.println("Click no registarCategoriaButton");
-        JanelaAdicionarCategoria.abrir(this);
+        new JanelaAdicionarCategoria(this, true);
     }
 
     public void fechar(){
         setVisible(false);
+        dispose();
     }
 
     public static void main(String[] args) {

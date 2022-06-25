@@ -24,8 +24,8 @@ public class JanelaVeiculos extends JFrame{
         setVisible(true);
     }
 
-    public static void abrir() {
-        System.out.println("abrir Veículos");
-        new JanelaVeiculos();
-    }
+//    public static void abrir() {
+//        System.out.println("abrir Veículos");
+//        new JanelaVeiculos();
+//    }
 }

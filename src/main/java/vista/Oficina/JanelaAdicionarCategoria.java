@@ -28,15 +28,11 @@ public class JanelaAdicionarCategoria extends JDialog {
         setContentPane(painelPrincipal);
         parent.setVisible(false);
         pack();
+        setLocationRelativeTo(parent);
+        setVisible(true);
+
         btnAdicionar.addActionListener(this::adicionarCategoria);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
-    }
-
-    public static void abrir(Frame parent) {
-        System.out.println("mostrarCriacaoCategoria");
-        var janelaCategoria = new JanelaAdicionarCategoria(parent, true);
-        janelaCategoria.setLocationRelativeTo(parent);
-        janelaCategoria.setVisible(true);
     }
 
     private void adicionarCategoria(ActionEvent actionEvent) {
