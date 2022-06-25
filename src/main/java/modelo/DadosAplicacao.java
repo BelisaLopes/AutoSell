@@ -56,8 +56,8 @@ public class DadosAplicacao {
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
         eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
         List<Veiculo> v = new ArrayList<>();
-        v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
-        v.add(new Veiculo("Mitsubishi", "Colt", 2005, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000));
+        v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-CC", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,eventos.get(0)));
+        v.add(new Veiculo("Mitsubishi", "Colt", 2005, "BB-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000,eventos.get(0)));
         listaVeiculosPorLocal.put(eventos.get(0), v);
 
         initListaVeiculosEstabelecimento();
@@ -205,14 +205,44 @@ public class DadosAplicacao {
         return false;
     }
 
-    public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
+    public List<Veiculo> getVeiculos(Local origem, String marca, String modelo, String matricula) {
         List<Veiculo> veiculos = new ArrayList<>();
-        List<Veiculo> veiculosEvento = getVeiculosLocal(evento);
+        List<Veiculo> veiculosLocal = getVeiculosLocal(origem);
 
         Veiculo v;
         for (Veiculo veiculo : veiculosProntosParaVenda) {
             v = veiculo;
-            if(veiculosEvento.contains(v)){ //se o veiculo já estiver registado no evento
+            if(veiculosLocal.contains(v)){
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public List<Veiculo> getVeiculosParaTransportar(Local origem, Local destino, String marca, String modelo, String matricula) {
+        List<Veiculo> veiculos = new ArrayList<>();
+        List<Veiculo> veiculosLocalDestino = getVeiculosLocal(destino);
+        List<Veiculo> veiculosLocalOrigem = getVeiculosLocal(origem);
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosLocalOrigem) {
+            v = veiculo;
+            if(veiculosLocalDestino.contains(v)){
                 continue;
             }
 
@@ -237,6 +267,7 @@ public class DadosAplicacao {
     public void adicionarVeiculoAoLocal(Local local, Veiculo veiculo){
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(local);
         veiculos.add(veiculo);
+        veiculo.setLocal(local);
     }
 
     public List<Evento> getEventosTerminados(){
@@ -274,6 +305,13 @@ public class DadosAplicacao {
 
     public int getNumeroVeiculosNoLocal(Local local){
         return listaVeiculosPorLocal.get(local).size();
+    }
+
+    public void transportarVeiculo (Veiculo veiculo, Local localDestino){
+        List<Veiculo> veiculos = listaVeiculosPorLocal.get(veiculo.getLocal());
+        veiculos.remove(veiculo);
+        adicionarVeiculoAoLocal(localDestino, veiculo);
+//        veiculo.setLocal(localDestino);
     }
 
 }
