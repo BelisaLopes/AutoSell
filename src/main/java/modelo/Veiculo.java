@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Veiculo {
     private String matricula;
     private String marca;
@@ -36,6 +38,11 @@ public class Veiculo {
         this.valorVeiculo = valorVeiculo;
         pecasUsadasEmReparacoes = 0;
         estadoVeiculo = EstadoVeiculo.POR_REPARAR; //sempre que se cria um veiculo, ele esta por reparar
+    }
+
+    public Veiculo(String marca, String modelo, int ano, String matricula, String cor, int numeroPortas, TipoCombustivel combustivel, int quilometros, int numeroDonos, String condicaoVeiculo, int valorVeiculo, Local local) {
+        this(marca, modelo, ano, matricula, cor, numeroPortas, combustivel, quilometros, numeroDonos, condicaoVeiculo, valorVeiculo);
+        this.local = local;
     }
 
     @Override
@@ -138,4 +145,16 @@ public class Veiculo {
         return matricula;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Veiculo)) return false;
+        Veiculo veiculo = (Veiculo) o;
+        return Objects.equals(matricula, veiculo.matricula);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(matricula);
+    }
 }

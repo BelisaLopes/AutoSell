@@ -51,7 +51,9 @@ public class DadosAplicacao {
         listaVeiculosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
 
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000));
+//        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
         eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
@@ -195,6 +197,36 @@ public class DadosAplicacao {
     }
 
     public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
-        return null;
+        List<Veiculo> veiculos = new ArrayList<>();
+        List<Veiculo> veiculosEvento = getVeiculosLocal(evento);
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosProntosParaVenda) {
+            v = veiculo;
+            if(veiculosEvento.contains(v)){ //se o veiculo já estiver registado no evento
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public void adicionarVeiculoAoLocal(Local local, Veiculo veiculo){
+        List<Veiculo> veiculos = listaVeiculosPorLocal.get(local);
+        veiculos.add(veiculo);
     }
 }

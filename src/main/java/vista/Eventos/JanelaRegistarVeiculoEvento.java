@@ -35,6 +35,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     private JScrollPane eventosList;
     private JScrollPane veiculosList;
     private JButton escolherEventoButton;
+    private JLabel eventoSelecionadoLabel;
 
     private DefaultComboBoxModel modeloComboBoxDistritos;
     private DefaultListModel modeloListaEventos;
@@ -52,7 +53,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
         transaçõesButton.addActionListener(this::btnTransacoesActionPerformed);
         clientesButton.addActionListener(this::btnClientesActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
-        cancelarButton.addActionListener(this::btnEventosActionPerformed);
+        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
         modeloListaEventos = new DefaultListModel();
         modeloListaVeiculos = new DefaultListModel();
@@ -68,7 +69,16 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     }
 
     private void btnRegistarVeiculoEventoActionPerformed(ActionEvent evt) {
+        boolean valido = !listaVeiculos.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            return;
+        }
 
+        Veiculo veiculo = listaVeiculos.getSelectedValue();
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        da.adicionarVeiculoAoLocal(evento, veiculo);
+        modeloListaVeiculos.removeAllElements();
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
@@ -116,6 +126,9 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     }
 
     private boolean isMatriculaValida(String matricula) {
+        if(matricula.isEmpty()){
+            return true;
+        }
         return (matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([A-Z]{2})$")||
                 matricula.trim().matches("^([0-9]{2})[-]([0-9]{2})[-]([A-Z]{2})$") ||
                 matricula.trim().matches("^([A-Z]{2})[-]([0-9]{2})[-]([0-9]{2})$") ||
@@ -137,6 +150,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
         }
 
         evento = listaEventos.getSelectedValue();
+        eventoSelecionadoLabel.setText(evento.getNome());
     }
 
     private void btnApresentarEventosActionPerformed(ActionEvent evt) {
@@ -180,7 +194,21 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     }
 
     private boolean isDataValida(String data) {
-        return false;
+        if(data.isEmpty()){
+            return true;
+        }
+        Data data_final = Data.parseData(data);
+        if(data_final == null){
+            return false;
+        }
+        int dia = data_final.getDia();
+        int mes = data_final.getMes();
+        int ano = data_final.getAno();
+        return (dia > 0 && dia < 32 && mes > 0 && mes < 13 && ano > 0);
+    }
+
+    private void btnCancelarActionPerformed(ActionEvent evt) {
+        fechar();
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {
@@ -206,6 +234,8 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     private void fechar() {
         setVisible(false);
         dispose();
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
 
     }
 

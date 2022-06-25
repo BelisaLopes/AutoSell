@@ -48,6 +48,7 @@ public class Erros {
     public static final int CLIENTE_EXISTENTE = 30;
 
     public static final int CATEGORIA_EXISTE = 31;
+    public static final int SELECIONAR_VEICULO = 32;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -141,6 +142,9 @@ public class Erros {
                 break;
             case CATEGORIA_EXISTE:
                 JOptionPane.showMessageDialog(parent, "Já existe uma categoria com esse nome. Por favor introduza um nome diferente.");
+                break;
+            case SELECIONAR_VEICULO:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar um veículo primeiro");
                 break;
             default:
         }
