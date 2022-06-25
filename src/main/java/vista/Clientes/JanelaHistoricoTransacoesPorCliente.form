@@ -57,11 +57,7 @@
               <component id="626c9" class="javax.swing.JList" binding="listTransacoes">
                 <constraints/>
                 <properties>
-                  <model>
-                    <item value="Compra - Opel Corsa xx-12-ed - 10/10/2010"/>
-                    <item value="Venda - Toyota Yaris 34-fg-67 - 12/09/2010"/>
-                    <item value="Venda - Mitsubishi Colt 34-hy-89 - 04/06/2010"/>
-                  </model>
+                  <model/>
                 </properties>
               </component>
             </children>

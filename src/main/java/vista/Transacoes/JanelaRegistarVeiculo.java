@@ -6,6 +6,7 @@ import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
 import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -75,57 +76,45 @@ public class JanelaRegistarVeiculo extends JDialog{
 
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Eventos");
         this.setVisible(false);
         dispose();
-
         JanelaEventos j = new JanelaEventos();
         j.setVisible(true);
     }
 
     private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Transações");
         this.setVisible(false);
         dispose();
-
         JanelaTransacoes j = new JanelaTransacoes();
         j.setVisible(true);
     }
 
     private void btnClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Clientes");
         this.setVisible(false);
         dispose();
-
         JanelaClientes j = new JanelaClientes();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Estatisticas");
         this.setVisible(false);
         dispose();
-
         JanelaEstatistica j = new JanelaEstatistica();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Veiculos");
         this.setVisible(false);
         dispose();
-
         JanelaVeiculos j = new JanelaVeiculos();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Oficina");
         this.setVisible(false);
         dispose();
-
         JanelaOficina j = new JanelaOficina();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void registarVeiculoButtonActionPerformed(ActionEvent evt) {
@@ -210,15 +199,13 @@ public class JanelaRegistarVeiculo extends JDialog{
             return;
         }
 
-
         veiculo = new Veiculo(textMarca.getText(), textModelo.getText(), ano, textMatricula.getText(), textCor.getText(), numeroPortas, (TipoCombustivel) comboBoxCombustivel.getSelectedItem(), quilometros, numeroDonos, textCondicao.getText(), valorVeiculo);
 
-        System.out.println("Registar Veiculo");
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_REGISTADO);
         fechar();
     }
 
     private void cancelarButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no botão Cancelar");
         fechar();
     }
 

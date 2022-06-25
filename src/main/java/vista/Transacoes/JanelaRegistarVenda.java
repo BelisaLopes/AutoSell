@@ -1,11 +1,23 @@
 package vista.Transacoes;
 
 import modelo.*;
+import vista.Clientes.JanelaClientes;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class JanelaRegistarVenda extends JFrame {
@@ -40,6 +52,10 @@ public class JanelaRegistarVenda extends JFrame {
     private DefaultListModel modeloListaClientes;
 
     private DefaultListModel modeloListaVeiculos;
+
+    private Transacao transacao;
+
+    private int valorVeiculoRetoma;
 
     public JanelaRegistarVenda() {
         setContentPane(painelPrincipal);
@@ -77,30 +93,6 @@ public class JanelaRegistarVenda extends JFrame {
         }
     }
 
-    private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
-    }
-
-    private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
-    }
-
-    private void btnEventosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
-    }
-
-    private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
-    }
-
-    private void btnClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
-    }
-
-    private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
-    }
-
     private void btnRegistarNovoClienteButtonActionPerformed(ActionEvent evt) {
         System.out.println("Click no btnRegistarNovoClienteButtonActionPerformed");
 
@@ -110,11 +102,17 @@ public class JanelaRegistarVenda extends JFrame {
     }
 
     private void btnRegistarVeiculoAReceberButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnRegistarVeiculoAReceberButtonActionPerformed");
-
-        Veiculo veiculo = JanelaRegistarVeiculo.mostrarVeiculo(this);
-        DadosAplicacao dados = DadosAplicacao.INSTANCE;
-        dados.adicionarVeiculoPorReparar(veiculo);
+        boolean isSelecionado = vendaComRetomaCheckBox.isSelected();
+        if(isSelecionado) {
+            Veiculo veiculo = JanelaRegistarVeiculo.mostrarVeiculo(this);
+            DadosAplicacao dados = DadosAplicacao.INSTANCE;
+            dados.adicionarVeiculoPorReparar(veiculo);
+            dados.adicionarVeiculoAoLocal(dados.getSede(), veiculo);
+            valorVeiculoRetoma = veiculo.getValorVeiculo();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Não é possível registar um veículo a receber sem a opção de venda com retoma");
+        }
     }
 
     private void btnFiltrarClientesButtonActionPerformed(ActionEvent evt) {
@@ -204,18 +202,132 @@ public class JanelaRegistarVenda extends JFrame {
     }
 
     private void btnConfirmarVendaDeVeiculoButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnConfirmarVendaDeVeiculoButtonActionPerformed");
+        if(listVeiculos.isSelectionEmpty()){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO_VENDER);
+            return;
+        }
+        if(listClientes.isSelectionEmpty()){
+            Erros.mostrarErro(this, Erros.SELECIONAR_CLIENTE_COMPRAR_VEICULO);
+            return;
+        }
+        Float precoTransacao = null;
+        String data = textData.getText();
+        if(data.isEmpty()){
+            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA); //MUDAR PARA DATA ATUAL INVALIDA
+            return;
+        }
+        boolean valido = isDataVendaValida(data);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA); //MUDAR PARA DATA ATUAL INVALIDA
+            return;
+        }
+
+        Data dataTransacao = Data.parseData(data);
+
+        Veiculo veiculoParaVenda = listVeiculos.getSelectedValue();
+        Cliente cliente = listClientes.getSelectedValue();
+
+        Estabelecimento e = (Estabelecimento) modeloComboBoxFiliais.getSelectedItem();
+
+        boolean isSelecionado = vendaComRetomaCheckBox.isSelected();
+        if(isSelecionado) {
+            precoTransacao = (float) veiculoParaVenda.getValorVeiculo() - valorVeiculoRetoma;
+            TextPreco.setText(String.valueOf(precoTransacao));
+        }
+        else{
+            precoTransacao = (float) veiculoParaVenda.getValorVeiculo();
+            TextPreco.setText(String.valueOf(precoTransacao));;
+        }
+
+        transacao = new Transacao(TipoTransacao.VENDA, cliente, dataTransacao, precoTransacao, veiculoParaVenda, e);
+
+        Sucesso.mostrarSucesso(this, Sucesso.VENDA_VEICULO_EFETUADA);
+
+        cliente.addTransacao(transacao);
+
+        DadosAplicacao dados = DadosAplicacao.INSTANCE;
+        dados.adicionarVeiculoVendido(veiculoParaVenda);
+
+        fechar();
+
+    }
+
+    private void fechar(){
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
+    }
+
+    private boolean isDataVendaValida(String data){
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataVenda = LocalDate.parse(data, dateFormat);
+        LocalDate dataAtual = LocalDate.now();
+        if(dataVenda == null){
+            return false;
+        }
+        return dataVenda.isEqual(dataAtual);
     }
 
     private void btnCancelarButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnCancelarButtonActionPerformed");
+        fechar();
     }
 
     private void btnEscolherVeiculoButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEscolherVeiculoButtonActionPerformed");
+        boolean valido = !listVeiculos.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO_VENDER);
+            return;
+        }
     }
 
     private void btnEscolherClienteButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEscolherClienteButtonActionPerformed");
+        boolean valido = !listClientes.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_CLIENTE);
+            return;
+        }
+    }
+
+    private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaVeiculos j = new JanelaVeiculos();
+        j.setVisible(true);
+    }
+
+    private void btnOficinaButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaOficina j = new JanelaOficina();
+        j.setVisible(true);
+    }
+
+    private void btnEventosButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
+    }
+
+    private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
+    }
+
+    private void btnClientesButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaClientes j = new JanelaClientes();
+        j.setVisible(true);
+    }
+
+    private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        dispose();
+        JanelaEstatistica j = new JanelaEstatistica();
+        j.setVisible(true);
     }
 }

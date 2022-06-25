@@ -6,6 +6,7 @@ import modelo.Data;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -123,7 +124,10 @@ public class JanelaConsultarCliente extends JFrame {
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaOficina j = new JanelaOficina();
+        j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
@@ -151,7 +155,7 @@ public class JanelaConsultarCliente extends JFrame {
         setVisible(false);
         dispose();
         JanelaEstatistica j = new JanelaEstatistica();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
 
