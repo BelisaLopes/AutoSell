@@ -193,4 +193,8 @@ public class DadosAplicacao {
         }
         return false;
     }
+
+    public List<Veiculo> getVeiculos(Evento evento, String marca, String modelo, String matricula) {
+        return null;
+    }
 }
