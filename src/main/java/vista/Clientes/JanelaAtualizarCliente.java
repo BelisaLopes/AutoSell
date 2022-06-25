@@ -2,6 +2,11 @@ package vista.Clientes;
 
 import modelo.*;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
+import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -110,7 +115,7 @@ public class JanelaAtualizarCliente extends JFrame {
 
         var alterado = isClienteAlterado(cliente, nome, dataNascimentoAtualizada, morada, nif, contacto);
         if(alterado){
-            valido = !isNifDuplicado(nif);
+            valido = !isNifDuplicado(nif, cliente);
             if(!valido){
                 Erros.mostrarErro(this, Erros.CLIENTE_EXISTENTE);
                 return;
@@ -123,7 +128,7 @@ public class JanelaAtualizarCliente extends JFrame {
         cliente.setNIF(nif);
         cliente.setContacto(contacto);
 
-        JOptionPane.showMessageDialog(this, "Cliente atualizado com sucesso");
+        Sucesso.mostrarSucesso(this, Sucesso.CLIENTE_ATUALIZADO);
         fechar();
     }
 
@@ -161,9 +166,9 @@ public class JanelaAtualizarCliente extends JFrame {
                 || !cliente.getMorada().equals(morada) || !cliente.getNIF().equals(nif) || !cliente.getContacto().equals(contacto);
     }
 
-    private boolean isNifDuplicado(String nif) {
+    private boolean isNifDuplicado(String nif, Cliente cliente) {
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        return da.isNIFDuplicado(nif);
+        return da.isNIFDuplicado(nif, cliente);
     }
 
     private boolean isNomeValido(String nome){
@@ -204,28 +209,41 @@ public class JanelaAtualizarCliente extends JFrame {
         dispose();
         JanelaVeiculos j = new JanelaVeiculos();
         j.setVisible(true);
-
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaOficina j = new JanelaOficina();
+        j.setVisible(true);
     }
 
     private void btnEventosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
-        fechar();
+        setVisible(false);
+        dispose();
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
     }
 
     private void btnTransacoesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
     }
 
     private void btnClientesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaClientes j = new JanelaClientes();
+        j.setVisible(true);
     }
 
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaEstatistica j = new JanelaEstatistica();
+        j.setVisible(true);
     }
 
 

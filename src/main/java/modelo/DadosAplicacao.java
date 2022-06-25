@@ -50,6 +50,7 @@ public class DadosAplicacao {
         clientes = new ArrayList<>();
         catalogo = new ArrayList<>();
         listaVeiculosPorLocal = new Hashtable<>();
+        listaVeiculosVendidosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
 
 //        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
@@ -62,6 +63,7 @@ public class DadosAplicacao {
         v.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-CC", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,eventos.get(0)));
         v.add(new Veiculo("Mitsubishi", "Colt", 2005, "BB-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000,eventos.get(0)));
         listaVeiculosPorLocal.put(eventos.get(0), v);
+        listaVeiculosVendidosPorLocal.put(eventos.get(0), v);
 
         initListaVeiculosEstabelecimento();
     }
@@ -69,9 +71,13 @@ public class DadosAplicacao {
     private void initListaVeiculosEstabelecimento() {
         List<Veiculo> veiculos = new ArrayList<>();
         listaVeiculosPorLocal.putIfAbsent(sede, veiculos);
+        veiculos = new ArrayList<>();
+        listaVeiculosVendidosPorLocal.putIfAbsent(sede, veiculos);
         for (Filial f : filiais) {
             veiculos = new ArrayList<>();
             listaVeiculosPorLocal.putIfAbsent(f,veiculos);
+            veiculos = new ArrayList<>();
+            listaVeiculosVendidosPorLocal.putIfAbsent(f,veiculos);
         }
     }
 
@@ -174,6 +180,8 @@ public class DadosAplicacao {
 
     public void adicionarVeiculoVendido(Veiculo veiculo) {
         veiculosVendidos.add(veiculo);
+        List<Veiculo> veiculos = listaVeiculosVendidosPorLocal.get(veiculo.getLocal());
+        veiculos.add(veiculo);
     }
 
     public List<Cliente> getClientes(String nome, String nif) {
@@ -198,7 +206,10 @@ public class DadosAplicacao {
 
     }
 
-    public boolean isNIFDuplicado(String nif) {
+    public boolean isNIFDuplicado(String nif, Cliente cliente) {
+        if(cliente.getNIF().equals(nif)){
+            return false;
+        }
         for (Cliente c : clientes) {
             if(c.getNIF().equals(nif)){
                 return true;

@@ -1,7 +1,13 @@
 package vista.Transacoes;
 
 import modelo.*;
+import vista.Clientes.JanelaClientes;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -235,15 +241,22 @@ public class JanelaRegistarVenda extends JFrame {
 
         transacao = new Transacao(TipoTransacao.VENDA, cliente, dataTransacao, precoTransacao, veiculoParaVenda, e);
 
-        JOptionPane.showMessageDialog(this, "Venda efectuada com sucesso");
+        Sucesso.mostrarSucesso(this, Sucesso.VENDA_VEICULO_EFETUADA);
 
         cliente.addTransacao(transacao);
 
         DadosAplicacao dados = DadosAplicacao.INSTANCE;
         dados.adicionarVeiculoVendido(veiculoParaVenda);
 
+        fechar();
 
+    }
 
+    private void fechar(){
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
     }
 
     private boolean isDataVendaValida(String data){
@@ -257,38 +270,64 @@ public class JanelaRegistarVenda extends JFrame {
     }
 
     private void btnCancelarButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnCancelarButtonActionPerformed");
+        fechar();
     }
 
     private void btnEscolherVeiculoButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEscolherVeiculoButtonActionPerformed");
+        boolean valido = !listVeiculos.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO_VENDER);
+            return;
+        }
     }
 
     private void btnEscolherClienteButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEscolherClienteButtonActionPerformed");
+        boolean valido = !listClientes.isSelectionEmpty();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_CLIENTE);
+            return;
+        }
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaVeiculos j = new JanelaVeiculos();
+        j.setVisible(true);
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaOficina j = new JanelaOficina();
+        j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaEventos j = new JanelaEventos();
+        j.setVisible(true);
     }
 
     private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaTransacoes j = new JanelaTransacoes();
+        j.setVisible(true);
     }
 
     private void btnClientesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaClientes j = new JanelaClientes();
+        j.setVisible(true);
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
+        setVisible(false);
+        dispose();
+        JanelaEstatistica j = new JanelaEstatistica();
+        j.setVisible(true);
     }
 }
