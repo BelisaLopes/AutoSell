@@ -12,12 +12,14 @@ public class DadosAplicacao {
 
     private List<Cliente> clientes;
     private Hashtable<Local, List<Veiculo>> listaVeiculosPorLocal;
+
     private Hashtable<String, GestorVeiculosPorModelo> listaPecasUsadasEmReparacaoPorMarca;
 
     private List<Veiculo> veiculosVendidos;
     private List<Veiculo> veiculosPorReparar;
     private List<Veiculo> veiculosProntosParaVenda;
 
+    private Hashtable<Local, List<Veiculo>> listaVeiculosVendidosPorLocal;
     private List<Categoria> catalogo;
 
     public DadosAplicacao() {
@@ -26,6 +28,7 @@ public class DadosAplicacao {
         eventos = new ArrayList<>();
         veiculosPorReparar = new ArrayList<>();
         veiculosProntosParaVenda = new ArrayList<>();
+        veiculosVendidos = new ArrayList<>();
         filiais.add(new Filial(Distrito.VIANA_DO_CASTELO, 100));
         filiais.add(new Filial(Distrito.VILA_REAL, 100));
         filiais.add(new Filial(Distrito.BRAGANCA, 100));
@@ -157,12 +160,20 @@ public class DadosAplicacao {
         return veiculosProntosParaVenda;
     }
 
+    public List<Veiculo> getVeiculosPorReparar(){
+        return veiculosPorReparar;
+    }
+
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
     }
 
     public void adicionarVeiculoPorReparar(Veiculo veiculo) {
         veiculosPorReparar.add(veiculo);
+    }
+
+    public void adicionarVeiculoVendido(Veiculo veiculo) {
+        veiculosVendidos.add(veiculo);
     }
 
     public List<Cliente> getClientes(String nome, String nif) {
@@ -237,6 +248,7 @@ public class DadosAplicacao {
     public void adicionarVeiculoAoLocal(Local local, Veiculo veiculo){
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(local);
         veiculos.add(veiculo);
+        veiculo.setLocal(local);
     }
 
     public List<Evento> getEventosTerminados(){

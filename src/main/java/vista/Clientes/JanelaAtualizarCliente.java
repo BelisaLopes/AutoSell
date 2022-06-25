@@ -123,6 +123,7 @@ public class JanelaAtualizarCliente extends JFrame {
         cliente.setNIF(nif);
         cliente.setContacto(contacto);
 
+        JOptionPane.showMessageDialog(this, "Cliente atualizado com sucesso");
         fechar();
     }
 

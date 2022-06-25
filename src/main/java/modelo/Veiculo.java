@@ -38,6 +38,8 @@ public class Veiculo {
         this.valorVeiculo = valorVeiculo;
         pecasUsadasEmReparacoes = 0;
         estadoVeiculo = EstadoVeiculo.POR_REPARAR; //sempre que se cria um veiculo, ele esta por reparar
+        this.local = null;
+
     }
 
     public Veiculo(String marca, String modelo, int ano, String matricula, String cor, int numeroPortas, TipoCombustivel combustivel, int quilometros, int numeroDonos, String condicaoVeiculo, int valorVeiculo, Local local) {
@@ -115,6 +117,10 @@ public class Veiculo {
 
     public String getModelo() {
         return modelo;
+    }
+
+    public int getValorVeiculo() {
+        return valorVeiculo;
     }
 
     public String getCor() {

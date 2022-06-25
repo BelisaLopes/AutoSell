@@ -144,9 +144,7 @@ public class JanelaRegistarNovoCliente extends JDialog {
         }
 
         cliente = new Cliente(textNome.getText(), textMorada.getText(), data, textNIF.getText(), textContacto.getText());
-        /*DadosAplicacao dados = DadosAplicacao.INSTANCE;
-        dados.adicionarCliente(cliente); --> na janela Registar Venda*/
-        System.out.println("Registar Cliente");
+        JOptionPane.showMessageDialog(this, "Cliente registado com sucesso!");
         fechar();
     }
 

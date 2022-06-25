@@ -98,7 +98,7 @@ public class JanelaRegistarVeiculo extends JDialog{
         dispose();
 
         JanelaClientes j = new JanelaClientes();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
@@ -116,7 +116,7 @@ public class JanelaRegistarVeiculo extends JDialog{
         dispose();
 
         JanelaVeiculos j = new JanelaVeiculos();
-        //j.setVisible(true);
+        j.setVisible(true);
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
@@ -210,10 +210,9 @@ public class JanelaRegistarVeiculo extends JDialog{
             return;
         }
 
-
         veiculo = new Veiculo(textMarca.getText(), textModelo.getText(), ano, textMatricula.getText(), textCor.getText(), numeroPortas, (TipoCombustivel) comboBoxCombustivel.getSelectedItem(), quilometros, numeroDonos, textCondicao.getText(), valorVeiculo);
 
-        System.out.println("Registar Veiculo");
+        JOptionPane.showMessageDialog(this, "Veículo registado com sucesso!");
         fechar();
     }
 
