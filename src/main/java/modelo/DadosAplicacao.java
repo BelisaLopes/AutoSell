@@ -147,4 +147,13 @@ public class DadosAplicacao {
     public List<Cliente> getClientes() {
         return new ArrayList<>(clientes);
     }
+
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
