@@ -67,6 +67,10 @@ public class Erros {
     public static final int DIMENSAO_INVALIDA = 46;
     public static final int QUANTIDADE_SEDE_INFERIOR_FILIAIS = 47;
 
+
+
+    public static final int LISTA_VEICULOS_VAZIA = 50;
+
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
             case NOME_EVENTO_INVALIDO:
@@ -176,7 +180,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
                 break;
             case SEM_EVENTOS_A_DECORRER_OU_AGENDADOS:
-                JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
+                JOptionPane.showMessageDialog(parent, "Não existem eventos agendados/a decorrer à data atual.");
                 break;
             case SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "Para avançar é necessário primeiro escolher um evento origem e um local destino.");
@@ -208,7 +212,14 @@ public class Erros {
             case QUANTIDADE_SEDE_INFERIOR_FILIAIS:
                 JOptionPane.showMessageDialog(parent, "A quantidade mínima para a sede deve ser superior à das filiais.");
                 break;
-            default:
+
+
+
+
+            case LISTA_VEICULOS_VAZIA:
+                JOptionPane.showMessageDialog(parent, "A lista de veículos está vazia.");
+                break;
+                default:
         }
     }
 }

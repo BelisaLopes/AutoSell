@@ -40,6 +40,7 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     public JanelaConsultarEventosEVeiculos(){
         setContentPane(painel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);

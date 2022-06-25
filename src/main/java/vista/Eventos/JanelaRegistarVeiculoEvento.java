@@ -46,6 +46,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     public JanelaRegistarVeiculoEvento() {
         setContentPane(painel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);

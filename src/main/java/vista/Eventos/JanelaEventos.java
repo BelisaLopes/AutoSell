@@ -28,8 +28,9 @@ public class JanelaEventos extends JFrame{
     public JanelaEventos() {
         setContentPane(painelPrincipal);
         pack();
-        setLocationRelativeTo(null); //fazer isto só na janela principal
-        setVisible(true);
+        abrir();
+//        setLocationRelativeTo(null); //fazer isto só na janela principal
+//        setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaButtonActionPerformed);
@@ -43,12 +44,24 @@ public class JanelaEventos extends JFrame{
         consultarEventoButton.addActionListener(this::btnConsultarEventoActionPerformed);
         registarVeiculoNumEventoButton.addActionListener(this::btnRegistarVeiculoNoEventoActionPerformed);
         transportarVeículosEntreEventosButton.addActionListener(this::btnTransportarVeiculosEntreEventosActionPerformed);
+        removerEventoNãoDecorridoButton.addActionListener(this::btnRemoverEventoActionPerformed);
+    }
+
+    private void btnRemoverEventoActionPerformed(ActionEvent evt) {
+        fechar();
+
+        JanelaRemoverEventoNaoDecorrido jr = new JanelaRemoverEventoNaoDecorrido();
+        jr.setVisible(true);
+    }
+
+    private void abrir() {
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     private void btnTransportarVeiculosEntreEventosActionPerformed(ActionEvent evt) {
         fechar();
         JanelaTransportarVeiculos jt = new JanelaTransportarVeiculos();
-//        jt.setLocationRelativeTo(this);
         jt.setVisible(true);
     }
 
@@ -61,7 +74,6 @@ public class JanelaEventos extends JFrame{
         fechar();
 
         JanelaRegistarVeiculoEvento j = new JanelaRegistarVeiculoEvento();
-//        j.setLocationRelativeTo(this);
         j.setVisible(true);
     }
 
@@ -69,7 +81,6 @@ public class JanelaEventos extends JFrame{
         fechar();
 
         JanelaConsultarEventosEVeiculos j = new JanelaConsultarEventosEVeiculos();
-//        j.setLocationRelativeTo(this);
         j.setVisible(true);
     }
 
@@ -77,7 +88,6 @@ public class JanelaEventos extends JFrame{
         fechar();
 
         JanelaAtualizarEvento j = new JanelaAtualizarEvento();
-//        j.setLocationRelativeTo(this);
         j.setVisible(true);
     }
 
@@ -85,7 +95,6 @@ public class JanelaEventos extends JFrame{
         fechar();
 
         JanelaRegistarEvento j = new JanelaRegistarEvento();
-//        j.setLocationRelativeTo(this);
         j.setVisible(true);
     }
 

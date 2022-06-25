@@ -42,11 +42,17 @@ public class Data {
         if(first.getAno() > second.getAno()){
             return true;
         }
-
+        if(first.getAno() < second.getAno()){
+            return false;
+        }
+        //ano == ano
         if(first.getMes() > second.getMes()){
             return true;
         }
-
+        if(first.getMes() < second.getMes()){
+            return false;
+        }
+        //mes == mes
         return first.getDia() > second.getDia();
     }
 

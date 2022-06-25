@@ -42,9 +42,8 @@ public class JanelaAtualizarEvento extends JFrame{
 
     public JanelaAtualizarEvento() {
         setContentPane(painel);
-        setLocationRelativeTo(null);
         pack();
-//        setVisible(true);
+        setLocationRelativeTo(null);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaActionPerformed);
@@ -52,7 +51,7 @@ public class JanelaAtualizarEvento extends JFrame{
         transaçõesButton.addActionListener(this::btnTransacoesActionPerformed);
         clientesButton.addActionListener(this::btnClientesActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
-        cancelarButton.addActionListener(this::btnEventosActionPerformed);
+        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
         modeloListaEventos = new DefaultListModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
@@ -63,6 +62,8 @@ public class JanelaAtualizarEvento extends JFrame{
         atualizarEventoButton.addActionListener(this::btnAtualizarEventoActionPerformed);
         escolherEventoButton.addActionListener(this::btnEscolherEventoActionPerformed);
     }
+
+
 
     private void btnEscolherEventoActionPerformed(ActionEvent evt) {
         boolean valido = !listaEventos.isSelectionEmpty();
@@ -110,7 +111,7 @@ public class JanelaAtualizarEvento extends JFrame{
 
         Data fimAtualizar = Data.parseData(dataFimAtualizar);
 
-        valido = isDataFimAfterDataInicio(inicioAtualizar, fimAtualizar);
+        valido = Data.isFirstDateAfterSecondDate(fimAtualizar, inicioAtualizar);
         if(!valido){
             Erros.mostrarErro(this, Erros.ORDEM_DATAS);
             return;
@@ -129,8 +130,7 @@ public class JanelaAtualizarEvento extends JFrame{
         evento.setDataInicio(inicioAtualizar);
         evento.setDataFim(fimAtualizar);
 
-//        fechar();
-//        Sucesso.mostrarSucesso(this,Sucesso.EVENTO_ATUALIZADO);
+        Sucesso.mostrarSucesso(this,Sucesso.EVENTO_ATUALIZADO);
         limpar();
     }
 
@@ -192,17 +192,6 @@ public class JanelaAtualizarEvento extends JFrame{
         }
     }
 
-    private boolean isDataFimAfterDataInicio(Data inicio, Data fim) {
-        if(fim.getAno() > inicio.getAno()){
-            return true;
-        }
-        if(fim.getMes() > inicio.getMes()){
-            return true;
-        }
-
-        return fim.getDia() >= inicio.getDia();
-    }
-
     private boolean isNomeValido(String nome){
         return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
@@ -231,6 +220,11 @@ public class JanelaAtualizarEvento extends JFrame{
     public void fechar(){
         setVisible(false);
         dispose();
+    }
+    private void btnCancelarActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
     private void btnVeiculosActionPerformed(ActionEvent evt) {

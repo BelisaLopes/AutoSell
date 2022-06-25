@@ -309,6 +309,42 @@ public class DadosAplicacao {
         return eventosNaoTerminados;
     }
 
+    public List<Evento> getEventosNaoDecorridos(Distrito distrito, Data inicio, Data fim){
+        List<Evento> eventosNaoDecorridos = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(evento.getDataInicio(), dataAtual)){
+                eventosNaoDecorridos.add(evento);
+            }
+        }
+
+        List<Evento> eventosFiltrados = new ArrayList<>();
+        Evento e;
+        for(Evento evt : eventosNaoDecorridos) {
+            e = evt;
+            if(distrito != null && evt.getDistrito() != distrito){
+                continue;
+            }
+            if(inicio != null && !evt.getDataInicio().equals(inicio)){
+                continue;
+            }
+
+            if(fim != null && !evt.getDataFim().equals(fim)){
+                continue;
+            }
+
+            if(listaVeiculosPorLocal.get(evt).size() > 0){
+                continue;
+            }
+
+            eventosFiltrados.add(e);
+        }
+
+        return eventosFiltrados.size() == 0 ? null : eventosFiltrados;
+    }
+
     public int getLugaresLivres(Estabelecimento estabelecimento){
         int lotacao = estabelecimento.getCapacidadeMaximaVeiculos();
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(estabelecimento);
@@ -324,54 +360,58 @@ public class DadosAplicacao {
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(veiculo.getLocal());
         veiculos.remove(veiculo);
         adicionarVeiculoAoLocal(localDestino, veiculo);
-//        veiculo.setLocal(localDestino);
     }
 
-        public boolean existeCategoria(String nomeCategoria){
-            for (Categoria categoria: catalogo) {
-                if (categoria.getNome().equals(nomeCategoria)){
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existemCategoriasSemPecas(){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getPecas().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removerCategoria(Categoria categoria) {
+        catalogo.remove(categoria);
+    }
+
+    public boolean existemCategorias() {
+        return !catalogo.isEmpty();
+    }
+
+    public boolean existePeca(String nome) {
+        for (Categoria categoria: catalogo) {
+            for (Peca peca: categoria.getPecas()) {
+                if (peca.getNome().equals(nome)){
                     return true;
                 }
             }
-            return false;
         }
+        return false;
+    }
 
-        public boolean existemCategoriasSemPecas(){
-            for (Categoria categoria: catalogo) {
-                if (categoria.getPecas().isEmpty()){
-                    return true;
-                }
-            }
-            return false;
+    public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
+        Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
+        categoria.adicionarPeca(novaPeca);
+
+        sede.getOficina().registarPeca(novaPeca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.getOficina().registarPeca(novaPeca, qtdFiliais);
         }
+    }
 
-        public void removerCategoria(Categoria categoria) {
-            catalogo.remove(categoria);
-        }
-
-        public boolean existemCategorias() {
-            return !catalogo.isEmpty();
-        }
-
-        public boolean existePeca(String nome) {
-            for (Categoria categoria: catalogo) {
-                for (Peca peca: categoria.getPecas()) {
-                    if (peca.getNome().equals(nome)){
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
-            Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
-            categoria.adicionarPeca(novaPeca);
-
-            sede.getOficina().registarPeca(novaPeca, qtdSede);
-
-            for (Filial filial: filiais) {
-                filial.getOficina().registarPeca(novaPeca, qtdFiliais);
-            }
-        }
+    public void removerEvento(Evento evento) {
+        eventos.remove(evento);
+        listaVeiculosPorLocal.remove(evento);
+    }
 }

@@ -46,7 +46,7 @@ public class JanelaTransportarVeiculos extends JFrame{
     public JanelaTransportarVeiculos(){
         setContentPane(painel);
         pack();
-        setVisible(true);
+        setLocationRelativeTo(null);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaActionPerformed);
@@ -69,9 +69,9 @@ public class JanelaTransportarVeiculos extends JFrame{
     }
 
     private void btnTransportarVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaVeiculosEvento.isSelectionEmpty();
+        boolean valido = !modeloListaVeiculos.isEmpty();
         if(!valido){
-            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            Erros.mostrarErro(this, Erros.LISTA_VEICULOS_VAZIA);
             return;
         }
         veiculo = listaVeiculosEvento.getSelectedValue();
@@ -109,7 +109,6 @@ public class JanelaTransportarVeiculos extends JFrame{
             return;
         }
 
-//        boolean local_destino = transportarParaOutroEventoRadioButton.isSelected();
         if(transportarParaOutroEventoRadioButton.isSelected()){
             valido = modeloListaEventosDestino.getSize() != 0;
             if(!valido){
@@ -127,8 +126,8 @@ public class JanelaTransportarVeiculos extends JFrame{
             }
             eventoDestino = sede;
             localDestinoLabel.setText("Sede");
-            eventoOrigemLabel.setText(eventoOrigem.getNome());
         }
+        eventoOrigemLabel.setText(eventoOrigem.getNome());
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
