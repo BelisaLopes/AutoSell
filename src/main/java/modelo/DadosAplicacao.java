@@ -98,8 +98,7 @@ public class DadosAplicacao {
         return sede;
     }
 
-    public void adicionarCategoria(String nome) {
-        Categoria categoria = new Categoria(nome);
+    public void adicionarCategoria(Categoria categoria) {
         catalogo.add(categoria);
     }
 
@@ -408,6 +407,75 @@ public class DadosAplicacao {
         for (Filial filial: filiais) {
             filial.getOficina().registarPeca(novaPeca, qtdFiliais);
         }
+    }
+
+    public boolean existemPecas() {
+        for (Categoria categoria: catalogo) {
+            if (!categoria.getPecas().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void adicionarPeca(Peca peca, int qtdSede, int qtdFiliais) {
+        sede.registarPecaNaOficina(peca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.registarPecaNaOficina(peca, qtdFiliais);
+        }
+    }
+
+    public List<Peca> getPecas(Categoria categoria, String marca, String modelo, String dimensao, double preco){
+        List<Peca> pecas = new ArrayList<>();
+        List<Peca> pecasFiltradas = new ArrayList<>();
+
+        if(categoria!=null){
+            pecas = categoria.getPecas();
+            if(pecas.isEmpty()){
+                return pecas;
+            }
+        }else {
+            for (Categoria c : catalogo) {
+                for (Peca peca : c.getPecas()) {
+                    pecas.add(peca);
+                }
+            }
+        }
+
+        for (Peca peca: pecas) {
+            Peca p = peca;
+            if(marca.length()!=0 && !peca.getMarca().matches(marca)){
+                continue;
+            }
+
+            if(modelo.length()!=0 && !peca.getModelo().matches(modelo)){
+                continue;
+            }
+
+            if(dimensao.length()!=0 && !peca.getDimensao().matches(dimensao)){
+                continue;
+            }
+
+            if(preco != -1 && peca.getPreco()!=preco){
+                continue;
+            }
+
+            pecasFiltradas.add(p);
+        }
+
+        return pecasFiltradas.isEmpty() ? new ArrayList<>() : pecasFiltradas;
+    }
+
+    public Peca getPeca(String nomePeca) {
+        for (Categoria categoria : catalogo) {
+            for (Peca peca : categoria.getPecas()) {
+                if (peca.getNome() == nomePeca) {
+                    return peca;
+                }
+            }
+        }
+        return null;
     }
 
     public void removerEvento(Evento evento) {

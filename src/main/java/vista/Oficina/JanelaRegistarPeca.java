@@ -1,9 +1,6 @@
 package vista.Oficina;
 
-import modelo.Categoria;
-import modelo.DadosAplicacao;
-import modelo.Distrito;
-import modelo.Filial;
+import modelo.*;
 import vista.Clientes.JanelaClientes;
 import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
@@ -150,7 +147,7 @@ public class JanelaRegistarPeca extends JFrame{
 
         String qtdSede = textSede.getText();
         String qtdFiliais = textFiliais.getText();
-        valido = areQuantidadesValidas(qtdSede, qtdFiliais);
+        valido = areQuantidadesMinimasValidas(qtdSede, qtdFiliais);
         if(!valido) {
             Erros.mostrarErro(this, Erros.QUANTIDADE_INVALIDA);
             return;
@@ -167,28 +164,30 @@ public class JanelaRegistarPeca extends JFrame{
         int qtdSedeInt = Integer.parseInt(qtdSede);
         int qtdFiliaisInt = Integer.parseInt(qtdFiliais);
 
-        DadosAplicacao.INSTANCE.adicionarPeca(categoria, nome, marca, modelo, dimensao, precoDouble, qtdSedeInt, qtdFiliaisInt);
+        Peca novaPeca = new Peca(nome, marca, modelo, dimensao, precoDouble, categoria);
+
+        DadosAplicacao.INSTANCE.adicionarPeca(novaPeca, qtdSedeInt, qtdFiliaisInt);
         Sucesso.mostrarSucesso(this, Sucesso.PECA_REGISTADA);
         fechar();
         new JanelaOficina();
     }
 
-    private boolean isQtdMinimaFilialInferior(String qtdSede, String qtdFiliais) {
+    private boolean isQtdMinimaFilialInferior(String qtdMinSede, String qtdMinFiliais) {
         Integer valorQtdSede;
         Integer valorQtdFilial;
         try{
-            valorQtdSede = Integer.parseInt(qtdSede);
-            valorQtdFilial = Integer.parseInt(qtdFiliais);
+            valorQtdSede = Integer.parseInt(qtdMinSede);
+            valorQtdFilial = Integer.parseInt(qtdMinFiliais);
         }catch (NumberFormatException ex) {
             return false;
         }
         return valorQtdSede.intValue()>valorQtdFilial.intValue();
     }
 
-    private boolean areQuantidadesValidas(String qtdSede, String qtdFiliais) {
+    private boolean areQuantidadesMinimasValidas(String qtdMinSede, String qtdMinFiliais) {
         try{
-            Integer.parseInt(qtdSede);
-            Integer.parseInt(qtdFiliais);
+            Integer.parseInt(qtdMinSede);
+            Integer.parseInt(qtdMinFiliais);
         }catch (NumberFormatException ex) {
             return false;
         }
