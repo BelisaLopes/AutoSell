@@ -1,6 +1,8 @@
 package vista.Veiculos;
 
+import modelo.DadosAplicacao;
 import vista.Clientes.JanelaClientes;
+import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Oficina.JanelaAdicionarCategoria;
 import vista.Oficina.JanelaOficina;
@@ -42,6 +44,11 @@ public class JanelaVeiculos extends JFrame{
     }
 
     private void btnDefinirVeiculoComoReparadoActionPerformed(ActionEvent evt) {
+        boolean valido = DadosAplicacao.INSTANCE.existemCategorias();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NAO_EXISTEM_CATEGORIAS);
+            return;
+        }
         fechar();
 
         JanelaRepararVeiculo jr = new JanelaRepararVeiculo();

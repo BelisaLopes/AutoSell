@@ -255,7 +255,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Valor inválido : o valor da quantidade de peças deve ser um número positivo");
                 break;
             case SEM_STOCK:
-                JOptionPane.showMessageDialog(parent, "Valor inválido : não há stock disponível para a peça selecionada");
+                JOptionPane.showMessageDialog(parent, "Valor inválido : não existe essa quantidade de stock disponível para a peça selecionada");
                 break;
             case QUANTIDADE_STOCK_INSUFICIENTE:
                 JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade introduzida iria colocar o stock abaixo da quantidade mínima.");

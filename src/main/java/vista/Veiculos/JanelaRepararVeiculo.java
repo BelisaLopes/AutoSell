@@ -47,7 +47,6 @@ public class JanelaRepararVeiculo extends JFrame{
     private DefaultListModel modeloListaVeiculos;
     private DefaultListModel modeloListaPecas;
     private DefaultListModel modeloListaPecasReparacao;
-//    private Hashtable<Peca, Integer> pecasUsadasNaReparacao;
     private Veiculo veiculo;
     private Estabelecimento estabelecimento;
 
@@ -75,7 +74,7 @@ public class JanelaRepararVeiculo extends JFrame{
         categoriasComboBox.setModel(modeloComboBoxCategorias);
         estabelecimentoComboBox.setModel(modeloComboBoxLocais);
         listaVeiculos.setModel(modeloListaVeiculos);
-        pecasUsadas = new Hashtable<>();
+
         initComponents();
 
 
@@ -152,8 +151,6 @@ public class JanelaRepararVeiculo extends JFrame{
     }
 
     private void btnEscolherVeiculoActionPerformed(ActionEvent evt) {
-//        Categoria c = new Categoria("motor");
-//        pecasUsadas.put(new Peca("ooo", "ooo", "oooo", "sss",12,c),1);
         boolean valido = pecasUsadas.isEmpty();
         if(!valido){
             Erros.mostrarErro(this, Erros.VEICULO_AINDA_EM_REPARACAO);
@@ -289,16 +286,20 @@ public class JanelaRepararVeiculo extends JFrame{
             Erros.mostrarErro(this, Erros.NENHUM_VEICULO_EM_REPARACAO);
             return;
         }
+
+        Integer total = numeroTotalPecasUsadas();
+
+        DadosAplicacao.INSTANCE.definirVeiculoReparado(veiculo, total);
+
         Oficina oficina = estabelecimento.getOficina();
-
-        DadosAplicacao.INSTANCE.definirVeiculoReparado(veiculo);
-
         Enumeration<Peca> pecas = pecasUsadas.keys();
         Peca p;
+        Integer gasto;
         boolean limite = false;
         while (pecas.hasMoreElements()){
             p = pecas.nextElement();
-            oficina.atualizarStockPeca(p, pecasUsadas.get(p));
+            gasto = pecasUsadas.get(p);
+            oficina.atualizarStockPeca(p,gasto);
             if(oficina.isRuturaStock(p)){
                 limite = true;
             }
@@ -316,8 +317,20 @@ public class JanelaRepararVeiculo extends JFrame{
 
     }
 
+    private Integer numeroTotalPecasUsadas() {
+        Integer total = 0;
+        Enumeration<Peca> pecas = pecasUsadas.keys();
+        Peca p;
+        while (pecas.hasMoreElements()){
+            p = pecas.nextElement();
+            total += pecasUsadas.get(p);
+        }
+        return total;
+    }
+
 
     private void initComponents() {
+        pecasUsadas = new Hashtable<>();
         List<Estabelecimento> list = DadosAplicacao.INSTANCE.getEstabelecimentos();
         for (Estabelecimento estabelecimento : list) {
             modeloComboBoxLocais.addElement(estabelecimento);
