@@ -52,6 +52,10 @@ public class Veiculo {
         return marca + " " + modelo + " - Matricula: "+ matricula;
     }
 
+    public void setEstadoVeiculo(EstadoVeiculo estadoVeiculo) {
+        this.estadoVeiculo = estadoVeiculo;
+    }
+
     public void transportarVeiculo(Local localDestino){
 
 //        setLocal(localDestino);

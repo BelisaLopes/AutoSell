@@ -526,4 +526,40 @@ public class DadosAplicacao {
 
         return veiculos.size() == 0 ? null : veiculos;
     }
+
+    public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
+        List<Veiculo> veiculos = new ArrayList<>();
+
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosProntosParaVenda) {
+            v = veiculo;
+
+            if(estabelecimento != null && veiculo.getLocal() != estabelecimento){
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public void definirVeiculoPorReparar(Veiculo veiculo) {
+        veiculo.setEstadoVeiculo(EstadoVeiculo.POR_REPARAR);
+        veiculosProntosParaVenda.remove(veiculo);
+        veiculosPorReparar.add(veiculo);
+    }
 }

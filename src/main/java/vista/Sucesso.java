@@ -16,6 +16,7 @@ public class Sucesso {
     public static final int PECA_REGISTADA = 10;
     public static final int PECA_ENCOMENDADA = 11;
     public static final int EVENTO_REMOVIDO = 12;
+    public static final int ESTADO_VEICULO_ALTERADO = 13;
 
     public static void mostrarSucesso(Window parent, int numero){
         switch (numero) {
@@ -53,6 +54,9 @@ public class Sucesso {
                 JOptionPane.showMessageDialog(parent, "A encomenda foi registada com sucesso!");
             case EVENTO_REMOVIDO:
                 JOptionPane.showMessageDialog(parent, "O evento foi removido com sucesso!");
+                break;
+            case ESTADO_VEICULO_ALTERADO:
+                JOptionPane.showMessageDialog(parent, "O estado do veículo foi alterado com sucesso!");
                 break;
             default:
         }
