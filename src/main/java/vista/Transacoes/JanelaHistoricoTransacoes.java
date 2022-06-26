@@ -22,7 +22,7 @@ public class JanelaHistoricoTransacoes extends JFrame{
     private JComboBox comboBoxLocais;
     private JTextField textFieldData;
     private JButton btnApresentarTransacoes;
-    private JList<Transacao> listTransacoes;
+    private JList<String> listTransacoes;
     private JPanel painelPrincipal;
 
     private DefaultComboBoxModel modeloComboBoxLocais;
@@ -54,6 +54,12 @@ public class JanelaHistoricoTransacoes extends JFrame{
         System.out.println("Click no apresentarTransacoes");
         modeloListaTransacoes.removeAllElements();
         String dataString = textFieldData.getText();
+        Data data;
+        if(dataString.isEmpty()){
+            data = null;
+        }else{
+            data = Data.parseData(dataString);
+        }
 
         Local local;
         try{
@@ -61,8 +67,6 @@ public class JanelaHistoricoTransacoes extends JFrame{
         }catch (Exception ex){
             local = null;
         }
-
-        Data data = Data.parseData(dataString);
 
         List<Transacao> transacoes = DadosAplicacao.INSTANCE.getTransacoes(local, data);
         boolean valido = !transacoes.isEmpty();
@@ -76,7 +80,7 @@ public class JanelaHistoricoTransacoes extends JFrame{
 
     private void atualizarListaTransacoes(List<Transacao> transacoes) {
         for (Transacao transacao : transacoes) {
-            modeloListaTransacoes.add(modeloListaTransacoes.getSize(),transacao);
+            modeloListaTransacoes.add(modeloListaTransacoes.getSize(),transacao.toString());
         }
     }
 

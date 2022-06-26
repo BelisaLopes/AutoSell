@@ -13,7 +13,6 @@ public class Transacao {
     public Transacao(TipoTransacao tipoTransacao, Cliente cliente, Data dataTransacao, float valorTransacao, Veiculo veiculo, Local local) {
         this.tipoTransacao = tipoTransacao;
         this.cliente = cliente;
-        cliente.addTransacao(this);
         this.dataTransacao = dataTransacao;
         this.valorTransacao = valorTransacao;
         this.veiculo = veiculo;
