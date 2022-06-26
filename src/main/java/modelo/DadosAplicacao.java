@@ -218,6 +218,15 @@ public class DadosAplicacao {
         return false;
     }
 
+    public boolean isNIFDuplicadoNovoRegisto(String nif) {
+        for (Cliente c : clientes) {
+            if(c.getNIF().equals(nif)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Veiculo> getVeiculos(Local origem, String marca, String modelo, String matricula) {
         List<Veiculo> veiculos = new ArrayList<>();
         List<Veiculo> veiculosLocal = getVeiculosLocal(origem);
