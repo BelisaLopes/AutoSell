@@ -79,7 +79,7 @@ public class Erros {
 //    public static final int QUANTIDADE_SUPERIOR_STOCK = 58;
     public static final int QUANTIDADE_STOCK_INSUFICIENTE = 59;
     public static final int LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO = 60;
-
+    public static final int NENHUM_VEICULO_EM_REPARACAO = 61;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -258,6 +258,9 @@ public class Erros {
                 break;
             case LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "O local origem escolhido é igual ao local destino. Escolha locais diferentes para transferir.");
+                break;
+            case NENHUM_VEICULO_EM_REPARACAO:
+                JOptionPane.showMessageDialog(parent, "Não existe nenhum veículo em reparação. É necessário adicionar peças a um veículo primeiro.");
                 break;
             default:
         }
