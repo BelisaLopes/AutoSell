@@ -56,15 +56,8 @@ public class Veiculo {
         this.estadoVeiculo = estadoVeiculo;
     }
 
-    public void transportarVeiculo(Local localDestino){
-
-//        setLocal(localDestino);
-//        if(localDestino != this.local){
-//            removerVeiculo(veiculo);
-//        }
-//        else{
-//            adicionarVeiculo(veiculo);
-//        }
+    public void adicionarPecasUsadas(int quantidade){
+        pecasUsadasEmReparacoes += quantidade;
     }
 
     public int getAno() {

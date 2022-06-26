@@ -591,10 +591,11 @@ public class DadosAplicacao {
         veiculosPorReparar.add(veiculo);
     }
 
-    public void definirVeiculoReparado(Veiculo veiculo){
+    public void definirVeiculoReparado(Veiculo veiculo, Integer total){
         veiculo.setEstadoVeiculo(EstadoVeiculo.REPARADO);
         veiculosPorReparar.remove(veiculo);
         veiculosProntosParaVenda.add(veiculo);
+        veiculo.adicionarPecasUsadas(total);
     }
 
     public List<Veiculo> getVeiculosPorReparar(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
