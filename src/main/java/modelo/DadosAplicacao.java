@@ -93,6 +93,66 @@ public class DadosAplicacao {
         }
     }
 
+    public ArrayList<String> iterarHashTransacoesVendidosPorLocal(){
+        Set<Local> keys = listaVeiculosVendidosPorLocal.keySet();
+        ArrayList<String> string = new ArrayList<>();
+
+        for (Local key : keys) {
+            int quantidadeTransações = 0;
+            List<Veiculo> veiculos = listaVeiculosVendidosPorLocal.get(key);
+            for (Veiculo v : veiculos) {
+                quantidadeTransações++;
+            }
+            string.add(key.toString() + " " + quantidadeTransações + " transações\n");
+        }
+        return string;
+    }
+
+    public ArrayList<String> iterarHashVeiculosVendidosPorLocal(){
+        Set<Local> keys = listaVeiculosVendidosPorLocal.keySet();
+        ArrayList<String> string = new ArrayList<>();
+        for (Local key : keys) {
+            int quantidadeTransações = 0;
+            List<Veiculo> veiculos = listaVeiculosVendidosPorLocal.get(key);
+            for (Veiculo v : veiculos) {
+                quantidadeTransações++;
+            }
+            string.add(key.toString() + " " + quantidadeTransações + " veiculos\n");
+        }
+        return string;
+    }
+
+    public String iterarHashMarcasModelosVendidosPorLocal(){
+        Set<Local> keys = listaVeiculosVendidosPorLocal.keySet();
+        ArrayList<String> string = new ArrayList<>();
+
+        for (Local key : keys) {
+            int quantidadeTransações = 0;
+            List<Veiculo> veiculos = listaVeiculosVendidosPorLocal.get(key);
+            for (Veiculo v : veiculos) {
+                quantidadeTransações++;
+                string.add(v.getMarca() + " " + v.getModelo() + " - " + quantidadeTransações + " unidades\n");
+            }
+        }
+        return string.get(string.size() - 1);
+    }
+
+    public String iterarHashMarcasModelosVendidos() {
+        List<String> string = new ArrayList<>();
+        List<Veiculo> veiculos = veiculosVendidos;
+        int quantidadeTransações = 0;
+
+        for (Veiculo v : veiculos) {
+            quantidadeTransações++;
+            string.add(v.getMarca() + " " + v.getModelo() + " - " + quantidadeTransações + " unidades\n");
+        }
+
+        return string.get(string.size() - 1);
+    }
+
+    public int numeroVeiculosVendidos(){
+        return veiculosVendidos.size();
+    }
     public ArrayList<Filial> getFiliais() {
         return new ArrayList<>(filiais);
     }
@@ -171,6 +231,10 @@ public class DadosAplicacao {
 
     public List<Veiculo> getVeiculosLocal(Local local){
         return listaVeiculosPorLocal.get(local);
+    }
+
+    public List<Veiculo> getVeiculosVendidosLocal(Local local){
+        return listaVeiculosVendidosPorLocal.get(local);
     }
 
     public List<Veiculo> getVeiculosProntosParaVenda(){
@@ -555,6 +619,7 @@ public class DadosAplicacao {
     public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
         List<Veiculo> veiculos = new ArrayList<>();
 
+
         Veiculo v;
         for (Veiculo veiculo : veiculosProntosParaVenda) {
             v = veiculo;
@@ -632,4 +697,6 @@ public class DadosAplicacao {
     public int size() {
         return clientes.size();
     }
+
+
 }

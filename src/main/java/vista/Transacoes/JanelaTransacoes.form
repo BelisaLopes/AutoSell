@@ -32,7 +32,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7ca6c" class="javax.swing.JButton" binding="registarCompraButton" default-binding="true">
+          <component id="7ca6c" class="javax.swing.JButton" binding="btnRegistarCompra">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -48,7 +48,7 @@
               <text value="Registar Venda"/>
             </properties>
           </component>
-          <component id="7ecf9" class="javax.swing.JButton" binding="consultarHistóricoDeTransaçõesButton" default-binding="true">
+          <component id="7ecf9" class="javax.swing.JButton" binding="btnConsultarHistorico">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

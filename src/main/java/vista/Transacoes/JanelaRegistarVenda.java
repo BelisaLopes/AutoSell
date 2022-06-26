@@ -214,12 +214,12 @@ public class JanelaRegistarVenda extends JFrame {
         Float precoTransacao = null;
         String data = textData.getText();
         if(data.isEmpty()){
-            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA); //MUDAR PARA DATA ATUAL INVALIDA
+            Erros.mostrarErro(this, Erros.DATA_VENDA_INVALIDA);
             return;
         }
         boolean valido = isDataVendaValida(data);
         if(!valido){
-            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA); //MUDAR PARA DATA ATUAL INVALIDA
+            Erros.mostrarErro(this, Erros.DATA_VENDA_INVALIDA);
             return;
         }
 
