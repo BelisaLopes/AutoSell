@@ -414,4 +414,48 @@ public class DadosAplicacao {
         eventos.remove(evento);
         listaVeiculosPorLocal.remove(evento);
     }
+
+    public List<Estabelecimento> getEstabelecimentos(){
+        List<Estabelecimento> lista = new ArrayList<>();
+        lista.add(sede);
+        lista.addAll(filiais);
+        return lista;
+    }
+
+    public List<Veiculo> getTodosVeiculos(Estabelecimento estabelecimento, String marca, String modelo, String matricula) {
+        List<Veiculo> veiculos = new ArrayList<>();
+        List<Veiculo> veiculosLocal = new ArrayList<>();
+        if(estabelecimento != null){
+            veiculosLocal = getVeiculosLocal(estabelecimento);
+        }else{
+            List<Local> locais = new ArrayList<>();
+            locais.add(sede);
+            locais.addAll(filiais);
+//            locais.addAll(eventos);
+            for (Local l : locais) {
+                veiculosLocal.addAll(listaVeiculosPorLocal.get(l));
+            }
+        }
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosLocal) {
+            v = veiculo;
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
 }

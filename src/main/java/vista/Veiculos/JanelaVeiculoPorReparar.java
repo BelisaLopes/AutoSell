@@ -9,12 +9,15 @@ public class JanelaVeiculoPorReparar {
     private JButton eventosButton;
     private JButton oficinaButton;
     private JButton transaçõesButton;
-    private JComboBox comboBox1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField5;
-    private JList list2;
+    private JComboBox locaisComboBox;
+    private JTextField marcaTextField;
+    private JTextField modeloTextField;
+    private JTextField matriculaTextField;
+    private JList listaVeiculos;
     private JButton apresentarVeículosButton;
-    private JButton definirVeículoPorRepararButton;
+    private JButton definirVeiculoPorRepararButton;
     private JButton cancelarButton;
+    private JPanel painel;
+    private JLabel lotacaoLabel;
+    private JLabel veiculoLabel;
 }

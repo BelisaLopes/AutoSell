@@ -61,22 +61,6 @@ public class JanelaRegistarEvento extends JDialog{
 
     }
 
-    private void abrir() {
-//        setContentPane(painel);
-        setLocationRelativeTo(null);
-//        pack();
-        setVisible(true);
-    }
-
-
-//    public static Evento mostrarCriacaoEvento(Frame parent){
-//        System.out.println("mostrarCriacaoEvento");
-//        var registar = new JanelaRegistarEvento(parent, true);
-//        registar.setLocationRelativeTo(parent);
-//        registar.setVisible(true);
-//
-//    }
-
     private void btnAdicionarEventoActionPerformed(ActionEvent evt) {
         String nome = nomeEventoTextField.getText();
         boolean valido = isNomeValido(nome);

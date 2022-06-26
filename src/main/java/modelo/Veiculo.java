@@ -63,6 +63,18 @@ public class Veiculo {
 //        }
     }
 
+    public int getAno() {
+        return ano;
+    }
+
+    public String getCondicaoVeiculo() {
+        return condicaoVeiculo;
+    }
+
+    public EstadoVeiculo getEstadoVeiculo() {
+        return estadoVeiculo;
+    }
+
     public int getPecasUsadasEmReparacoes() {
         return pecasUsadasEmReparacoes;
     }

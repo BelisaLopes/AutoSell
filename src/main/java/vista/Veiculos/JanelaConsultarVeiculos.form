@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vista.Veiculos.JanelaConsultarVeiculos">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="painel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="730" height="695"/>
     </constraints>
-    <properties/>
+    <properties>
+      <minimumSize width="650" height="550"/>
+      <preferredSize width="650" height="550"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="deaa" class="javax.swing.JLabel">
@@ -133,92 +136,92 @@
                       <text value="Modelo:"/>
                     </properties>
                   </component>
-                  <component id="2a707" class="javax.swing.JLabel">
+                  <component id="2a707" class="javax.swing.JLabel" binding="marcaVeiculoLabel">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Opel"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="a25ac" class="javax.swing.JLabel" binding="txtModeloVeiculo">
+                  <component id="a25ac" class="javax.swing.JLabel" binding="modeloVeiculoLabel">
                     <constraints>
                       <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Corsa"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="10946" class="javax.swing.JLabel">
+                  <component id="10946" class="javax.swing.JLabel" binding="anoVeiculoLabel">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="2020"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="b8043" class="javax.swing.JLabel">
+                  <component id="b8043" class="javax.swing.JLabel" binding="corVeiculoLabel">
                     <constraints>
                       <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Branco"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="410e9" class="javax.swing.JLabel">
+                  <component id="410e9" class="javax.swing.JLabel" binding="matriculaVeiculoLabel">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="xx-12-ed"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="a43c" class="javax.swing.JLabel">
+                  <component id="a43c" class="javax.swing.JLabel" binding="portasVeiculoLabel">
                     <constraints>
                       <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="5"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="d69d8" class="javax.swing.JLabel">
+                  <component id="d69d8" class="javax.swing.JLabel" binding="combustivelVeiculoLabel">
                     <constraints>
                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Diesel"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="67d29" class="javax.swing.JLabel">
+                  <component id="67d29" class="javax.swing.JLabel" binding="kmVeiculoLabel">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="10400"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="d81e2" class="javax.swing.JLabel" binding="txtDonoAnterior">
+                  <component id="d81e2" class="javax.swing.JLabel" binding="nomeDonoAnteriorLabel">
                     <constraints>
                       <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Rafael Simões"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="30736" class="javax.swing.JLabel">
+                  <component id="30736" class="javax.swing.JLabel" binding="numeroDonosVeiculoLabel">
                     <constraints>
                       <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="2"/>
+                      <text value=""/>
                     </properties>
                   </component>
-                  <component id="51f59" class="javax.swing.JLabel">
+                  <component id="51f59" class="javax.swing.JLabel" binding="localVeiculoLabel">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Filial Leiria"/>
+                      <text value=""/>
                     </properties>
                   </component>
                   <component id="95124" class="javax.swing.JLabel">
@@ -229,12 +232,12 @@
                       <text value="Estado do Veículo:"/>
                     </properties>
                   </component>
-                  <component id="e8ca3" class="javax.swing.JLabel" binding="txtEstadoVeiculo">
+                  <component id="e8ca3" class="javax.swing.JLabel" binding="estadoVeiculoLabel">
                     <constraints>
                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Por Reparar"/>
+                      <text value=""/>
                     </properties>
                   </component>
                 </children>
@@ -256,14 +259,10 @@
                 <properties/>
                 <border type="none" title="Lista de Veículos"/>
                 <children>
-                  <component id="8d0bc" class="javax.swing.JList" binding="list1" default-binding="true">
+                  <component id="8d0bc" class="javax.swing.JList" binding="listaVeiculos">
                     <constraints/>
                     <properties>
-                      <model>
-                        <item value="Opel Corsa xx-12-ed"/>
-                        <item value="Toyota Yaris 34-fg-67"/>
-                        <item value="Mitsubishi Colt 34-hy-89"/>
-                      </model>
+                      <model/>
                     </properties>
                   </component>
                 </children>
@@ -276,18 +275,15 @@
                 <properties/>
                 <border type="none" title="Filtros"/>
                 <children>
-                  <component id="74151" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                  <component id="74151" class="javax.swing.JComboBox" binding="localComboBox">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <model>
-                        <item value="Filial Leiria"/>
-                        <item value="Sede Lisboa"/>
-                      </model>
+                      <model/>
                     </properties>
                   </component>
-                  <component id="5578f" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                  <component id="5578f" class="javax.swing.JTextField" binding="marcaTextField">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -297,7 +293,7 @@
                       <text value=""/>
                     </properties>
                   </component>
-                  <component id="8652f" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                  <component id="8652f" class="javax.swing.JTextField" binding="modeloTextField">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -305,29 +301,13 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="bc855" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+                  <component id="bc855" class="javax.swing.JTextField" binding="matriculaTextField">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties/>
-                  </component>
-                  <component id="57a91" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Lotação do Local:"/>
-                    </properties>
-                  </component>
-                  <component id="50076" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="2/1100"/>
-                    </properties>
                   </component>
                   <component id="9b63c" class="javax.swing.JLabel">
                     <constraints>
@@ -369,6 +349,14 @@
                 </constraints>
                 <properties>
                   <text value="Apresentar Veículos"/>
+                </properties>
+              </component>
+              <component id="19465" class="javax.swing.JButton" binding="escolherVeiculoButton" default-binding="true">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Escolher Veiculo"/>
                 </properties>
               </component>
             </children>
