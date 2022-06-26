@@ -12,7 +12,6 @@ import vista.Veiculos.JanelaVeiculos;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JanelaRegistarEncomendaPecas extends JFrame{
@@ -65,6 +64,12 @@ public class JanelaRegistarEncomendaPecas extends JFrame{
     }
 
     private void showStockList(ListSelectionEvent listSelectionEvent) {
+        if (escolheuPeca()){
+            atualizarLabelStock();
+        }
+    }
+
+    private void atualizarLabelStock() {
         Estabelecimento estabelecimento = (Estabelecimento) comboBoxLocais.getSelectedItem();
         String nomePeca = (String) listPecas.getSelectedValue();
         Peca peca = DadosAplicacao.INSTANCE.getPeca(nomePeca);
@@ -73,10 +78,7 @@ public class JanelaRegistarEncomendaPecas extends JFrame{
 
     private void showStockCmBox(ActionEvent actionEvent) {
         if(escolheuPeca()) {
-            Estabelecimento estabelecimento = (Estabelecimento) comboBoxLocais.getSelectedItem();
-            String nomePeca = (String) listPecas.getSelectedValue();
-            Peca peca = DadosAplicacao.INSTANCE.getPeca(nomePeca);
-            labelStock.setText(Integer.toString(estabelecimento.getOficina().getStockPeca(peca)));
+            atualizarLabelStock();
         }
     }
 
@@ -104,15 +106,6 @@ public class JanelaRegistarEncomendaPecas extends JFrame{
         adicionarStock(textQtdEncomendada);
         Sucesso.mostrarSucesso(this, Sucesso.PECA_ENCOMENDADA);
         atualizarLabelStock();
-    }
-
-    private void atualizarLabelStock() {
-        Estabelecimento estabelecimento = (Estabelecimento) comboBoxLocais.getSelectedItem();
-
-        String nomePeca = (String) listPecas.getSelectedValue();
-        Peca peca = DadosAplicacao.INSTANCE.getPeca(nomePeca);
-
-        labelStock.setText(Integer.toString(estabelecimento.getOficina().getStockPeca(peca)));
     }
 
     private void adicionarStock(String qtdEncomendada) {

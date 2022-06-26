@@ -70,6 +70,8 @@ public class Erros {
     public static final int CATEGORIA_SEM_PECAS = 49;
     public static final int LISTA_VEICULOS_VAZIA = 50;
     public static final int SELECIONAR_PECA = 51;
+    public static final int QUANTIDADE_NOVA_IGUAL_ATUTAL = 52;
+    public static final int QUANTIDADE_SUPERIOR_STOCK = 53;
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -223,6 +225,12 @@ public class Erros {
                 break;
             case SELECIONAR_PECA:
                 JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma peça primeiro.");
+                break;
+            case QUANTIDADE_NOVA_IGUAL_ATUTAL:
+                JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade mínima introduzida é igual à quantidade atual.");
+                break;
+            case QUANTIDADE_SUPERIOR_STOCK:
+                JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade mínima introduzida é superior ao stock atual da peça.");
                 break;
             default:
         }
