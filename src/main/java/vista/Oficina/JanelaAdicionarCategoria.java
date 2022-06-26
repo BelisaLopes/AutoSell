@@ -1,5 +1,6 @@
 package vista.Oficina;
 
+import modelo.Categoria;
 import modelo.DadosAplicacao;
 import vista.Clientes.JanelaClientes;
 import vista.Erros;
@@ -91,7 +92,7 @@ public class JanelaAdicionarCategoria extends JFrame{
             return;
         }
 
-        DadosAplicacao.INSTANCE.adicionarCategoria(novaCategoria);
+        DadosAplicacao.INSTANCE.adicionarCategoria(new Categoria(novaCategoria));
         Sucesso.mostrarSucesso(this, Sucesso.CATEGORIA_REGISTADA);
         fechar();
         new JanelaOficina();

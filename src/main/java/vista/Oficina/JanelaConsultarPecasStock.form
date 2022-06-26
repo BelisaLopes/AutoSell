@@ -39,7 +39,7 @@
             <properties/>
             <border type="none" title="Peças:"/>
             <children>
-              <component id="1258f" class="javax.swing.JList" binding="list1" default-binding="true">
+              <component id="1258f" class="javax.swing.JList" binding="listaPecas">
                 <constraints/>
                 <properties>
                   <model>
@@ -57,7 +57,7 @@
             <properties/>
             <border type="none" title="Filtros"/>
             <children>
-              <component id="d1158" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="d1158" class="javax.swing.JTextField" binding="textFieldMarca">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -65,7 +65,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="e85e6" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="e85e6" class="javax.swing.JTextField" binding="textFieldModelo">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -73,7 +73,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="495b5" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+              <component id="495b5" class="javax.swing.JTextField" binding="textFieldDimensao">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -81,7 +81,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="155fc" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+              <component id="155fc" class="javax.swing.JTextField" binding="textFieldPreco">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -89,7 +89,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="4ce06" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+              <component id="4ce06" class="javax.swing.JComboBox" binding="comboBoxCategorias">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -157,7 +157,7 @@
                   <text value="Stock:"/>
                 </properties>
               </component>
-              <component id="2b154" class="javax.swing.JLabel">
+              <component id="2b154" class="javax.swing.JLabel" binding="labelStock">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -173,7 +173,7 @@
                   <text value="Quantidade Minima:"/>
                 </properties>
               </component>
-              <component id="fc9a3" class="javax.swing.JLabel">
+              <component id="fc9a3" class="javax.swing.JLabel" binding="labelQtdMinima">
                 <constraints>
                   <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -194,7 +194,7 @@
                   <text value="Local:"/>
                 </properties>
               </component>
-              <component id="a1e06" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="a1e06" class="javax.swing.JComboBox" binding="comboBoxLocais">
                 <constraints>
                   <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -212,7 +212,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="21ba1" class="javax.swing.JButton" binding="apresentarPeçasButton" default-binding="true">
+          <component id="21ba1" class="javax.swing.JButton" binding="btnApresentar">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -222,7 +222,7 @@
           </component>
         </children>
       </grid>
-      <component id="b31e7" class="javax.swing.JButton" binding="veículosButton" default-binding="true">
+      <component id="b31e7" class="javax.swing.JButton" binding="btnVeiculos">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -230,7 +230,7 @@
           <text value="Veículos"/>
         </properties>
       </component>
-      <component id="cae4e" class="javax.swing.JButton" binding="estatísticasButton" default-binding="true">
+      <component id="cae4e" class="javax.swing.JButton" binding="btnEstatisticas">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -238,7 +238,7 @@
           <text value="Estatísticas"/>
         </properties>
       </component>
-      <component id="feec" class="javax.swing.JButton" binding="oficinaButton" default-binding="true">
+      <component id="feec" class="javax.swing.JButton" binding="btnOficina">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -246,7 +246,7 @@
           <text value="Oficina"/>
         </properties>
       </component>
-      <component id="76cb4" class="javax.swing.JButton" binding="clientesButton" default-binding="true">
+      <component id="76cb4" class="javax.swing.JButton" binding="btnClientes">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -254,7 +254,7 @@
           <text value="Clientes"/>
         </properties>
       </component>
-      <component id="115dd" class="javax.swing.JButton" binding="transaçõesButton" default-binding="true">
+      <component id="115dd" class="javax.swing.JButton" binding="btnTransacoes">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -262,7 +262,7 @@
           <text value="Transações"/>
         </properties>
       </component>
-      <component id="7c9be" class="javax.swing.JButton" binding="eventosButton" default-binding="true">
+      <component id="7c9be" class="javax.swing.JButton" binding="btnEventos">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

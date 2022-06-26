@@ -98,8 +98,7 @@ public class DadosAplicacao {
         return sede;
     }
 
-    public void adicionarCategoria(String nome) {
-        Categoria categoria = new Categoria(nome);
+    public void adicionarCategoria(Categoria categoria) {
         catalogo.add(categoria);
     }
 
@@ -364,14 +363,48 @@ public class DadosAplicacao {
             return false;
         }
 
-        public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
-            Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
-            categoria.adicionarPeca(novaPeca);
-
-            sede.getOficina().registarPeca(novaPeca, qtdSede);
-
-            for (Filial filial: filiais) {
-                filial.getOficina().registarPeca(novaPeca, qtdFiliais);
+    public boolean existemPecas() {
+        for (Categoria categoria: catalogo) {
+            if (!categoria.getPecas().isEmpty()) {
+                return true;
             }
         }
+        return false;
+    }
+
+    public void adicionarPeca(Peca peca, int qtdSede, int qtdFiliais) {
+        sede.registarPecaNaOficina(peca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.registarPecaNaOficina(peca, qtdFiliais);
+        }
+    }
+
+    public List<Peca> getPecas(Categoria categoria){
+        List<Peca> pecasFiltradas = new ArrayList<>();
+
+        if(categoria!=null){
+            pecasFiltradas = categoria.getPecas();
+            return pecasFiltradas;
+        }
+
+        for (Categoria c: catalogo) {
+            for (Peca peca: c.getPecas()) {
+                pecasFiltradas.add(peca);
+            }
+        }
+
+        return pecasFiltradas;
+    }
+
+    public Peca getPeca(String nomePeca) {
+        for (Categoria categoria: catalogo) {
+            for (Peca peca: categoria.getPecas()) {
+                if(peca.getNome()==nomePeca){
+                    return peca;
+                }
+            }
+        }
+        return null;
+    }
 }

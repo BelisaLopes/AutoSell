@@ -36,6 +36,7 @@ public class JanelaOficina extends JFrame {
         btnRegistarCategoria.addActionListener(this::registarCategoria);
         btnRemoverCategoria.addActionListener(this::removerCategoria);
         btnRegistarPeca.addActionListener(this::registarPeca);
+        btnRegistarEncomenda.addActionListener(this::registarEncomenda);
 
         btnVeiculos.addActionListener(this::abrirVeiculos);
         btnOficina.addActionListener(this::abrirOficina);
@@ -85,11 +86,28 @@ public class JanelaOficina extends JFrame {
         new JanelaVeiculos();
     }
 
+    private void registarEncomenda(ActionEvent actionEvent) {
+        System.out.println("Click no registarEncomenda");
+        boolean valido = existemPecas();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NAO_EXISTEM_PECAS);
+            return;
+        }
+
+        JanelaRegistarEncomendaPecas j = new JanelaRegistarEncomendaPecas();
+        abrir(j);
+        fechar();
+    }
+
+    private boolean existemPecas() {
+        return DadosAplicacao.INSTANCE.existemPecas();
+    }
+
     public void registarCategoria(ActionEvent actionEvent){
         System.out.println("Click no registarCategoriaButton");
-        fechar();
         JanelaAdicionarCategoria j = new JanelaAdicionarCategoria();
         abrir(j);
+        fechar();
     }
 
     private void removerCategoria(ActionEvent actionEvent) {
@@ -100,9 +118,9 @@ public class JanelaOficina extends JFrame {
             return;
         }
 
-        fechar();
         JanelaRemoverCategoriaPeca j = new JanelaRemoverCategoriaPeca();
         abrir(j);
+        fechar();
     }
 
     private boolean existemCategoriasSemPecas() {
@@ -117,9 +135,9 @@ public class JanelaOficina extends JFrame {
             return;
         }
 
-        fechar();
         JanelaRegistarPeca j = new JanelaRegistarPeca();
         abrir(j);
+        fechar();
     }
 
     private boolean existemCategorias() {
