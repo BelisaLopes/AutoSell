@@ -18,6 +18,8 @@ public class Sucesso {
     public static final int EVENTO_REMOVIDO = 12;
     public static final int QUANTIDADE_ATUALIZADA = 13;
     public static final int ESTADO_VEICULO_ALTERADO = 14;
+    public static final int VEICULO_REPARADO = 15;
+    public static final int VEICULO_REPARADO_AVISO_STOCK = 16;
 
     public static final int PECA_TRANSFERIDA = 17;
 
@@ -64,6 +66,12 @@ public class Sucesso {
                 break;
             case ESTADO_VEICULO_ALTERADO:
                 JOptionPane.showMessageDialog(parent, "O estado do veículo foi alterado com sucesso!");
+                break;
+            case VEICULO_REPARADO:
+                JOptionPane.showMessageDialog(parent, "O veículo foi reparado com sucesso!");
+                break;
+            case VEICULO_REPARADO_AVISO_STOCK:
+                JOptionPane.showMessageDialog(parent, "O veículo foi reparado com sucesso."+'\n'+" AVISO: Existem peças com stock inferior ao limite mínimo");
                 break;
             case PECA_TRANSFERIDA:
                 JOptionPane.showMessageDialog(parent, "A transferência da(s) peça(s) foi registada com sucesso!");

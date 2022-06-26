@@ -45,7 +45,7 @@ public class JanelaVeiculos extends JFrame{
         fechar();
 
         JanelaRepararVeiculo jr = new JanelaRepararVeiculo();
-//        jr.setVisible(true);
+        jr.setVisible(true);
     }
 
     private void btnTransferirVeiculosActionPerformed(ActionEvent evt) {

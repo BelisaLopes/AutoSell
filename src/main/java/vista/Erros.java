@@ -71,10 +71,16 @@ public class Erros {
     public static final int LISTA_VEICULOS_VAZIA = 50;
     public static final int SELECIONAR_PECA = 51;
     public static final int QUANTIDADE_NOVA_IGUAL_ATUAL = 52;
-
-    public static final int QUANTIDADE_SUPERIOR_STOCK = 58;
+    public static final int QUANTIDADE_SUPERIOR_STOCK = 53;
+    public static final int VEICULO_AINDA_EM_REPARACAO = 54;
+    public static final int TIPO_QUANTIDADE_PECA = 55;
+    public static final int QUANTIDADE_PECA_INVALIDA = 56;
+    public static final int SEM_STOCK = 57;
+//    public static final int QUANTIDADE_SUPERIOR_STOCK = 58;
     public static final int QUANTIDADE_STOCK_INSUFICIENTE = 59;
     public static final int LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO = 60;
+
+
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -234,6 +240,18 @@ public class Erros {
                 break;
             case QUANTIDADE_SUPERIOR_STOCK:
                 JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade introduzida é superior ao stock atual da peça.");
+                break;
+            case VEICULO_AINDA_EM_REPARACAO:
+                JOptionPane.showMessageDialog(parent, "Ainda não terminou a reparação do veículo previamente selecionado. Para continuar, defina-o como reparado");
+                break;
+            case TIPO_QUANTIDADE_PECA:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : o valor da quantidade de peças deve ser um número inteiro");
+                break;
+            case QUANTIDADE_PECA_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : o valor da quantidade de peças deve ser um número positivo");
+                break;
+            case SEM_STOCK:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : não há stock disponível para a peça selecionada");
                 break;
             case QUANTIDADE_STOCK_INSUFICIENTE:
                 JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade introduzida iria colocar o stock abaixo da quantidade mínima.");
