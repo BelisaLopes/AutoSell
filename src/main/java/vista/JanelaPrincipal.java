@@ -19,6 +19,7 @@ public class JanelaPrincipal extends JFrame {
     public JanelaPrincipal(){
         setContentPane(painelPrincipal);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);

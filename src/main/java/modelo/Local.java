@@ -17,6 +17,10 @@ public abstract class Local {
         return distrito;
     }
 
+    public void setDistrito(Distrito distrito) {
+        this.distrito = distrito;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

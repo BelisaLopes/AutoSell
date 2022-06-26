@@ -39,13 +39,10 @@
             <properties/>
             <border type="none" title="Eventos não decorridos"/>
             <children>
-              <component id="7ecb" class="javax.swing.JList" binding="list1" default-binding="true">
+              <component id="7ecb" class="javax.swing.JList" binding="listaEventos">
                 <constraints/>
                 <properties>
-                  <model>
-                    <item value="Feira de Óbidos"/>
-                    <item value="Feira de Porto de Mós"/>
-                  </model>
+                  <model/>
                 </properties>
               </component>
             </children>
@@ -66,18 +63,15 @@
             <properties/>
             <border type="none" title="Filtros"/>
             <children>
-              <component id="19ea6" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="19ea6" class="javax.swing.JComboBox" binding="comboBoxDistritos">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <model>
-                    <item value="Leiria"/>
-                    <item value="Lisboa"/>
-                  </model>
+                  <model/>
                 </properties>
               </component>
-              <component id="c2449" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="c2449" class="javax.swing.JTextField" binding="dataIniciotextField">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -93,7 +87,7 @@
                   <text value="-"/>
                 </properties>
               </component>
-              <component id="f53ba" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="f53ba" class="javax.swing.JTextField" binding="dataFimTextField">
                 <constraints>
                   <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -119,7 +113,7 @@
               </component>
             </children>
           </grid>
-          <component id="98864" class="javax.swing.JButton" binding="apresentarEventosNãoDecorridosButton" default-binding="true">
+          <component id="98864" class="javax.swing.JButton" binding="apresentarEventosNaoDecorridosButton">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

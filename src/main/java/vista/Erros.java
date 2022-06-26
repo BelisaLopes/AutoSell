@@ -68,6 +68,7 @@ public class Erros {
     public static final int QUANTIDADE_SEDE_INFERIOR_FILIAIS = 47;
     public static final int NAO_EXISTEM_PECAS = 48;
     public static final int CATEGORIA_SEM_PECAS = 49;
+    public static final int LISTA_VEICULOS_VAZIA = 50;
     public static final int SELECIONAR_PECA = 51;
 
     public static void mostrarErro(Window parent, int numero){
@@ -179,7 +180,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
                 break;
             case SEM_EVENTOS_A_DECORRER_OU_AGENDADOS:
-                JOptionPane.showMessageDialog(parent, "Não existem eventos terminados à data atual.");
+                JOptionPane.showMessageDialog(parent, "Não existem eventos agendados/a decorrer à data atual.");
                 break;
             case SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "Para avançar é necessário primeiro escolher um evento origem e um local destino.");
@@ -216,6 +217,9 @@ public class Erros {
                 break;
             case CATEGORIA_SEM_PECAS:
                 JOptionPane.showMessageDialog(parent, "A categoria selecionada não tem peças associadas.");
+                break;
+            case LISTA_VEICULOS_VAZIA:
+                JOptionPane.showMessageDialog(parent, "A lista de veículos está vazia.");
                 break;
             case SELECIONAR_PECA:
                 JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma peça primeiro.");
