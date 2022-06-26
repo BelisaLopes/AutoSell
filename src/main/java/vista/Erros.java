@@ -72,6 +72,11 @@ public class Erros {
     public static final int SELECIONAR_PECA = 51;
     public static final int QUANTIDADE_NOVA_IGUAL_ATUTAL = 52;
     public static final int QUANTIDADE_SUPERIOR_STOCK = 53;
+    public static final int VEICULO_AINDA_EM_REPARACAO = 54;
+    public static final int TIPO_QUANTIDADE_PECA = 55;
+    public static final int QUANTIDADE_PECA_INVALIDA = 56;
+    public static final int SEM_STOCK = 57;
+
 
     public static void mostrarErro(Window parent, int numero){
         switch (numero) {
@@ -231,6 +236,18 @@ public class Erros {
                 break;
             case QUANTIDADE_SUPERIOR_STOCK:
                 JOptionPane.showMessageDialog(parent, "Quantidade inválida. A quantidade mínima introduzida é superior ao stock atual da peça.");
+                break;
+            case VEICULO_AINDA_EM_REPARACAO:
+                JOptionPane.showMessageDialog(parent, "Ainda não terminou a reparação do veículo previamente selecionado. Para continuar, defina-o como reparado");
+                break;
+            case TIPO_QUANTIDADE_PECA:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : o valor da quantidade de peças deve ser um número inteiro");
+                break;
+            case QUANTIDADE_PECA_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : o valor da quantidade de peças deve ser um número positivo");
+                break;
+            case SEM_STOCK:
+                JOptionPane.showMessageDialog(parent, "Valor inválido : não há mais stock para a peça selecionada");
                 break;
             default:
         }

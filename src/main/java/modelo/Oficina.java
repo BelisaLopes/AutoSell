@@ -22,7 +22,8 @@ public class Oficina {
     }
 
     public void atualizarStockPeca(Peca peca, int quantidade) {
-        stockPecas.put(peca, quantidade);
+        int q = stockPecas.get(peca);
+        stockPecas.put(peca, q - quantidade);
     }
 
     public void adicionarStockPeca(Peca peca, int quantidade) {
