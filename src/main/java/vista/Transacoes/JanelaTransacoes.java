@@ -16,9 +16,9 @@ public class JanelaTransacoes extends JFrame {
     private JButton transaçõesButton;
     private JButton eventosButton;
     private JButton oficinaButton;
-    private JButton registarCompraButton;
+    private JButton btnRegistarCompra;
     private JButton registarVendaButton;
-    private JButton consultarHistóricoDeTransaçõesButton;
+    private JButton btnConsultarHistorico;
     private JPanel painelPrincipal;
 
     public JanelaTransacoes() {
@@ -32,9 +32,11 @@ public class JanelaTransacoes extends JFrame {
         transaçõesButton.addActionListener(this::btnTransacoesButtonActionPerformed);
         clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
-        registarCompraButton.addActionListener(this::btnRegistarCompraButtonActionPerformed);
+
+        btnConsultarHistorico.addActionListener(this::consultarHistorico);
+        btnRegistarCompra.addActionListener(this::registarCompra);
+
         registarVendaButton.addActionListener(this::btnRegistarVendaButtonActionPerformed);
-        consultarHistóricoDeTransaçõesButton.addActionListener(this::btnConsultarHistóricoDeTransaçõesButtonActionPerformed);
 
     }
 
@@ -42,6 +44,7 @@ public class JanelaTransacoes extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
         setVisible(false);
         dispose();
@@ -84,13 +87,6 @@ public class JanelaTransacoes extends JFrame {
         j.setVisible(true);
     }
 
-    private void btnRegistarCompraButtonActionPerformed(ActionEvent evt) {
-        this.setVisible(false);
-        dispose();
-        JanelaRegistarCompra j = new JanelaRegistarCompra();
-        //j.setVisible(true);
-    }
-
     private void btnRegistarVendaButtonActionPerformed(ActionEvent evt) {
         this.setVisible(false);
         dispose();
@@ -98,11 +94,27 @@ public class JanelaTransacoes extends JFrame {
         j.setVisible(true);
     }
 
-    private void btnConsultarHistóricoDeTransaçõesButtonActionPerformed(ActionEvent evt) {
+    private void consultarHistorico(ActionEvent actionEvent) {
+        JanelaHistoricoTransacoes j = new JanelaHistoricoTransacoes();
+        abrir(j);
+        fechar();
+    }
+
+    private void registarCompra(ActionEvent actionEvent) {
+        JanelaRegistarCompra j = new JanelaRegistarCompra();
+        abrir(j);
+        fechar();
+    }
+
+    private void fechar() {
         this.setVisible(false);
         dispose();
-        JanelaHistoricoTransacoes j = new JanelaHistoricoTransacoes();
-        //j.setVisible(true);
+    }
+
+
+    private void abrir(JFrame j) {
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
     }
 
     public static void main(String[] args) {

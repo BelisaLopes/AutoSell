@@ -2,7 +2,7 @@ package vista.Transacoes;
 
 import javax.swing.*;
 
-public class JanelaHistoricoTransacoes {
+public class JanelaHistoricoTransacoes extends JFrame{
     private JButton estatísticasButton;
     private JButton veículosButton;
     private JButton eventosButton;
