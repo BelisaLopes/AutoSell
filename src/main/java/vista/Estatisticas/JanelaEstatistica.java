@@ -52,11 +52,17 @@ public class JanelaEstatistica extends JFrame {
     }
 
     private void btnModelosEMarcasMaisVendidosActionPerformed(ActionEvent evt) {
-        System.out.println("Modelos e marcas mais vendidos");
+        setVisible(false);
+        dispose();
+        JanelaModelosMarcasMaisVendidos j = new JanelaModelosMarcasMaisVendidos();
+        j.setVisible(true);
     }
 
     private void btnNumeroTotalDeVeiculosVendidosActionPerformed(ActionEvent evt) {
-        System.out.println("Número total de veículos vendidos");
+        setVisible(false);
+        dispose();
+        JanelaNumeroVeiculosVendidos j = new JanelaNumeroVeiculosVendidos();
+        j.setVisible(true);
     }
 
     private void btnMelhoresClientesActionPerformed(ActionEvent evt) {
@@ -64,7 +70,10 @@ public class JanelaEstatistica extends JFrame {
     }
 
     private void btnMelhoresFiliaisFeirasActionPerformed(ActionEvent evt) {
-        System.out.println("Melhores filiais e feiras");
+        setVisible(false);
+        dispose();
+        JanelaMelhoresFiliaisFeiras j = new JanelaMelhoresFiliaisFeiras();
+        j.setVisible(true);
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {

@@ -82,6 +82,7 @@ public class Erros {
     public static final int REGISTAR_VEICULO = 61;
     public static final int FALHA_REGISTO_VEICULO = 62;
     public static final int FALHA_REGISTO_CLIENTE = 63;
+    public static final int NENHUM_VEICULO_EM_REPARACAO = 64;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -154,7 +155,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Apenas pode selecionar um cliente");
                 break;
             case DATA_VENDA_INVALIDA:
-                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual"); //Se é para inserir a data atual é uma ação do cliente?
+                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual");
                 break;
             case SELECIONAR_VEICULO_A_RECEBER:
                 JOptionPane.showMessageDialog(parent, "Por favor selecione a opção “Registar veículo a receber");
@@ -269,6 +270,9 @@ public class Erros {
                 break;
             case FALHA_REGISTO_CLIENTE:
                 JOptionPane.showMessageDialog(parent, "Ocorreu uma falha no registo do cliente.");
+                break;
+            case NENHUM_VEICULO_EM_REPARACAO:
+                JOptionPane.showMessageDialog(parent, "Não existe nenhum veículo em reparação. É necessário adicionar peças a um veículo primeiro.");
                 break;
             default:
         }

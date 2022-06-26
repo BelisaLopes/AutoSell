@@ -84,7 +84,6 @@ public class JanelaRepararVeiculo extends JFrame{
         apresentarPecasButton.addActionListener(this::btnApresentarPecasActionPerformed);
         adicionarPecasButton.addActionListener(this::btnAdicionarPecasActionPerformed);
         registarVeículoComoReparadoButton.addActionListener(this::btnRegistarVeiculoComoReparadoActionPerformed);
-        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         listaPecasDisponiveis.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -287,7 +286,7 @@ public class JanelaRepararVeiculo extends JFrame{
     private void btnRegistarVeiculoComoReparadoActionPerformed(ActionEvent evt) {
         boolean valido = !pecasUsadas.isEmpty();
         if(!valido){
-            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            Erros.mostrarErro(this, Erros.NENHUM_VEICULO_EM_REPARACAO);
             return;
         }
         Oficina oficina = estabelecimento.getOficina();
