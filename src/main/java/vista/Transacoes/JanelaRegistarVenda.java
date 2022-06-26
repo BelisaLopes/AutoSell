@@ -247,6 +247,7 @@ public class JanelaRegistarVenda extends JFrame {
 
         DadosAplicacao dados = DadosAplicacao.INSTANCE;
         dados.adicionarVeiculoVendido(veiculoParaVenda);
+        dados.removerVeiculoVendido(veiculoParaVenda);
 
         fechar();
 

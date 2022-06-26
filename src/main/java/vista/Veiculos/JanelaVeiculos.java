@@ -66,7 +66,7 @@ public class JanelaVeiculos extends JFrame{
         fechar();
 
         JanelaVeiculoPorReparar jv = new JanelaVeiculoPorReparar();
-//        jv.setVisible(true);
+        jv.setVisible(true);
     }
 
     private void fechar(){

@@ -1,6 +1,7 @@
 package vista.Transacoes;
 
 import modelo.Cliente;
+import modelo.DadosAplicacao;
 import modelo.Data;
 import vista.Clientes.JanelaClientes;
 import vista.Erros;
@@ -126,6 +127,12 @@ public class JanelaRegistarNovoCliente extends JDialog {
             return;
         }
 
+        valido = !isNifDuplicadoNovoRegisto(textNIF.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.CLIENTE_EXISTENTE);
+            return;
+        }
+
         valido = isContactoValido(textContacto.getText());
         if(!valido){
             Erros.mostrarErro(this, Erros.CONTACTO_INVALIDO);
@@ -137,8 +144,12 @@ public class JanelaRegistarNovoCliente extends JDialog {
         fechar();
     }
 
+    private boolean isNifDuplicadoNovoRegisto(String nif) {
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        return da.isNIFDuplicadoNovoRegisto(nif);
+    }
+
     private void cancelarButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Cancelar");
         fechar();
     }
 

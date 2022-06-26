@@ -102,6 +102,7 @@ public class JanelaConsultarVeiculos extends JFrame{
 
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
+        modeloListaVeiculos.removeAllElements();
         Estabelecimento estabelecimento;
         try {
             estabelecimento = (Estabelecimento) localComboBox.getSelectedItem();
@@ -142,7 +143,6 @@ public class JanelaConsultarVeiculos extends JFrame{
     }
 
     private void atualizarListaVeiculos(List<Veiculo> veiculos) {
-        modeloListaVeiculos.removeAllElements();
         for (Veiculo veiculo : veiculos) {
             modeloListaVeiculos.add(modeloListaVeiculos.getSize(),veiculo);
         }

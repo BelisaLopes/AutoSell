@@ -183,6 +183,10 @@ public class DadosAplicacao {
         veiculos.add(veiculo);
     }
 
+    public void removerVeiculoVendido(Veiculo veiculo) {
+        veiculosProntosParaVenda.remove(veiculo);
+    }
+
     public List<Cliente> getClientes(String nome, String nif) {
 
         List<Cliente> clientesFiltrados = new ArrayList<>();
@@ -209,6 +213,15 @@ public class DadosAplicacao {
         if(cliente.getNIF().equals(nif)){
             return false;
         }
+        for (Cliente c : clientes) {
+            if(c.getNIF().equals(nif)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isNIFDuplicadoNovoRegisto(String nif) {
         for (Cliente c : clientes) {
             if(c.getNIF().equals(nif)){
                 return true;
@@ -525,5 +538,41 @@ public class DadosAplicacao {
         }
 
         return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
+        List<Veiculo> veiculos = new ArrayList<>();
+
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosProntosParaVenda) {
+            v = veiculo;
+
+            if(estabelecimento != null && veiculo.getLocal() != estabelecimento){
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public void definirVeiculoPorReparar(Veiculo veiculo) {
+        veiculo.setEstadoVeiculo(EstadoVeiculo.POR_REPARAR);
+        veiculosProntosParaVenda.remove(veiculo);
+        veiculosPorReparar.add(veiculo);
     }
 }
