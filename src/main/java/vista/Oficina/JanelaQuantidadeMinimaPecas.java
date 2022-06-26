@@ -108,7 +108,7 @@ public class JanelaQuantidadeMinimaPecas extends JFrame{
 
         valido = !isEqualToMinAtual(textQtdNovaQtd);
         if(!valido){
-            Erros.mostrarErro(this, Erros.QUANTIDADE_NOVA_IGUAL_ATUTAL);
+            Erros.mostrarErro(this, Erros.QUANTIDADE_NOVA_IGUAL_ATUAL);
             return;
         }
 
@@ -178,9 +178,9 @@ public class JanelaQuantidadeMinimaPecas extends JFrame{
         return estabelecimento.getOficina().getLimiteMinimoPeca(peca)==qtdMinimaInt;
     }
 
-    private boolean isQuantidadeValida(String qtdEncomendada) {
+    private boolean isQuantidadeValida(String qtdMinima) {
         try{
-            Integer.parseInt(qtdEncomendada);
+            Integer.parseInt(qtdMinima);
         }catch (NumberFormatException ex) {
             return false;
         }

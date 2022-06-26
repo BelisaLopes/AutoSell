@@ -19,6 +19,8 @@ public class Sucesso {
     public static final int QUANTIDADE_ATUALIZADA = 13;
     public static final int ESTADO_VEICULO_ALTERADO = 14;
 
+    public static final int PECA_TRANSFERIDA = 17;
+
     public static void mostrarSucesso(Window parent, int numero){
         switch (numero) {
             case VEICULO_ADICIONADO_EVENTO:
@@ -62,6 +64,9 @@ public class Sucesso {
                 break;
             case ESTADO_VEICULO_ALTERADO:
                 JOptionPane.showMessageDialog(parent, "O estado do veículo foi alterado com sucesso!");
+                break;
+            case PECA_TRANSFERIDA:
+                JOptionPane.showMessageDialog(parent, "A transferência da(s) peça(s) foi registada com sucesso!");
                 break;
             default:
         }
