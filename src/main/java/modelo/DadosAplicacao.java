@@ -56,6 +56,8 @@ public class DadosAplicacao {
         initListaVeiculosEstabelecimento();
 
 //        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
         Veiculo v = new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
         v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
         List<Veiculo> lista = listaVeiculosPorLocal.get(sede);
@@ -624,5 +626,9 @@ public class DadosAplicacao {
         }
 
         return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public int size() {
+        return clientes.size();
     }
 }

@@ -109,6 +109,7 @@ public class JanelaRegistarVenda extends JFrame {
             dados.adicionarVeiculoPorReparar(veiculo);
             dados.adicionarVeiculoAoLocal(dados.getSede(), veiculo);
             valorVeiculoRetoma = veiculo.getValorVeiculo();
+            veiculo.setDonoAnterior(listClientes.getSelectedValue());
         }
         else{
             JOptionPane.showMessageDialog(this, "Não é possível registar um veículo a receber sem a opção de venda com retoma");
