@@ -152,7 +152,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Apenas pode selecionar um cliente");
                 break;
             case DATA_VENDA_INVALIDA:
-                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual"); //Se é para inserir a data atual é uma ação do cliente?
+                JOptionPane.showMessageDialog(parent, "Data inválida, por favor insira a data atual");
                 break;
             case SELECIONAR_VEICULO_A_RECEBER:
                 JOptionPane.showMessageDialog(parent, "Por favor selecione a opção “Registar veículo a receber");
