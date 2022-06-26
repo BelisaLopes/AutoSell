@@ -69,7 +69,7 @@ public class Sucesso {
                 JOptionPane.showMessageDialog(parent, "O veículo foi reparado com sucesso!");
                 break;
             case VEICULO_REPARADO_AVISO_STOCK:
-                JOptionPane.showMessageDialog(parent, "O veículo foi reparado com sucesso . AVISO: Existem peças com stock inferior ao limite mínimo");
+                JOptionPane.showMessageDialog(parent, "O veículo foi reparado com sucesso."+'\n'+" AVISO: Existem peças com stock inferior ao limite mínimo");
                 break;
             default:
         }

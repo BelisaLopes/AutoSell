@@ -589,6 +589,12 @@ public class DadosAplicacao {
         veiculosPorReparar.add(veiculo);
     }
 
+    public void definirVeiculoReparado(Veiculo veiculo){
+        veiculo.setEstadoVeiculo(EstadoVeiculo.REPARADO);
+        veiculosPorReparar.remove(veiculo);
+        veiculosProntosParaVenda.add(veiculo);
+    }
+
     public List<Veiculo> getVeiculosPorReparar(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
         List<Veiculo> veiculos = new ArrayList<>();
         List<Veiculo> veiculosPorRepararNoLocal = new ArrayList<>();
