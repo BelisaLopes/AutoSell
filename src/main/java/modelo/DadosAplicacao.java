@@ -184,6 +184,10 @@ public class DadosAplicacao {
         veiculos.add(veiculo);
     }
 
+    public void removerVeiculoVendido(Veiculo veiculo) {
+        veiculosProntosParaVenda.remove(veiculo);
+    }
+
     public List<Cliente> getClientes(String nome, String nif) {
 
         List<Cliente> clientesFiltrados = new ArrayList<>();
