@@ -47,7 +47,6 @@ public class JanelaRepararVeiculo extends JFrame{
     private DefaultListModel modeloListaVeiculos;
     private DefaultListModel modeloListaPecas;
     private DefaultListModel modeloListaPecasReparacao;
-//    private Hashtable<Peca, Integer> pecasUsadasNaReparacao;
     private Veiculo veiculo;
     private Estabelecimento estabelecimento;
 
@@ -75,7 +74,7 @@ public class JanelaRepararVeiculo extends JFrame{
         categoriasComboBox.setModel(modeloComboBoxCategorias);
         estabelecimentoComboBox.setModel(modeloComboBoxLocais);
         listaVeiculos.setModel(modeloListaVeiculos);
-        pecasUsadas = new Hashtable<>();
+
         initComponents();
 
 
@@ -331,6 +330,7 @@ public class JanelaRepararVeiculo extends JFrame{
 
 
     private void initComponents() {
+        pecasUsadas = new Hashtable<>();
         List<Estabelecimento> list = DadosAplicacao.INSTANCE.getEstabelecimentos();
         for (Estabelecimento estabelecimento : list) {
             modeloComboBoxLocais.addElement(estabelecimento);
