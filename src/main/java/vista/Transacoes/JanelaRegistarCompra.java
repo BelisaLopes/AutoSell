@@ -24,7 +24,7 @@ public class JanelaRegistarCompra extends JFrame{
     private JButton btnRegistarVeiculo;
     private JButton btnRegistarCompra;
     private JButton btnRegistarCliente;
-    private JList listClientes;
+    private JList<Cliente> listClientes;
     private JTextField textFieldData;
     private JComboBox comboBoxLocais;
     private JTextField textFieldNome;
@@ -36,6 +36,7 @@ public class JanelaRegistarCompra extends JFrame{
 
     private DefaultComboBoxModel modeloComboBoxLocais;
     private DefaultListModel modeloListaClientes;
+    private Veiculo veiculo = null;
 
     public JanelaRegistarCompra(){
         setContentPane(painelPrincipal);
@@ -53,6 +54,7 @@ public class JanelaRegistarCompra extends JFrame{
         btnCancelar.addActionListener(this::cancelar);
         btnRegistarCompra.addActionListener(this::registarCompra);
         btnRegistarCliente.addActionListener(this::registarCliente);
+        btnRegistarVeiculo.addActionListener(this::registarVeiculo);
 
         btnVeiculos.addActionListener(this::abrirVeiculos);
         btnOficina.addActionListener(this::abrirOficina);
@@ -62,62 +64,121 @@ public class JanelaRegistarCompra extends JFrame{
         btnTransacoes.addActionListener(this::abrirTransacoes);
     }
 
-    private void registarCliente(ActionEvent actionEvent) {
+    private void registarVeiculo(ActionEvent actionEvent) {
+        System.out.println("Click no registarVeiculo");
+        veiculo = JanelaRegistarVeiculo.mostrarVeiculo(this);
 
+        boolean valido = isVeiculoRegistado();
+        if(!valido) {
+            Erros.mostrarErro(this, Erros.FALHA_REGISTO_VEICULO);
+            return;
+        }
+
+        DadosAplicacao dados = DadosAplicacao.INSTANCE;
+
+        dados.adicionarVeiculoPorReparar(veiculo);
+        dados.adicionarVeiculoAoLocal(dados.getSede(), veiculo);
+
+        veiculo.setDonoAnterior(listClientes.getSelectedValue());
+    }
+
+    private void registarCliente(ActionEvent actionEvent) {
+        System.out.println("Click no registarCliente");
+        Cliente cliente = JanelaRegistarNovoCliente.mostrarCliente(this);
+
+        boolean valido = isClienteRegistado(cliente);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.FALHA_REGISTO_CLIENTE);
+            return;
+        }
+
+        DadosAplicacao dados = DadosAplicacao.INSTANCE;
+        dados.adicionarCliente(cliente);
+    }
+
+    private boolean isClienteRegistado(Cliente cliente) {
+        return !(cliente==null);
     }
 
     private void registarCompra(ActionEvent actionEvent) {
         System.out.println("Click no registarCompra");
-        boolean valido = escolheuPeca();
+        boolean valido = escolheuCliente();
         if(!valido){
-            Erros.mostrarErro(this, Erros.SELECIONAR_PECA);
+            Erros.mostrarErro(this, Erros.SELECIONAR_CLIENTE);
             return;
         }
 
-        valido = !isQtdCampoVazio();
+        valido = !isAlgumCampoVazio();
         if(!valido){
             Erros.mostrarErro(this, Erros.CAMPO_VAZIO);
             return;
         }
 
-        String textQtdEncomendada = textFieldQtdEncomendada.getText();
-        valido = isQuantidadeValida(textQtdEncomendada);
+        valido = isDataValida(textFieldData.getText());
         if(!valido){
-            Erros.mostrarErro(this, Erros.QUANTIDADE_INVALIDA);
+            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA);
             return;
         }
 
-        adicionarStock(textQtdEncomendada);
-        Sucesso.mostrarSucesso(this, Sucesso.PECA_ENCOMENDADA);
-        atualizarLabelStock();
+        valido = isPrecoValido(textFieldPreco.getText());
+        if(!valido){
+            Erros.mostrarErro(this, Erros.PRECO_INVALIDO);
+            return;
+        }
+
+        valido = isVeiculoRegistado();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.REGISTAR_VEICULO);
+            return;
+        }
+
+        adicionarTransacao();
+        Sucesso.mostrarSucesso(this, Sucesso.COMPRA_REGISTADA);
+        fechar();
+        new JanelaOficina();
     }
 
-    private void adicionarStock(String qtdEncomendada) {
-        Estabelecimento estabelecimento = (Estabelecimento) comboBoxLocais.getSelectedItem();
+    private void adicionarTransacao() {
+        Cliente cliente = listClientes.getSelectedValue();
+        Data data = Data.parseData(textFieldData.getText());
+        Float preco = Float.parseFloat(textFieldPreco.getText());
+        Local local = (Local) comboBoxLocais.getSelectedItem();
 
-        String nomePeca = (String) listPecas.getSelectedValue();
-        Peca peca = DadosAplicacao.INSTANCE.getPeca(nomePeca);
+        Transacao transacao = new Transacao(TipoTransacao.COMPRA, cliente,data,preco,veiculo,local);
 
-        int qtdEncomendadaInt = Integer.parseInt(qtdEncomendada);
-
-        estabelecimento.getOficina().adicionarStockPeca(peca,qtdEncomendadaInt);
+        cliente.addTransacao(transacao);
     }
 
-    private boolean isQuantidadeValida(String qtdEncomendada) {
+    private boolean isVeiculoRegistado() {
+        return !(veiculo==null);
+    }
+
+    private boolean isPrecoValido(String preco) {
         try{
-            Integer.parseInt(qtdEncomendada);
+            Double.parseDouble(preco);
         }catch (NumberFormatException ex) {
             return false;
         }
         return true;
     }
 
-    private boolean isQtdCampoVazio() {
-        return textFieldQtdEncomendada.getText().length()==0;
+    private boolean isDataValida(String data){
+        Data data_final = Data.parseData(data);
+        if(data_final == null){
+            return false;
+        }
+        int dia = data_final.getDia();
+        int mes = data_final.getMes();
+        int ano = data_final.getAno();
+        return (dia > 0 && dia < 32 && mes > 0 && mes < 13 && ano > 0);
     }
 
-    private boolean escolheuPeca() {
-        return !listPecas.isSelectionEmpty();
+    private boolean isAlgumCampoVazio() {
+        return textFieldData.getText().isEmpty() && textFieldPreco.getText().isEmpty();
+    }
+
+    private boolean escolheuCliente() {
+        return !listClientes.isSelectionEmpty();
     }
 
     private void apresentarClientes(ActionEvent actionEvent) {
@@ -126,6 +187,12 @@ public class JanelaRegistarCompra extends JFrame{
 
         String nome = textFieldNome.getText();
         String nif = textFieldNif.getText();
+        if(nome.isEmpty()){
+            nome = null;
+        }
+        if(nif.isEmpty()){
+            nif = null;
+        }
 
         List<Cliente> clientes = DadosAplicacao.INSTANCE.getClientes(nome,nif);
         boolean valido = !isClientesVazio(clientes);
@@ -143,7 +210,7 @@ public class JanelaRegistarCompra extends JFrame{
 
     private void atualizarListaClientes(List<Cliente> clientes) {
         for (Cliente cliente : clientes) {
-            modeloListaClientes.add(modeloListaClientes.getSize(),cliente.getNome());
+            modeloListaClientes.add(modeloListaClientes.getSize(),cliente);
         }
     }
 

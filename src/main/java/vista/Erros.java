@@ -79,7 +79,9 @@ public class Erros {
 //    public static final int QUANTIDADE_SUPERIOR_STOCK = 58;
     public static final int QUANTIDADE_STOCK_INSUFICIENTE = 59;
     public static final int LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO = 60;
-
+    public static final int REGISTAR_VEICULO = 61;
+    public static final int FALHA_REGISTO_VEICULO = 62;
+    public static final int FALHA_REGISTO_CLIENTE = 63;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -107,7 +109,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Data de nascimento inválida. A data deve ter o formato dd/mm/aaaa");
                 break;
             case MORADA_INVALIDA:
-                JOptionPane.showMessageDialog(parent, "Morada inválida. A morada deve conter entre 2 e 256 carateres não-brancos");
+                JOptionPane.showMessageDialog(parent, "Morada inválida. A morada deve conter entre 10 e 256 carateres não-brancos");
                 break;
             case NIF_INVALIDO:
                 JOptionPane.showMessageDialog(parent, "NIF inválido. O NIF deve ter 9 dígitos e começar pelo número 1");
@@ -258,6 +260,15 @@ public class Erros {
                 break;
             case LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO:
                 JOptionPane.showMessageDialog(parent, "O local origem escolhido é igual ao local destino. Escolha locais diferentes para transferir.");
+                break;
+            case REGISTAR_VEICULO:
+                JOptionPane.showMessageDialog(parent, "Para continuar é necessário registar um veículo primeiro.");
+                break;
+            case FALHA_REGISTO_VEICULO:
+                JOptionPane.showMessageDialog(parent, "Ocorreu uma falha no registo do veículo.");
+                break;
+            case FALHA_REGISTO_CLIENTE:
+                JOptionPane.showMessageDialog(parent, "Ocorreu uma falha no registo do cliente.");
                 break;
             default:
         }
