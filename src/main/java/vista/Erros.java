@@ -83,6 +83,7 @@ public class Erros {
     public static final int FALHA_REGISTO_VEICULO = 62;
     public static final int FALHA_REGISTO_CLIENTE = 63;
     public static final int NENHUM_VEICULO_EM_REPARACAO = 64;
+    public static final int TRANSACOES_NAO_EXISTEM = 65;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -273,6 +274,9 @@ public class Erros {
                 break;
             case NENHUM_VEICULO_EM_REPARACAO:
                 JOptionPane.showMessageDialog(parent, "Não existe nenhum veículo em reparação. É necessário adicionar peças a um veículo primeiro.");
+                break;
+            case TRANSACOES_NAO_EXISTEM:
+                JOptionPane.showMessageDialog(parent, "Não existem transações registadas. Registe primeiro uma transação.");
                 break;
             default:
         }

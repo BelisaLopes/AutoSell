@@ -28,6 +28,10 @@ public class Transacao {
         this.local = local;
     }
 
+    public Data getDataTransacao() {
+        return dataTransacao;
+    }
+
     @Override
     public String toString() {
         return "Transação: " + tipoTransacao + " -  " + local + " -  " + veiculo +" -  Data: " + dataTransacao + " -  Valor: " + valorTransacao + "€";
