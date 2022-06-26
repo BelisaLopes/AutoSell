@@ -3,21 +3,21 @@ package vista.Transacoes;
 import javax.swing.*;
 
 public class JanelaRegistarCompra {
-    private JButton veículosButton;
-    private JButton oficinaButton;
-    private JButton eventosButton;
-    private JButton transaçõesButton;
-    private JButton clientesButton;
-    private JButton estatísticasButton;
-    private JButton registarVeículoButton;
-    private JButton registarCompraDeVeículoButton;
-    private JButton registarNovoClienteButton;
-    private JList list1;
-    private JTextField textField1;
-    private JComboBox comboBox1;
-    private JTextField textField2;
-    private JTextField textField4;
-    private JButton apresentarClientesButton;
-    private JTextField textField6;
-    private JButton cancelarButton;
+    private JButton btnVeiculos;
+    private JButton btnOficina;
+    private JButton btnEventos;
+    private JButton btnTransacoes;
+    private JButton btnClientes;
+    private JButton btnEstatisticas;
+    private JButton btnRegistarVeiculo;
+    private JButton btnRegistarCompra;
+    private JButton btnRegistarCliente;
+    private JList listClientes;
+    private JTextField textFieldData;
+    private JComboBox comboBoxLocais;
+    private JTextField textFieldNome;
+    private JTextField textFieldNif;
+    private JButton btnApresentarClientes;
+    private JTextField textFieldPreco;
+    private JButton btnCancelar;
 }

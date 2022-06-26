@@ -44,6 +44,6 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "Peca";
+        return nome;
     }
 }
