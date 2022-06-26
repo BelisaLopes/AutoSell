@@ -12,9 +12,9 @@ public class Oficina {
         limiteMinimoStockPecas = new Hashtable<>();
     }
 
-    public void registarPeca(Peca peca, int quantidade) {
-        stockPecas.put(peca, quantidade);
-        limiteMinimoStockPecas.put(peca, quantidade);
+    public void registarPeca(Peca peca, int qtdMin) {
+        stockPecas.put(peca, qtdMin);
+        limiteMinimoStockPecas.put(peca, qtdMin);
     }
 
     public void atualizarLimiteMinimoPeca(Peca peca, int quantidade) {
@@ -23,6 +23,11 @@ public class Oficina {
 
     public void atualizarStockPeca(Peca peca, int quantidade) {
         stockPecas.put(peca, quantidade);
+    }
+
+    public void adicionarStockPeca(Peca peca, int quantidade) {
+        int quantidadeAtual = stockPecas.get(peca);
+        stockPecas.put(peca, quantidadeAtual+quantidade);
     }
 
     public int getStockPeca(Peca peca) {

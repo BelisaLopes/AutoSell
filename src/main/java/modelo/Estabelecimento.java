@@ -37,4 +37,8 @@ public abstract class Estabelecimento extends Local{
     public Oficina getOficina() {
         return oficina;
     }
+
+    public void registarPecaNaOficina(Peca peca, int qtdMin) {
+        oficina.registarPeca(peca,qtdMin);
+    }
 }

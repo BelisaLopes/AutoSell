@@ -1,7 +1,12 @@
 package vista.Eventos;
 
 import modelo.*;
+import vista.Clientes.JanelaClientes;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
+import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -35,6 +40,8 @@ public class JanelaRegistarEvento extends JDialog{
 //        super(parent);
         setContentPane(painel);
         pack();
+        setLocationRelativeTo(null);
+//        abrir();
 //        setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
@@ -43,7 +50,7 @@ public class JanelaRegistarEvento extends JDialog{
         transaçõesButton.addActionListener(this::btnTransacoesActionPerformed);
         clientesButton.addActionListener(this::btnClientesActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
-        cancelarButton.addActionListener(this::btnEventosActionPerformed);
+        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
         modeloComboBoxFiliais = new DefaultComboBoxModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
@@ -54,16 +61,7 @@ public class JanelaRegistarEvento extends JDialog{
 
     }
 
-//    public static Evento mostrarCriacaoEvento(Frame parent){
-//        System.out.println("mostrarCriacaoEvento");
-//        var registar = new JanelaRegistarEvento(parent, true);
-//        registar.setLocationRelativeTo(parent);
-//        registar.setVisible(true);
-//
-//    }
-
     private void btnAdicionarEventoActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnRegistarEventoActionPerformed");
         String nome = nomeEventoTextField.getText();
         boolean valido = isNomeValido(nome);
         if(!valido){
@@ -88,7 +86,7 @@ public class JanelaRegistarEvento extends JDialog{
         }
 
         Data fim = Data.parseData(dataFim);
-        valido = isDataFimAfterDataInicio(inicio,fim);
+        valido = Data.isFirstDateAfterSecondDate(fim,inicio);
         if(!valido){
             Erros.mostrarErro(this, Erros.ORDEM_DATAS);
             return;
@@ -102,41 +100,34 @@ public class JanelaRegistarEvento extends JDialog{
 
         Distrito distrito = (Distrito) modeloComboBoxDistritos.getSelectedItem();
         Evento novoEvento = new Evento(distrito, nome, inicio, fim);
-        boolean isSelecionado = associarFilialCheckBox.isSelected(); //falta esta parte no diag. sequencia
+        boolean isSelecionado = associarFilialCheckBox.isSelected();
         if(isSelecionado){
             Estabelecimento e = (Estabelecimento) modeloComboBoxFiliais.getSelectedItem();
             distrito = e.getDistrito();
-            novoEvento = new Evento(distrito, nome, inicio, fim, e);
+            novoEvento.setDistrito(distrito);
         }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         da.adicionarEvento(novoEvento);
-        fechar();
+        Sucesso.mostrarSucesso(this, Sucesso.EVENTO_REGISTADO);
+        limpar();
+    }
+
+    private void limpar() {
+        nomeEventoTextField.setText("");
+        dataInicioTextField.setText("");
+        dataFimTextField.setText("");
+        associarFilialCheckBox.setSelected(false);
     }
 
     private void fechar() {
         setVisible(false);
-        dispose(); //não sei se pode ficar aqui
-
-        JanelaEventos je = new JanelaEventos();
-        je.setVisible(true);
-
+        dispose();
     }
 
     private boolean isEventoDuplicado(String nome, Data inicio, Data fim) {
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         return da.isEventoDuplicado(nome,inicio, fim);
-    }
-
-    private boolean isDataFimAfterDataInicio(Data inicio, Data fim) {
-        if(fim.getAno() > inicio.getAno()){
-            return true;
-        }
-        if(fim.getMes() > inicio.getMes()){
-            return true;
-        }
-
-        return fim.getDia() >= inicio.getDia();
     }
 
     private boolean isDataValida(String data){
@@ -164,38 +155,47 @@ public class JanelaRegistarEvento extends JDialog{
         }
     }
 
+
+    private void btnCancelarActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
+    }
+
     private void btnVeiculosActionPerformed(ActionEvent evt) {
-        setVisible(false);
-        dispose();
-        JanelaVeiculos j = new JanelaVeiculos();
-        j.setVisible(true);
+        fechar();
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
     }
 
     private void btnOficinaActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        fechar();
+        JanelaOficina jo = new JanelaOficina();
+        jo.setVisible(true);
     }
 
     private void btnEventosActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
-//        this.setVisible(false);
-//        dispose();
         fechar();
-
-//        JanelaEventos j = new JanelaEventos();
-//        j.setVisible(true);
-
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
     private void btnTransacoesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
+        fechar();
+        JanelaTransacoes jt = new JanelaTransacoes();
+        jt.setVisible(true);
     }
 
     private void btnClientesActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnClientesButtonActionPerformed");
+        fechar();
+        JanelaClientes jc = new JanelaClientes();
+        jc.setVisible(true);
     }
 
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
+        fechar();
+        JanelaEstatistica je = new JanelaEstatistica();
+//        je.setVisible(true);
     }
 
     public static void main(String[] args) {

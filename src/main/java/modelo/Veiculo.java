@@ -52,6 +52,10 @@ public class Veiculo {
         return marca + " " + modelo + " - Matricula: "+ matricula;
     }
 
+    public void setEstadoVeiculo(EstadoVeiculo estadoVeiculo) {
+        this.estadoVeiculo = estadoVeiculo;
+    }
+
     public void transportarVeiculo(Local localDestino){
 
 //        setLocal(localDestino);
@@ -61,6 +65,18 @@ public class Veiculo {
 //        else{
 //            adicionarVeiculo(veiculo);
 //        }
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public String getCondicaoVeiculo() {
+        return condicaoVeiculo;
+    }
+
+    public EstadoVeiculo getEstadoVeiculo() {
+        return estadoVeiculo;
     }
 
     public int getPecasUsadasEmReparacoes() {

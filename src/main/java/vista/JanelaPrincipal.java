@@ -3,6 +3,7 @@ package vista;
 import vista.Clientes.JanelaClientes;
 import vista.Eventos.JanelaEventos;
 import vista.Transacoes.JanelaTransacoes;
+import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ public class JanelaPrincipal extends JFrame {
     public JanelaPrincipal(){
         setContentPane(painelPrincipal);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosButtonActionPerformed);
@@ -31,7 +33,11 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnVeiculosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnVeiculosButtonActionPerformed");
+        this.setVisible(false);
+        dispose();
+
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
@@ -39,7 +45,6 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEventosButtonActionPerformed");
         this.setVisible(false);
         dispose();
 

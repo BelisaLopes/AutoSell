@@ -98,8 +98,7 @@ public class DadosAplicacao {
         return sede;
     }
 
-    public void adicionarCategoria(String nome) {
-        Categoria categoria = new Categoria(nome);
+    public void adicionarCategoria(Categoria categoria) {
         catalogo.add(categoria);
     }
 
@@ -322,6 +321,42 @@ public class DadosAplicacao {
         return eventosNaoTerminados;
     }
 
+    public List<Evento> getEventosNaoDecorridos(Distrito distrito, Data inicio, Data fim){
+        List<Evento> eventosNaoDecorridos = new ArrayList<>();
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Data dataAtual = Data.parseData(date);
+
+        for (Evento evento : eventos) {
+            if(Data.isFirstDateAfterSecondDate(evento.getDataInicio(), dataAtual)){
+                eventosNaoDecorridos.add(evento);
+            }
+        }
+
+        List<Evento> eventosFiltrados = new ArrayList<>();
+        Evento e;
+        for(Evento evt : eventosNaoDecorridos) {
+            e = evt;
+            if(distrito != null && evt.getDistrito() != distrito){
+                continue;
+            }
+            if(inicio != null && !evt.getDataInicio().equals(inicio)){
+                continue;
+            }
+
+            if(fim != null && !evt.getDataFim().equals(fim)){
+                continue;
+            }
+
+            if(listaVeiculosPorLocal.get(evt).size() > 0){
+                continue;
+            }
+
+            eventosFiltrados.add(e);
+        }
+
+        return eventosFiltrados.size() == 0 ? null : eventosFiltrados;
+    }
+
     public int getLugaresLivres(Estabelecimento estabelecimento){
         int lotacao = estabelecimento.getCapacidadeMaximaVeiculos();
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(estabelecimento);
@@ -337,54 +372,207 @@ public class DadosAplicacao {
         List<Veiculo> veiculos = listaVeiculosPorLocal.get(veiculo.getLocal());
         veiculos.remove(veiculo);
         adicionarVeiculoAoLocal(localDestino, veiculo);
-//        veiculo.setLocal(localDestino);
     }
 
-        public boolean existeCategoria(String nomeCategoria){
-            for (Categoria categoria: catalogo) {
-                if (categoria.getNome().equals(nomeCategoria)){
+    public boolean existeCategoria(String nomeCategoria){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getNome().equals(nomeCategoria)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existemCategoriasSemPecas(){
+        for (Categoria categoria: catalogo) {
+            if (categoria.getPecas().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removerCategoria(Categoria categoria) {
+        catalogo.remove(categoria);
+    }
+
+    public boolean existemCategorias() {
+        return !catalogo.isEmpty();
+    }
+
+    public boolean existePeca(String nome) {
+        for (Categoria categoria: catalogo) {
+            for (Peca peca: categoria.getPecas()) {
+                if (peca.getNome().equals(nome)){
                     return true;
                 }
             }
-            return false;
         }
+        return false;
+    }
 
-        public boolean existemCategoriasSemPecas(){
-            for (Categoria categoria: catalogo) {
-                if (categoria.getPecas().isEmpty()){
-                    return true;
+    public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
+        Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
+        categoria.adicionarPeca(novaPeca);
+
+        sede.getOficina().registarPeca(novaPeca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.getOficina().registarPeca(novaPeca, qtdFiliais);
+        }
+    }
+
+    public boolean existemPecas() {
+        for (Categoria categoria: catalogo) {
+            if (!categoria.getPecas().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void adicionarPeca(Peca peca, int qtdSede, int qtdFiliais) {
+        sede.registarPecaNaOficina(peca, qtdSede);
+
+        for (Filial filial: filiais) {
+            filial.registarPecaNaOficina(peca, qtdFiliais);
+        }
+    }
+
+    public List<Peca> getPecas(Categoria categoria, String marca, String modelo, String dimensao, double preco){
+        List<Peca> pecas = new ArrayList<>();
+        List<Peca> pecasFiltradas = new ArrayList<>();
+
+        if(categoria!=null){
+            pecas = categoria.getPecas();
+            if(pecas.isEmpty()){
+                return pecas;
+            }
+        }else {
+            for (Categoria c : catalogo) {
+                for (Peca peca : c.getPecas()) {
+                    pecas.add(peca);
                 }
             }
-            return false;
         }
 
-        public void removerCategoria(Categoria categoria) {
-            catalogo.remove(categoria);
+        for (Peca peca: pecas) {
+            Peca p = peca;
+            if(marca.length()!=0 && !peca.getMarca().matches(marca)){
+                continue;
+            }
+
+            if(modelo.length()!=0 && !peca.getModelo().matches(modelo)){
+                continue;
+            }
+
+            if(dimensao.length()!=0 && !peca.getDimensao().matches(dimensao)){
+                continue;
+            }
+
+            if(preco != -1 && peca.getPreco()!=preco){
+                continue;
+            }
+
+            pecasFiltradas.add(p);
         }
 
-        public boolean existemCategorias() {
-            return !catalogo.isEmpty();
-        }
+        return pecasFiltradas.isEmpty() ? new ArrayList<>() : pecasFiltradas;
+    }
 
-        public boolean existePeca(String nome) {
-            for (Categoria categoria: catalogo) {
-                for (Peca peca: categoria.getPecas()) {
-                    if (peca.getNome().equals(nome)){
-                        return true;
-                    }
+    public Peca getPeca(String nomePeca) {
+        for (Categoria categoria : catalogo) {
+            for (Peca peca : categoria.getPecas()) {
+                if (peca.getNome() == nomePeca) {
+                    return peca;
                 }
             }
-            return false;
         }
+        return null;
+    }
 
-        public void adicionarPeca(Categoria categoria, String nome, String marca, String modelo, String dimensao, double preco, int qtdSede, int qtdFiliais) {
-            Peca novaPeca = new Peca(nome, marca, modelo, dimensao, preco, categoria);
-            categoria.adicionarPeca(novaPeca);
+    public void removerEvento(Evento evento) {
+        eventos.remove(evento);
+        listaVeiculosPorLocal.remove(evento);
+    }
 
-            sede.getOficina().registarPeca(novaPeca, qtdSede);
+    public List<Estabelecimento> getEstabelecimentos(){
+        List<Estabelecimento> lista = new ArrayList<>();
+        lista.add(sede);
+        lista.addAll(filiais);
+        return lista;
+    }
 
-            for (Filial filial: filiais) {
-                filial.getOficina().registarPeca(novaPeca, qtdFiliais);
+    public List<Veiculo> getTodosVeiculos(Estabelecimento estabelecimento, String marca, String modelo, String matricula) {
+        List<Veiculo> veiculos = new ArrayList<>();
+        List<Veiculo> veiculosLocal = new ArrayList<>();
+        if(estabelecimento != null){
+            veiculosLocal = getVeiculosLocal(estabelecimento);
+        }else{
+            List<Local> locais = new ArrayList<>();
+            locais.add(sede);
+            locais.addAll(filiais);
+//            locais.addAll(eventos);
+            for (Local l : locais) {
+                veiculosLocal.addAll(listaVeiculosPorLocal.get(l));
             }
         }
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosLocal) {
+            v = veiculo;
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
+        List<Veiculo> veiculos = new ArrayList<>();
+
+
+        Veiculo v;
+        for (Veiculo veiculo : veiculosProntosParaVenda) {
+            v = veiculo;
+
+            if(estabelecimento != null && veiculo.getLocal() != estabelecimento){
+                continue;
+            }
+
+            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+                continue;
+            }
+
+            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+                continue;
+            }
+
+            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+                continue;
+            }
+
+            veiculos.add(v);
+        }
+
+        return veiculos.size() == 0 ? null : veiculos;
+    }
+
+    public void definirVeiculoPorReparar(Veiculo veiculo) {
+        veiculo.setEstadoVeiculo(EstadoVeiculo.POR_REPARAR);
+        veiculosProntosParaVenda.remove(veiculo);
+        veiculosPorReparar.add(veiculo);
+    }
 }

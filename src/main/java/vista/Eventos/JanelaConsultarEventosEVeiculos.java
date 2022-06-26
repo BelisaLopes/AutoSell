@@ -1,7 +1,11 @@
 package vista.Eventos;
 
 import modelo.*;
+import vista.Clientes.JanelaClientes;
 import vista.Erros;
+import vista.Estatisticas.JanelaEstatistica;
+import vista.Oficina.JanelaOficina;
+import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
 import javax.swing.*;
@@ -36,6 +40,7 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     public JanelaConsultarEventosEVeiculos(){
         setContentPane(painel);
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
@@ -142,38 +147,45 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
         return (dia > 0 && dia < 32 && mes > 0 && mes < 13 && ano > 0);
     }
 
-    private void btnEstatisticasActionPerformed(ActionEvent evt) {
-
+    private void fechar() {
+        setVisible(false);
+        dispose();
     }
 
-    private void btnClientesActionPerformed(ActionEvent evt) {
-
+    private void btnVeiculosActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
     }
 
-    private void btnTransacoesActionPerformed(ActionEvent evt) {
-
+    private void btnOficinaActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaOficina jo = new JanelaOficina();
+        jo.setVisible(true);
     }
 
     private void btnEventosActionPerformed(ActionEvent evt) {
         fechar();
+        JanelaEventos je = new JanelaEventos();
+        je.setVisible(true);
     }
 
-    private void fechar() {
-        setVisible(false);
-        dispose();
-        JanelaEventos j = new JanelaEventos();
-        j.setVisible(true);
+    private void btnTransacoesActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaTransacoes jt = new JanelaTransacoes();
+        jt.setVisible(true);
     }
 
-    private void btnOficinaActionPerformed(ActionEvent evt) {
-
+    private void btnClientesActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaClientes jc = new JanelaClientes();
+        jc.setVisible(true);
     }
 
-    private void btnVeiculosActionPerformed(ActionEvent evt) {
-        setVisible(false);
-        dispose();
-        JanelaVeiculos j = new JanelaVeiculos();
-        j.setVisible(true);
+    private void btnEstatisticasActionPerformed(ActionEvent evt) {
+        fechar();
+        JanelaEstatistica je = new JanelaEstatistica();
+//        je.setVisible(true);
     }
 
     private void initComponents() {
