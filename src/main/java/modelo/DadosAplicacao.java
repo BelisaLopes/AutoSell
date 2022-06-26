@@ -54,8 +54,8 @@ public class DadosAplicacao {
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
 
 //        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
+        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
         eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
@@ -574,5 +574,9 @@ public class DadosAplicacao {
         veiculo.setEstadoVeiculo(EstadoVeiculo.POR_REPARAR);
         veiculosProntosParaVenda.remove(veiculo);
         veiculosPorReparar.add(veiculo);
+    }
+
+    public int size() {
+        return clientes.size();
     }
 }
