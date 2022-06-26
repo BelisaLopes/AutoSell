@@ -426,21 +426,45 @@ public class DadosAplicacao {
         }
     }
 
-    public List<Peca> getPecas(Categoria categoria){
+    public List<Peca> getPecas(Categoria categoria, String marca, String modelo, String dimensao, double preco){
+        List<Peca> pecas = new ArrayList<>();
         List<Peca> pecasFiltradas = new ArrayList<>();
 
         if(categoria!=null){
-            pecasFiltradas = categoria.getPecas();
-            return pecasFiltradas;
-        }
-
-        for (Categoria c: catalogo) {
-            for (Peca peca: c.getPecas()) {
-                pecasFiltradas.add(peca);
+            pecas = categoria.getPecas();
+            if(pecas.isEmpty()){
+                return pecas;
+            }
+        }else {
+            for (Categoria c : catalogo) {
+                for (Peca peca : c.getPecas()) {
+                    pecas.add(peca);
+                }
             }
         }
 
-        return pecasFiltradas;
+        for (Peca peca: pecas) {
+            Peca p = peca;
+            if(marca.length()!=0 && !peca.getMarca().matches(marca)){
+                continue;
+            }
+
+            if(modelo.length()!=0 && !peca.getModelo().matches(modelo)){
+                continue;
+            }
+
+            if(dimensao.length()!=0 && !peca.getDimensao().matches(dimensao)){
+                continue;
+            }
+
+            if(preco != -1 && peca.getPreco()!=preco){
+                continue;
+            }
+
+            pecasFiltradas.add(p);
+        }
+
+        return pecasFiltradas.isEmpty() ? new ArrayList<>() : pecasFiltradas;
     }
 
     public Peca getPeca(String nomePeca) {

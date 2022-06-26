@@ -37,6 +37,7 @@ public class JanelaOficina extends JFrame {
         btnRemoverCategoria.addActionListener(this::removerCategoria);
         btnRegistarPeca.addActionListener(this::registarPeca);
         btnRegistarEncomenda.addActionListener(this::registarEncomenda);
+        btnConsultar.addActionListener(this::consultarStock);
 
         btnVeiculos.addActionListener(this::abrirVeiculos);
         btnOficina.addActionListener(this::abrirOficina);
@@ -84,6 +85,20 @@ public class JanelaOficina extends JFrame {
         System.out.println("Click no abrirVeiculos");
         fechar();
         new JanelaVeiculos();
+    }
+
+
+    private void consultarStock(ActionEvent actionEvent) {
+        System.out.println("Click no consultarStock");
+        boolean valido = existemPecas();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.NAO_EXISTEM_PECAS);
+            return;
+        }
+
+        JanelaConsultarPecasStock j = new JanelaConsultarPecasStock();
+        abrir(j);
+        fechar();
     }
 
     private void registarEncomenda(ActionEvent actionEvent) {

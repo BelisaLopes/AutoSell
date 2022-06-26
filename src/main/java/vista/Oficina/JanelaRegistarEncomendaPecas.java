@@ -154,7 +154,7 @@ public class JanelaRegistarEncomendaPecas extends JFrame{
             categoria = null;
         }
 
-        List<Peca> pecas = DadosAplicacao.INSTANCE.getPecas(categoria);
+        List<Peca> pecas = DadosAplicacao.INSTANCE.getPecas(categoria,"","","",-1);
         if(pecas.isEmpty()){ //categoria sem pecas
             Erros.mostrarErro(this, Erros.CATEGORIA_SEM_PECAS);
             return;
