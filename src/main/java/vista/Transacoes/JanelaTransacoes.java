@@ -1,6 +1,8 @@
 package vista.Transacoes;
 
+import modelo.DadosAplicacao;
 import vista.Clientes.JanelaClientes;
+import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
 import vista.Oficina.JanelaOficina;
@@ -95,9 +97,19 @@ public class JanelaTransacoes extends JFrame {
     }
 
     private void consultarHistorico(ActionEvent actionEvent) {
+        boolean valido = existemTransacoes();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.TRANSACOES_NAO_EXISTEM);
+            return;
+        }
+
         JanelaHistoricoTransacoes j = new JanelaHistoricoTransacoes();
         abrir(j);
         fechar();
+    }
+
+    private boolean existemTransacoes() {
+        return DadosAplicacao.INSTANCE.existemTransacoes();
     }
 
     private void registarCompra(ActionEvent actionEvent) {

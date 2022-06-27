@@ -733,5 +733,34 @@ public class DadosAplicacao {
         return clientes.size();
     }
 
+    public boolean existemTransacoes() {
+        for (Cliente cliente: getClientes(null, null)) {
+            if(!cliente.getTransacoes().isEmpty()){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public List<Transacao> getTransacoes(Local local, Data data) {
+        List<Transacao> transacoes = new ArrayList<>();
+
+        for (Cliente cliente: getClientes(null,null)) {
+            for (Transacao transacao: cliente.getTransacoes()) {
+                Transacao t = transacao;
+
+                if(local!=null && !transacao.getLocal().equals(local)){
+                    continue;
+                }
+
+                if(data!=null && !transacao.getDataTransacao().equals(data)){
+                    continue;
+                }
+
+                transacoes.add(t);
+            }
+        }
+
+        return transacoes.isEmpty() ? new ArrayList<>() : transacoes;
+    }
 }
