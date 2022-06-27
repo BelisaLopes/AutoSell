@@ -70,7 +70,7 @@ public class JanelaConsultarVeiculos extends JFrame{
     }
 
     private void btnEscolherVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaVeiculos.isSelectionEmpty();
+        boolean valido = escolheuVeiculo();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -78,6 +78,10 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         Veiculo veiculo = listaVeiculos.getSelectedValue();
         mostrarInformacaoVeiculo(veiculo);
+    }
+
+    private boolean escolheuVeiculo(){
+        return !listaVeiculos.isSelectionEmpty();
     }
 
     private void mostrarInformacaoVeiculo(Veiculo veiculo) {
@@ -133,7 +137,7 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         List<Veiculo> veiculos = da.getTodosVeiculos(estabelecimento, marca, modelo, matricula);
-        valido = veiculos != null;
+        valido = isResultEmpty(veiculos);
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
             return;
@@ -141,6 +145,11 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         atualizarListaVeiculos(veiculos);
     }
+
+    private boolean isResultEmpty(List<Veiculo> veiculos){
+        return veiculos != null;
+    }
+
 
     private void atualizarListaVeiculos(List<Veiculo> veiculos) {
         for (Veiculo veiculo : veiculos) {

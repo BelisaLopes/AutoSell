@@ -63,10 +63,13 @@ public class JanelaAtualizarEvento extends JFrame{
         escolherEventoButton.addActionListener(this::btnEscolherEventoActionPerformed);
     }
 
+    private boolean escolheuEvento(){
+        return !listaEventos.isSelectionEmpty();
+    }
 
 
     private void btnEscolherEventoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaEventos.isSelectionEmpty();
+        boolean valido = escolheuEvento();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
             return;
@@ -79,8 +82,12 @@ public class JanelaAtualizarEvento extends JFrame{
 
     }
 
+    private boolean existeEvento(){
+        return evento != null;
+    }
+
     private void btnAtualizarEventoActionPerformed(ActionEvent evt) {
-        boolean valido = evento != null;
+        boolean valido = existeEvento();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
             return;

@@ -71,7 +71,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     }
 
     private void btnRegistarVeiculoEventoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaVeiculos.isSelectionEmpty();
+        boolean valido = escolheuVeiculo();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -79,13 +79,21 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
 
         Veiculo veiculo = listaVeiculos.getSelectedValue();
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        da.adicionarVeiculoAoLocal(evento, veiculo);
+        da.transportarVeiculo(veiculo, evento);
         modeloListaVeiculos.removeAllElements();
         Sucesso.mostrarSucesso(this, Sucesso.VEICULO_ADICIONADO_EVENTO);
     }
 
+    private boolean escolheuVeiculo(){
+        return !listaVeiculos.isSelectionEmpty();
+    }
+
+    private boolean existeEventoSelecionado(){
+        return evento != null;
+    }
+
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
-        boolean valido = evento != null;
+        boolean valido = existeEventoSelecionado();
         if(!valido){
             Erros.mostrarErro(this,Erros.SELECIONAR_EVENTO);
             return;
@@ -145,8 +153,12 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
         return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
 
+    private boolean escolheuEvento(){
+        return !listaEventos.isSelectionEmpty();
+    }
+
     private void btnEscolherEventoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaEventos.isSelectionEmpty();
+        boolean valido = escolheuEvento();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
             return;

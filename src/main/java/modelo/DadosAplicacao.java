@@ -42,7 +42,7 @@ public class DadosAplicacao {
         filiais.add(new Filial(Distrito.CASTELO_BRANCO, 100));
         filiais.add(new Filial(Distrito.LEIRIA, 100));
         filiais.add(new Filial(Distrito.SANTAREM, 100));
-        filiais.add(new Filial(Distrito.LISBOA, 100));
+//        filiais.add(new Filial(Distrito.LISBOA, 100));
         filiais.add(new Filial(Distrito.PORTALEGRE, 100));
         filiais.add(new Filial(Distrito.SETUBAL, 100));
         filiais.add(new Filial(Distrito.BEJA, 100));
@@ -57,41 +57,40 @@ public class DadosAplicacao {
 
         initListaVeiculosEstabelecimento();
 
-//        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000)); // TINHAS ISTO BELISA
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
-        veiculosProntosParaVenda.add(new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede));
-        Veiculo v = new Veiculo("Opel", "Corsa", 2001, "AA-00-AA", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+        Veiculo v = new Veiculo("Opel", "Corsa", 2001, "AA-11-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+        veiculosPorReparar.add(v);
+        adicionarVeiculoAoLocal(sede,v);
+
+        v = new Veiculo("Opel", "Corsa", 2001, "BB-22-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+        veiculosPorReparar.add(v);
+        adicionarVeiculoAoLocal(sede,v);
+
+        v = new Veiculo("Opel", "Corsa", 2001, "CC-33-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
         v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
-        List<Veiculo> lista = listaVeiculosPorLocal.get(sede);
+        adicionarVeiculoAoLocal(sede,v);
         veiculosProntosParaVenda.add(v);
-        lista.add(v);
-        v = new Veiculo("Opel", "Corsa", 2001, "BB-55-BB", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+
+        v = new Veiculo("Opel", "Corsa", 2001, "DD-44-CC", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
         v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
+        adicionarVeiculoAoLocal(sede,v);
         veiculosProntosParaVenda.add(v);
-        lista.add(v);
-        listaVeiculosPorLocal.put(sede,lista);
+
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
-        eventos.add(new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022)));
-        List<Veiculo> lv = new ArrayList<>();
-        lv.add(new Veiculo("Opel", "Corsa", 2001, "AA-00-CC", "Branco", 2, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,eventos.get(0)));
-        lv.add(new Veiculo("Mitsubishi", "Colt", 2005, "BB-00-AA", "Branco", 2, TipoCombustivel.GASOLEO, 200000,1, "Bom", 10000,eventos.get(0)));
-        listaVeiculosPorLocal.put(eventos.get(0), lv);
-        listaVeiculosVendidosPorLocal.put(eventos.get(0), lv);
-
-
+        Evento e = new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022));
+        adicionarEvento(e);
     }
 
     private void initListaVeiculosEstabelecimento() {
         List<Veiculo> veiculos = new ArrayList<>();
-        listaVeiculosPorLocal.putIfAbsent(sede, veiculos);
+        listaVeiculosPorLocal.put(sede, veiculos);
         veiculos = new ArrayList<>();
-        listaVeiculosVendidosPorLocal.putIfAbsent(sede, veiculos);
+        listaVeiculosVendidosPorLocal.put(sede, veiculos);
         for (Filial f : filiais) {
             veiculos = new ArrayList<>();
-            listaVeiculosPorLocal.putIfAbsent(f,veiculos);
+            listaVeiculosPorLocal.put(f,veiculos);
             veiculos = new ArrayList<>();
-            listaVeiculosVendidosPorLocal.putIfAbsent(f,veiculos);
+            listaVeiculosVendidosPorLocal.put(f,veiculos);
         }
     }
 
@@ -264,6 +263,9 @@ public class DadosAplicacao {
         veiculosVendidos.add(veiculo);
         List<Veiculo> veiculos = listaVeiculosVendidosPorLocal.get(veiculo.getLocal());
         veiculos.add(veiculo);
+
+        List<Veiculo> antigos = listaVeiculosPorLocal.get(veiculo.getLocal());
+        antigos.remove(veiculo);
     }
 
     public void removerVeiculoVendido(Veiculo veiculo) {
@@ -589,15 +591,19 @@ public class DadosAplicacao {
     public List<Veiculo> getTodosVeiculos(Estabelecimento estabelecimento, String marca, String modelo, String matricula) {
         List<Veiculo> veiculos = new ArrayList<>();
         List<Veiculo> veiculosLocal = new ArrayList<>();
+        List<Veiculo> veiculoList;
         if(estabelecimento != null){
             veiculosLocal = getVeiculosLocal(estabelecimento);
         }else{
             List<Local> locais = new ArrayList<>();
             locais.add(sede);
             locais.addAll(filiais);
-//            locais.addAll(eventos);
+            locais.addAll(eventos);
             for (Local l : locais) {
-                veiculosLocal.addAll(listaVeiculosPorLocal.get(l));
+                veiculoList = listaVeiculosPorLocal.get(l);
+                for (Veiculo veiculo : veiculoList) {
+                    veiculosLocal.add(veiculo);
+                }
             }
         }
 
@@ -622,6 +628,35 @@ public class DadosAplicacao {
 
         return veiculos.size() == 0 ? null : veiculos;
     }
+
+//    public List<Veiculo> getVeiculosEstabelecimento(Estabelecimento estabelecimento, String marca, String modelo, String matricula) {
+//        List<Veiculo> veiculos = new ArrayList<>();
+//        List<Veiculo> veiculosLocal = new ArrayList<>();
+//        veiculosLocal = getVeiculosLocal(estabelecimento);
+//
+//
+//        Veiculo v;
+//        for (Veiculo veiculo : veiculosLocal) {
+//            v = veiculo;
+//
+//            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
+//                continue;
+//            }
+//
+//            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
+//                continue;
+//            }
+//
+//            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
+//                continue;
+//            }
+//
+//            veiculos.add(v);
+//        }
+//
+//        return veiculos.size() == 0 ? null : veiculos;
+//    }
+
 
     public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
         List<Veiculo> veiculos = new ArrayList<>();

@@ -26,7 +26,7 @@ public class Erros {
 
     public static final int MATRICULA_INVALIDA = 13;
 
-    public static final int PALAVRA_INVALIDA = 14;
+    public static final int LOCAL_DESTINO_LOTACAO = 14;
 
     public static final int QUILOMETROS_INVALIDOS = 15;
 
@@ -210,7 +210,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma categoria primeiro");
                 break;
             case NAO_EXISTEM_CATEGORIAS:
-                JOptionPane.showMessageDialog(parent, "Não existem categorias registadas. Registe primeiro uma categoria");
+                JOptionPane.showMessageDialog(parent, "Não existem categorias de peças registadas. Registe primeiro uma categoria");
                 break;
             case CAMPO_VAZIO:
                 JOptionPane.showMessageDialog(parent, "O preenchimento de todos os campos é obrigatório.");
@@ -277,6 +277,9 @@ public class Erros {
                 break;
             case NENHUM_VEICULO_EM_REPARACAO:
                 JOptionPane.showMessageDialog(parent, "Não existe nenhum veículo em reparação. É necessário adicionar peças a um veículo primeiro.");
+                break;
+            case LOCAL_DESTINO_LOTACAO:
+                JOptionPane.showMessageDialog(parent, "O local destino selecionado já está na lotação máxima."+ '\n' +"Não é possível fazer a transferência do veículo");
                 break;
             case TRANSACOES_NAO_EXISTEM:
                 JOptionPane.showMessageDialog(parent, "Não existem transações registadas. Registe primeiro uma transação.");
