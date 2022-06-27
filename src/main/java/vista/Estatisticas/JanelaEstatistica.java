@@ -37,7 +37,7 @@ public class JanelaEstatistica extends JFrame {
         clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
 
-        modelosEMarcasComMaisPecasButton.addActionListener(this::btnModelosEMarcasComMaisPecasActionPerformed);
+        modelosEMarcasComMaisPecasButton.addActionListener(this::maiorUsoPecas);
         modelosEMarcasMaisVendidosButton.addActionListener(this::btnModelosEMarcasMaisVendidosActionPerformed);
         númeroTotalDeVeículosVendidosButton.addActionListener(this::btnNumeroTotalDeVeiculosVendidosActionPerformed);
         melhoresClientesButton.addActionListener(this::melhoresClientes);
@@ -49,8 +49,12 @@ public class JanelaEstatistica extends JFrame {
         setVisible(true);
     }
 
-    private void btnModelosEMarcasComMaisPecasActionPerformed(ActionEvent evt) {
-        System.out.println("Modelos e marcas com mais peças");
+    private void maiorUsoPecas(ActionEvent actionEvent) {
+        System.out.println("Click no maiorUsoPecas");
+
+        JanelaModelosMarcasMaiorUsoPecas j = new JanelaModelosMarcasMaiorUsoPecas();
+        abrir(j);
+        fechar();
     }
 
     private void btnModelosEMarcasMaisVendidosActionPerformed(ActionEvent evt) {
@@ -68,7 +72,7 @@ public class JanelaEstatistica extends JFrame {
     }
 
     private void melhoresClientes(ActionEvent actionEvent) {
-        System.out.println("Melhores clientes");
+        System.out.println("Click no melhoresClientes");
         boolean valido = existemTransacoes();
         if(!valido){
             Erros.mostrarErro(this, Erros.TRANSACOES_NAO_EXISTEM);
