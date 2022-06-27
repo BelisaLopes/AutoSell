@@ -98,7 +98,7 @@ public class JanelaRegistarPeca extends JFrame{
     }
 
     private void registarPeca(ActionEvent actionEvent) {
-        boolean valido = !isALgumCampoVazio();
+        boolean valido = !isAlgumCampoVazio();
         if(!valido){
             Erros.mostrarErro(this, Erros.CAMPO_VAZIO);
             return;
@@ -223,7 +223,7 @@ public class JanelaRegistarPeca extends JFrame{
         return !(nome.trim().length() < 2) || (nome.trim().length() > 100);
     }
 
-    private boolean isALgumCampoVazio() {
+    private boolean isAlgumCampoVazio() {
         return textNome.getText().length()==0 || textMarca.getText().length()==0 || textModelo.getText().length()==0 || textPreco.getText().length()==0 ||
                 textDimensao.getText().length()==0 || textSede.getText().length()==0 || textFiliais.getText().length()==0;
     }
