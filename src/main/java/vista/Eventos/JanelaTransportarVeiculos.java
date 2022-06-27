@@ -242,7 +242,7 @@ public class JanelaTransportarVeiculos extends JFrame{
         je.setVisible(true);
     }
 
-    public void fechar(){
+    private void fechar(){
         setVisible(false);
         dispose();
     }

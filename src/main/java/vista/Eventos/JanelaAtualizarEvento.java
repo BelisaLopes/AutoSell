@@ -224,7 +224,7 @@ public class JanelaAtualizarEvento extends JFrame{
         }
     }
 
-    public void fechar(){
+    private void fechar(){
         setVisible(false);
         dispose();
     }
