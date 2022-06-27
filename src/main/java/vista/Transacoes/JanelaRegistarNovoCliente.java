@@ -183,9 +183,4 @@ public class JanelaRegistarNovoCliente extends JDialog {
         return !(contacto.trim().length() < 9 || contacto.trim().length() > 9 || !contacto.trim().matches("(2|9)?[0-9]{8}"));
     }
 
-    /*private boolean existeCriancaComNome(String nome){ //tem de ir aos DadosAplicacao
-        DadosAplicacao da = DadosAplicacao.INSTANCE;
-        return da.existeCriancaComNome(nome);
-    }*/
-
 }

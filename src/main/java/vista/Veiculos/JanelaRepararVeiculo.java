@@ -95,7 +95,7 @@ public class JanelaRepararVeiculo extends JFrame{
     }
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
-        boolean valido = pecasUsadas.isEmpty();
+        boolean valido = nenhumVeiculoEmReparacao();
         if(!valido){
             Erros.mostrarErro(this, Erros.VEICULO_AINDA_EM_REPARACAO);
             return;
@@ -127,7 +127,7 @@ public class JanelaRepararVeiculo extends JFrame{
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         List<Veiculo> veiculos = da.getVeiculosPorReparar(estabelecimento, marca, modelo, matricula);
-        valido = veiculos != null;
+        valido = obteveVeiculos(veiculos);
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
             return;
@@ -135,6 +135,10 @@ public class JanelaRepararVeiculo extends JFrame{
 
         atualizarListaVeiculos(veiculos);
 
+    }
+
+    private boolean obteveVeiculos(List<Veiculo> veiculos) {
+        return veiculos != null;
     }
 
     private void atualizarListaVeiculos(List<Veiculo> veiculos) {
@@ -150,14 +154,18 @@ public class JanelaRepararVeiculo extends JFrame{
         return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
 
+    private boolean nenhumVeiculoEmReparacao(){
+        return pecasUsadas.isEmpty();
+    }
+
     private void btnEscolherVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = pecasUsadas.isEmpty();
+        boolean valido = nenhumVeiculoEmReparacao();
         if(!valido){
             Erros.mostrarErro(this, Erros.VEICULO_AINDA_EM_REPARACAO);
             return;
         }
 
-        valido = !listaVeiculos.isSelectionEmpty();
+        valido = escolheuVeiculo();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -168,14 +176,22 @@ public class JanelaRepararVeiculo extends JFrame{
         atualizarComboBoxCategorias(categorias);
     }
 
+    private boolean escolheuVeiculo(){
+        return !listaVeiculos.isSelectionEmpty();
+    }
+
     private void atualizarComboBoxCategorias(List<Categoria> categorias) {
         for (Categoria categoria : categorias) {
             modeloComboBoxCategorias.addElement(categoria);
         }
     }
 
+    private boolean existeVeiculoSelecionado(){
+        return veiculo != null;
+    }
+
     private void btnApresentarPecasActionPerformed(ActionEvent evt) {
-        boolean valido = veiculo != null;
+        boolean valido = existeVeiculoSelecionado();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -183,13 +199,17 @@ public class JanelaRepararVeiculo extends JFrame{
 
         Categoria categoria = (Categoria) categoriasComboBox.getSelectedItem();
         List<Peca> pecas = estabelecimento.getOficina().getPecasCategoria(categoria);
-        valido = pecas != null;
+        valido =obteveResultadosPecas(pecas);
         if(!valido){
             Erros.mostrarErro(this, Erros.CATEGORIA_SEM_PECAS);
             return;
         }
 
         atualizarListaPecas(pecas);
+    }
+
+    private boolean obteveResultadosPecas(List<Peca> pecas){
+        return pecas != null;
     }
 
     private void atualizarListaPecas(List<Peca> pecas) {
@@ -199,14 +219,18 @@ public class JanelaRepararVeiculo extends JFrame{
         }
     }
 
+    private boolean isPecaSelecionada(){
+        return !listaPecasDisponiveis.isSelectionEmpty();
+    }
+
     private void btnAdicionarPecasActionPerformed(ActionEvent evt) {
-        boolean valido = veiculo != null;
+        boolean valido = existeVeiculoSelecionado();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
         }
 
-        valido = !listaPecasDisponiveis.isSelectionEmpty();
+        valido = isPecaSelecionada();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_PECA);
             return;
@@ -281,7 +305,7 @@ public class JanelaRepararVeiculo extends JFrame{
     }
 
     private void btnRegistarVeiculoComoReparadoActionPerformed(ActionEvent evt) {
-        boolean valido = !pecasUsadas.isEmpty();
+        boolean valido = !nenhumVeiculoEmReparacao();
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_VEICULO_EM_REPARACAO);
             return;
@@ -383,6 +407,6 @@ public class JanelaRepararVeiculo extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }

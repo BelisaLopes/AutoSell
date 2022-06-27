@@ -25,7 +25,6 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     private JButton apresentarEventosButton;
     private JList<Evento> listaEventos;
     private JList<Veiculo> listaVeiculos;
-    private JLabel localLabel;
     private JLabel dataInicioLabel;
     private JLabel dataFimLabel;
     private JLabel numeroVeiculosLabel;
@@ -61,19 +60,19 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
         escolherEventoButton.addActionListener(this::btnEscolherEventoActionPerformed);
     }
 
+
+    private boolean escolheuEvento(){
+        return !listaEventos.isSelectionEmpty();
+    }
+
     private void btnEscolherEventoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaEventos.isSelectionEmpty();
+        boolean valido = escolheuEvento();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
             return;
         }
 
         evento = listaEventos.getSelectedValue();
-        if(evento.getEstabelecimento() == null){
-            localLabel.setText("n/a");
-        }else{
-            localLabel.setText(evento.getEstabelecimento().toString());
-        }
 
         dataInicioLabel.setText(evento.getDataInicio().toString());
         dataFimLabel.setText(evento.getDataFim().toString());
@@ -83,6 +82,10 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
 
         numeroVeiculosLabel.setText(String.valueOf(veiculos.size()));
 
+        atualizarListaVeiculos(veiculos);
+    }
+
+    private void atualizarListaVeiculos(List<Veiculo> veiculos){
         modeloListaVeiculos.removeAllElements();
         for (Veiculo veiculo : veiculos) {
             modeloListaVeiculos.add(modeloListaVeiculos.getSize(), veiculo);
@@ -94,7 +97,6 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
         dataFimLabel.setText("");
         dataInicioLabel.setText("");
         numeroVeiculosLabel.setText("");
-        localLabel.setText("");
 
         String dataInicio = dataInicioTextField.getText();
         boolean valido = isDataValida(dataInicio);
@@ -185,7 +187,7 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 
     private void initComponents() {

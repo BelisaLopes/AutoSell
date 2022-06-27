@@ -63,14 +63,6 @@
                 <properties/>
                 <border type="none" title="Informações do evento"/>
                 <children>
-                  <component id="9ab18" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Sede/Filial:"/>
-                    </properties>
-                  </component>
                   <component id="52d3d" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -110,14 +102,6 @@
                       </component>
                     </children>
                   </scrollpane>
-                  <component id="65c53" class="javax.swing.JLabel" binding="localLabel">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value=""/>
-                    </properties>
-                  </component>
                   <component id="4f72e" class="javax.swing.JLabel" binding="dataInicioLabel">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>

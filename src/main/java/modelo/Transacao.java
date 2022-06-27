@@ -13,7 +13,6 @@ public class Transacao {
     public Transacao(TipoTransacao tipoTransacao, Cliente cliente, Data dataTransacao, float valorTransacao, Veiculo veiculo, Local local) {
         this.tipoTransacao = tipoTransacao;
         this.cliente = cliente;
-        cliente.addTransacao(this);
         this.dataTransacao = dataTransacao;
         this.valorTransacao = valorTransacao;
         this.veiculo = veiculo;
@@ -26,6 +25,10 @@ public class Transacao {
 
     public void setLocal(Local local) {
         this.local = local;
+    }
+
+    public Data getDataTransacao() {
+        return dataTransacao;
     }
 
     @Override

@@ -5,13 +5,10 @@ import java.util.Objects;
 
 public abstract class Local {
     protected Distrito distrito;
-//    protected List<Veiculo> veiculos;
 
     public Local(Distrito distrito) {
         this.distrito = distrito;
     }
-
-    public abstract void transportarVeiculo(Veiculo veiculo, Local localDestino);
 
     public Distrito getDistrito() {
         return distrito;
@@ -27,10 +24,5 @@ public abstract class Local {
         if (!(o instanceof Local)) return false;
         Local local = (Local) o;
         return distrito == local.distrito;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(distrito);
     }
 }

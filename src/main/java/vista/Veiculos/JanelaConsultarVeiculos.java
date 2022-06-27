@@ -70,7 +70,7 @@ public class JanelaConsultarVeiculos extends JFrame{
     }
 
     private void btnEscolherVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaVeiculos.isSelectionEmpty();
+        boolean valido = escolheuVeiculo();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -78,6 +78,10 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         Veiculo veiculo = listaVeiculos.getSelectedValue();
         mostrarInformacaoVeiculo(veiculo);
+    }
+
+    private boolean escolheuVeiculo(){
+        return !listaVeiculos.isSelectionEmpty();
     }
 
     private void mostrarInformacaoVeiculo(Veiculo veiculo) {
@@ -88,8 +92,14 @@ public class JanelaConsultarVeiculos extends JFrame{
         matriculaVeiculoLabel.setText(veiculo.getMatricula());
         String combustivel = veiculo.getCombustivel().toString();
         combustivelVeiculoLabel.setText(combustivel); //diagrama para o TipoCombustivel
-//        String nomeCliente = veiculo.getDonoAnterior().getNome(); //diagrama para o Cliente
-//        nomeDonoAnteriorLabel.setText(nomeCliente);
+
+        String nomeCliente;
+        try {
+            nomeCliente = veiculo.getDonoAnterior().getNome(); //diagrama para o Cliente
+        }catch (Exception ex){
+            nomeCliente = "n/a";
+        }
+        nomeDonoAnteriorLabel.setText(nomeCliente);
 
         String estado = veiculo.getEstadoVeiculo().toString();
         estadoVeiculoLabel.setText(estado); // //diagrama para o EstadoVeiculo
@@ -133,7 +143,7 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         List<Veiculo> veiculos = da.getTodosVeiculos(estabelecimento, marca, modelo, matricula);
-        valido = veiculos != null;
+        valido = isResultEmpty(veiculos);
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
             return;
@@ -141,6 +151,11 @@ public class JanelaConsultarVeiculos extends JFrame{
 
         atualizarListaVeiculos(veiculos);
     }
+
+    private boolean isResultEmpty(List<Veiculo> veiculos){
+        return veiculos != null;
+    }
+
 
     private void atualizarListaVeiculos(List<Veiculo> veiculos) {
         for (Veiculo veiculo : veiculos) {
@@ -201,6 +216,6 @@ public class JanelaConsultarVeiculos extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }

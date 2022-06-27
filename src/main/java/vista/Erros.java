@@ -26,7 +26,7 @@ public class Erros {
 
     public static final int MATRICULA_INVALIDA = 13;
 
-    public static final int PALAVRA_INVALIDA = 14;
+    public static final int LOCAL_DESTINO_LOTACAO = 14;
 
     public static final int QUILOMETROS_INVALIDOS = 15;
 
@@ -83,6 +83,11 @@ public class Erros {
     public static final int FALHA_REGISTO_VEICULO = 62;
     public static final int FALHA_REGISTO_CLIENTE = 63;
     public static final int NENHUM_VEICULO_EM_REPARACAO = 64;
+    public static final int TRANSACOES_NAO_EXISTEM = 65;
+    public static final int NAO_EXISTEM_VEICULOS_REPARADOS_MARCA = 66;
+    public static final int NAO_SELECIONOU_FILTRO = 67;
+    public static final int MARCA_VAZIA = 68;
+    public static final int DATA_INVALIDA = 69;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -206,7 +211,7 @@ public class Erros {
                 JOptionPane.showMessageDialog(parent, "Para continuar é necessário selecionar uma categoria primeiro");
                 break;
             case NAO_EXISTEM_CATEGORIAS:
-                JOptionPane.showMessageDialog(parent, "Não existem categorias registadas. Registe primeiro uma categoria");
+                JOptionPane.showMessageDialog(parent, "Não existem categorias de peças registadas. Registe primeiro uma categoria");
                 break;
             case CAMPO_VAZIO:
                 JOptionPane.showMessageDialog(parent, "O preenchimento de todos os campos é obrigatório.");
@@ -273,6 +278,24 @@ public class Erros {
                 break;
             case NENHUM_VEICULO_EM_REPARACAO:
                 JOptionPane.showMessageDialog(parent, "Não existe nenhum veículo em reparação. É necessário adicionar peças a um veículo primeiro.");
+                break;
+            case LOCAL_DESTINO_LOTACAO:
+                JOptionPane.showMessageDialog(parent, "O local destino selecionado já está na lotação máxima."+ '\n' +"Não é possível fazer a transferência do veículo");
+                break;
+            case TRANSACOES_NAO_EXISTEM:
+                JOptionPane.showMessageDialog(parent, "Não existem transações registadas. Registe primeiro uma transação.");
+                break;
+            case NAO_EXISTEM_VEICULOS_REPARADOS_MARCA:
+                JOptionPane.showMessageDialog(parent, "Não existem veículos com estado reparado para a marca introduzida.");
+                break;
+            case NAO_SELECIONOU_FILTRO:
+                JOptionPane.showMessageDialog(parent, "Precisa de escolher uma das opções.");
+                break;
+            case MARCA_VAZIA:
+                JOptionPane.showMessageDialog(parent, "Precisa de preencher o campo da marca para a opção selecionada.");
+                break;
+            case DATA_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Data inválida. A data deve ter o formato dd/mm/aaaa");
                 break;
             default:
         }

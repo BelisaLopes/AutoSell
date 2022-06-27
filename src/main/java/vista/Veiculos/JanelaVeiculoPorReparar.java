@@ -93,13 +93,17 @@ public class JanelaVeiculoPorReparar extends JFrame{
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         List<Veiculo> veiculos = da.getVeiculosReparados(estabelecimento, marca, modelo, matricula);
-        valido = veiculos != null;
+        valido = isResultEmpty(veiculos);
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
             return;
         }
 
         atualizarListaVeiculos(veiculos);
+    }
+
+    private boolean isResultEmpty(List<Veiculo> veiculos){
+        return veiculos != null;
     }
 
     private void atualizarListaVeiculos(List<Veiculo> veiculos) {
@@ -115,8 +119,12 @@ public class JanelaVeiculoPorReparar extends JFrame{
         return !(nome.trim().length() < 3) && !(nome.trim().length() > 50);
     }
 
+    private boolean isVeiculoSelected(){
+        return !listaVeiculos.isSelectionEmpty();
+    }
+
     private void btnDefinirVeiculoPorRepararActionPerformed(ActionEvent evt) {
-        boolean valido = !listaVeiculos.isSelectionEmpty();
+        boolean valido = isVeiculoSelected();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -184,6 +192,6 @@ public class JanelaVeiculoPorReparar extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }

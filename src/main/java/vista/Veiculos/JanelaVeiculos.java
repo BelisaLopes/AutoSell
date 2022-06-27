@@ -59,7 +59,7 @@ public class JanelaVeiculos extends JFrame{
         fechar();
 
         JanelaTransferirVeiculos jt = new JanelaTransferirVeiculos();
-//        jt.setVisible(true);
+        jt.setVisible(true);
     }
 
     private void btnConsultarVeiculosActionPerformed(ActionEvent evt) {
@@ -117,6 +117,6 @@ public class JanelaVeiculos extends JFrame{
         fechar();
 
         JanelaEstatistica j = new JanelaEstatistica();
-//        j.setVisible(true);
+        j.setVisible(true);
     }
 }

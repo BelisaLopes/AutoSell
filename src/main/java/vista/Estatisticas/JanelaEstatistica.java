@@ -1,6 +1,8 @@
 package vista.Estatisticas;
 
+import modelo.DadosAplicacao;
 import vista.Clientes.JanelaClientes;
+import vista.Erros;
 import vista.Eventos.JanelaEventos;
 import vista.Oficina.JanelaOficina;
 import vista.Transacoes.JanelaTransacoes;
@@ -35,10 +37,10 @@ public class JanelaEstatistica extends JFrame {
         clientesButton.addActionListener(this::btnClientesButtonActionPerformed);
         estatisticasButton.addActionListener(this::btnEstatisticasButtonActionPerformed);
 
-        modelosEMarcasComMaisPecasButton.addActionListener(this::btnModelosEMarcasComMaisPecasActionPerformed);
+        modelosEMarcasComMaisPecasButton.addActionListener(this::maiorUsoPecas);
         modelosEMarcasMaisVendidosButton.addActionListener(this::btnModelosEMarcasMaisVendidosActionPerformed);
         númeroTotalDeVeículosVendidosButton.addActionListener(this::btnNumeroTotalDeVeiculosVendidosActionPerformed);
-        melhoresClientesButton.addActionListener(this::btnMelhoresClientesActionPerformed);
+        melhoresClientesButton.addActionListener(this::melhoresClientes);
         melhoresFiliaisFeirasButton.addActionListener(this::btnMelhoresFiliaisFeirasActionPerformed);
     }
 
@@ -47,8 +49,12 @@ public class JanelaEstatistica extends JFrame {
         setVisible(true);
     }
 
-    private void btnModelosEMarcasComMaisPecasActionPerformed(ActionEvent evt) {
-        System.out.println("Modelos e marcas com mais peças");
+    private void maiorUsoPecas(ActionEvent actionEvent) {
+        System.out.println("Click no maiorUsoPecas");
+
+        JanelaModelosMarcasMaiorUsoPecas j = new JanelaModelosMarcasMaiorUsoPecas();
+        abrir(j);
+        fechar();
     }
 
     private void btnModelosEMarcasMaisVendidosActionPerformed(ActionEvent evt) {
@@ -65,8 +71,21 @@ public class JanelaEstatistica extends JFrame {
         j.setVisible(true);
     }
 
-    private void btnMelhoresClientesActionPerformed(ActionEvent evt) {
-        System.out.println("Melhores clientes");
+    private void melhoresClientes(ActionEvent actionEvent) {
+        System.out.println("Click no melhoresClientes");
+        boolean valido = existemTransacoes();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.TRANSACOES_NAO_EXISTEM);
+            return;
+        }
+
+        JanelaMelhoresClientes j = new JanelaMelhoresClientes();
+        abrir(j);
+        fechar();
+    }
+
+    private boolean existemTransacoes() {
+        return DadosAplicacao.INSTANCE.existemTransacoes();
     }
 
     private void btnMelhoresFiliaisFeirasActionPerformed(ActionEvent evt) {
@@ -115,6 +134,16 @@ public class JanelaEstatistica extends JFrame {
         dispose();
         JanelaEstatistica j = new JanelaEstatistica();
         j.setVisible(true);
+    }
+
+    private void abrir(JFrame j) {
+        j.setLocationRelativeTo(this);
+        j.setVisible(true);
+    }
+
+    public void fechar(){
+        setVisible(false);
+        dispose();
     }
 
     public static void main(String[] args) {

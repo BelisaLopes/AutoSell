@@ -1,5 +1,6 @@
 package vista.Veiculos;
 
+import modelo.Categoria;
 import modelo.DadosAplicacao;
 import modelo.Estabelecimento;
 import modelo.Veiculo;
@@ -8,10 +9,12 @@ import vista.Erros;
 import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
 import vista.Oficina.JanelaOficina;
+import vista.Sucesso;
 import vista.Transacoes.JanelaTransacoes;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class JanelaTransferirVeiculos extends JFrame{
@@ -33,6 +36,7 @@ public class JanelaTransferirVeiculos extends JFrame{
     private JLabel lotacaoDestinoLabel;
     private JPanel painel;
     private JLabel lotacaoOrigemLabel;
+    private JButton escolherVeículoButton;
 
 
     private DefaultComboBoxModel modeloComboBoxLocais;
@@ -62,28 +66,103 @@ public class JanelaTransferirVeiculos extends JFrame{
         initComponents();
 
         apresentarVeículosButton.addActionListener(this::btnApresentarVeiculosActionPerformed);
+        escolherVeículoButton.addActionListener(this::btnEscolherVeiculoActionPerformed);
+        transferirVeículoButton.addActionListener(this::btnTransferirVeiculoActionPerformed);
+        cancelarButton.addActionListener(this::btnCancelarActionPerformed);
+
+        localDestinoComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Estabelecimento estabelecimento = (Estabelecimento) localDestinoComboBox.getSelectedItem();
+                int lotacaoAtual = DadosAplicacao.INSTANCE.getNumeroVeiculosNoLocal(estabelecimento);
+                lotacaoDestinoLabel.setText(lotacaoAtual + " / "+ estabelecimento.getCapacidadeMaximaVeiculos());
+            }
+        });
+    }
+
+    private void btnCancelarActionPerformed(ActionEvent evt) {
+        fechar();
+
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
+    }
+
+    private void btnTransferirVeiculoActionPerformed(ActionEvent evt) {
+        boolean valido = escolheuVeiculo();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            return;
+        }
+
+        Estabelecimento origem = (Estabelecimento) veiculo.getLocal();
+        Estabelecimento destino = (Estabelecimento) localDestinoComboBox.getSelectedItem();
+
+        valido = isDiferenteEstabelecimento(origem, destino);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.LOCAL_ORIGEM_IGUAL_LOCAL_DESTINO);
+            return;
+        }
+
+        DadosAplicacao da = DadosAplicacao.INSTANCE;
+        int capacidadeAtual = da.getNumeroVeiculosNoLocal(destino);
+        int lotacao = destino.getCapacidadeMaximaVeiculos();
+
+        valido = naoAtingiuLimite(capacidadeAtual, lotacao);
+        if(!valido){
+            Erros.mostrarErro(this, Erros.LOCAL_DESTINO_LOTACAO);
+            return;
+        }
+
+        da.transportarVeiculo(veiculo, destino);
+
+        Sucesso.mostrarSucesso(this, Sucesso.VEICULO_TRANSFERIDO);
+        fechar();
+
+        JanelaVeiculos jv = new JanelaVeiculos();
+        jv.setVisible(true);
+    }
+
+    private boolean naoAtingiuLimite(int capacidadeAtual, int lotacao) {
+        return capacidadeAtual < lotacao;
+    }
+
+    private boolean isDiferenteEstabelecimento(Estabelecimento origem, Estabelecimento destino) {
+        return origem != destino;
+    }
+
+    private void btnEscolherVeiculoActionPerformed(ActionEvent evt) {
+        boolean valido = escolheuVeiculo();
+        if(!valido){
+            Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
+            return;
+        }
+
+        veiculo = listaVeiculos.getSelectedValue();
+        Estabelecimento origem = (Estabelecimento) veiculo.getLocal();
+        int capacidade = origem.getCapacidadeMaximaVeiculos();
+        int lotacaoAtual = DadosAplicacao.INSTANCE.getNumeroVeiculosNoLocal(origem);
+        lotacaoOrigemLabel.setText(lotacaoAtual + "/"+ capacidade);
     }
 
     private void initComponents() {
         List<Estabelecimento> list = DadosAplicacao.INSTANCE.getEstabelecimentos();
         for (Estabelecimento estabelecimento : list) {
             modeloComboBoxLocais.addElement(estabelecimento);
+            modeloComboBoxLocaisDestino.addElement(estabelecimento);
         }
         veiculo = null;
     }
 
-    private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
-        boolean valido = false;
-        if(!valido){
-            Erros.mostrarErro(this, Erros.VEICULO_AINDA_EM_REPARACAO);
-            return;
-        }
+    private boolean escolheuVeiculo(){
+        return  !listaVeiculos.isSelectionEmpty();
+    }
 
+    private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
         modeloListaVeiculos.removeAllElements();
         estabelecimento = (Estabelecimento) locaisComboBox.getSelectedItem();
 
         String marca = marcaTextField.getText();
-        valido = isNomeValido(marca);
+        boolean valido = isNomeValido(marca);
         if(!valido){
             Erros.mostrarErro(this, Erros.MARCA_INVALIDA);
             return;
@@ -104,7 +183,7 @@ public class JanelaTransferirVeiculos extends JFrame{
         }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
-        List<Veiculo> veiculos = da.getVeiculosPorReparar(estabelecimento, marca, modelo, matricula);
+        List<Veiculo> veiculos = da.getTodosVeiculos(estabelecimento, marca, modelo, matricula);
         valido = veiculos != null;
         if(!valido){
             Erros.mostrarErro(this, Erros.NENHUM_RESULTADO);
@@ -166,6 +245,6 @@ public class JanelaTransferirVeiculos extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }

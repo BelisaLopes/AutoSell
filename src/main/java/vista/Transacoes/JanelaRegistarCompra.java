@@ -116,7 +116,7 @@ public class JanelaRegistarCompra extends JFrame{
 
         valido = isDataValida(textFieldData.getText());
         if(!valido){
-            Erros.mostrarErro(this, Erros.DATA_INICIO_INVALIDA);
+            Erros.mostrarErro(this, Erros.DATA_INVALIDA);
             return;
         }
 

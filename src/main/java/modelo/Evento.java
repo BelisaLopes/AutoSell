@@ -5,8 +5,7 @@ import java.util.List;
 
 public class Evento extends Local {
     private String nome;
-    private Estabelecimento estabelecimento; //
-//    private Local local;
+    private Estabelecimento estabelecimento;
     private Data dataInicio;
     private Data dataFim;
 
@@ -15,21 +14,11 @@ public class Evento extends Local {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-//        this.local = local;
-//        veiculos = new ArrayList<>();
     }
 
     public Evento(Distrito distrito, String nome, Data dataInicio, Data dataFim, Estabelecimento estabelecimento){
         this(distrito,nome,dataInicio,dataFim);
         this.estabelecimento = estabelecimento;
-    }
-
-    public void adicionarVeiculo(Veiculo veiculo){
-//        veiculos.add(veiculo);
-    }
-
-    public void removerVeiculo(Veiculo veiculo){
-//        veiculos.remove(veiculo);
     }
 
     public String getNome() {
@@ -58,16 +47,6 @@ public class Evento extends Local {
 
     public Estabelecimento getEstabelecimento() {
         return estabelecimento;
-    }
-
-    public List<Veiculo> getVeiculos() {
-//        return veiculos;
-        return null;
-    }
-
-    @Override
-    public void transportarVeiculo(Veiculo veiculo, Local localDestino) {
-
     }
 
     @Override

@@ -58,7 +58,7 @@ public class JanelaRemoverEventoNaoDecorrido extends JFrame{
     }
 
     private void btnRemoverEventoActionPerformed(ActionEvent evt) {
-        boolean valido = !listaEventos.isSelectionEmpty();
+        boolean valido = escolheuEvento();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_EVENTO);
             return;
@@ -69,6 +69,10 @@ public class JanelaRemoverEventoNaoDecorrido extends JFrame{
         da.removerEvento(evento);
         Sucesso.mostrarSucesso(this, Sucesso.EVENTO_REMOVIDO);
         modeloListaEventos.removeAllElements();
+    }
+
+    private boolean escolheuEvento(){
+        return !listaEventos.isSelectionEmpty();
     }
 
     private void btnApresentarEventosActionPerformed(ActionEvent evt) {
@@ -132,7 +136,7 @@ public class JanelaRemoverEventoNaoDecorrido extends JFrame{
         }
     }
 
-    public void fechar(){
+    private void fechar(){
         setVisible(false);
         dispose();
     }
@@ -176,6 +180,6 @@ public class JanelaRemoverEventoNaoDecorrido extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }
