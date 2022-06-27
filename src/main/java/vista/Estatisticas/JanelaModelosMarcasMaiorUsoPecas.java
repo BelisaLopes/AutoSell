@@ -20,7 +20,6 @@ public class JanelaModelosMarcasMaiorUsoPecas extends JFrame{
     private JButton btnClientes;
     private JButton btnEstatisticas;
     private JList<String> listPecasMaiorUso;
-    private JComboBox comboBoxMarcas;
     private JRadioButton btnPorMarca;
     private JRadioButton btnTodasMarcas;
     private JLabel labelQtdTotal;

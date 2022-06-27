@@ -87,6 +87,7 @@ public class Erros {
     public static final int NAO_EXISTEM_VEICULOS_REPARADOS_MARCA = 66;
     public static final int NAO_SELECIONOU_FILTRO = 67;
     public static final int MARCA_VAZIA = 68;
+    public static final int DATA_INVALIDA = 69;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -292,6 +293,9 @@ public class Erros {
                 break;
             case MARCA_VAZIA:
                 JOptionPane.showMessageDialog(parent, "Precisa de preencher o campo da marca para a opção selecionada.");
+                break;
+            case DATA_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Data inválida. A data deve ter o formato dd/mm/aaaa");
                 break;
             default:
         }
