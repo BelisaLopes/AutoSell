@@ -280,6 +280,6 @@ public class JanelaTransportarVeiculos extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 }

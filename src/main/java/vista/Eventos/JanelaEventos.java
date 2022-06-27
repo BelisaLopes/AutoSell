@@ -134,7 +134,7 @@ public class JanelaEventos extends JFrame{
         fechar();
 
         JanelaEstatistica j = new JanelaEstatistica();
-//        j.setVisible(true);
+        j.setVisible(true);
     }
 
     public static void main(String[] args) {

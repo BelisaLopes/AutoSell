@@ -25,7 +25,6 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     private JButton apresentarEventosButton;
     private JList<Evento> listaEventos;
     private JList<Veiculo> listaVeiculos;
-    private JLabel localLabel;
     private JLabel dataInicioLabel;
     private JLabel dataFimLabel;
     private JLabel numeroVeiculosLabel;
@@ -74,11 +73,6 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
         }
 
         evento = listaEventos.getSelectedValue();
-        if(evento.getEstabelecimento() == null){
-            localLabel.setText("n/a");
-        }else{
-            localLabel.setText(evento.getEstabelecimento().toString());
-        }
 
         dataInicioLabel.setText(evento.getDataInicio().toString());
         dataFimLabel.setText(evento.getDataFim().toString());
@@ -103,7 +97,6 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
         dataFimLabel.setText("");
         dataInicioLabel.setText("");
         numeroVeiculosLabel.setText("");
-        localLabel.setText("");
 
         String dataInicio = dataInicioTextField.getText();
         boolean valido = isDataValida(dataInicio);
@@ -194,7 +187,7 @@ public class JanelaConsultarEventosEVeiculos extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 
     private void initComponents() {

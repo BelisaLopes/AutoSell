@@ -26,23 +26,15 @@ public class JanelaRegistarEvento extends JDialog{
     private JTextField dataFimTextField;
     private JButton registarEventoButton;
     private JComboBox<Distrito> comboBoxDistritos;
-    private JComboBox<Estabelecimento> comboBoxFiliais;
-    private JCheckBox associarFilialCheckBox;
     private JButton cancelarButton;
     private JPanel painel;
 
     private DefaultComboBoxModel modeloComboBoxDistritos;
-    private DefaultComboBoxModel modeloComboBoxFiliais;
-
-//    private Evento evento;
 
     public JanelaRegistarEvento(){
-//        super(parent);
         setContentPane(painel);
         pack();
         setLocationRelativeTo(null);
-//        abrir();
-//        setVisible(true);
 
         veiculosButton.addActionListener(this::btnVeiculosActionPerformed);
         oficinaButton.addActionListener(this::btnOficinaActionPerformed);
@@ -52,9 +44,7 @@ public class JanelaRegistarEvento extends JDialog{
         estatisticasButton.addActionListener(this::btnEstatisticasActionPerformed);
         cancelarButton.addActionListener(this::btnCancelarActionPerformed);
         modeloComboBoxDistritos = new DefaultComboBoxModel();
-        modeloComboBoxFiliais = new DefaultComboBoxModel();
         comboBoxDistritos.setModel(modeloComboBoxDistritos);
-        comboBoxFiliais.setModel(modeloComboBoxFiliais);
         initComponents();
 
         registarEventoButton.addActionListener(this::btnAdicionarEventoActionPerformed);
@@ -100,12 +90,6 @@ public class JanelaRegistarEvento extends JDialog{
 
         Distrito distrito = (Distrito) modeloComboBoxDistritos.getSelectedItem();
         Evento novoEvento = new Evento(distrito, nome, inicio, fim);
-        boolean isSelecionado = associarFilialCheckBox.isSelected();
-        if(isSelecionado){
-            Estabelecimento e = (Estabelecimento) modeloComboBoxFiliais.getSelectedItem();
-            distrito = e.getDistrito();
-            novoEvento.setDistrito(distrito);
-        }
 
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         da.adicionarEvento(novoEvento);
@@ -117,7 +101,6 @@ public class JanelaRegistarEvento extends JDialog{
         nomeEventoTextField.setText("");
         dataInicioTextField.setText("");
         dataFimTextField.setText("");
-        associarFilialCheckBox.setSelected(false);
     }
 
     private void fechar() {
@@ -148,10 +131,6 @@ public class JanelaRegistarEvento extends JDialog{
     private void initComponents() {
         for(Distrito d : Distrito.values()){
             modeloComboBoxDistritos.addElement(d);
-        }
-        ArrayList<Filial> lista = DadosAplicacao.INSTANCE.getFiliais();
-        for (Filial filial : lista) {
-            modeloComboBoxFiliais.addElement(filial);
         }
     }
 
@@ -195,7 +174,7 @@ public class JanelaRegistarEvento extends JDialog{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 
     public static void main(String[] args) {

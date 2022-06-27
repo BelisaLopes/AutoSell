@@ -266,7 +266,7 @@ public class JanelaRegistarVeiculoEvento extends JFrame{
     private void btnEstatisticasActionPerformed(ActionEvent evt) {
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
-//        je.setVisible(true);
+        je.setVisible(true);
     }
 
     private void initComponents() {
