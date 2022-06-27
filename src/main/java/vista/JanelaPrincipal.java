@@ -1,7 +1,9 @@
 package vista;
 
 import vista.Clientes.JanelaClientes;
+import vista.Estatisticas.JanelaEstatistica;
 import vista.Eventos.JanelaEventos;
+import vista.Oficina.JanelaOficina;
 import vista.Transacoes.JanelaTransacoes;
 import vista.Veiculos.JanelaVeiculos;
 
@@ -41,7 +43,11 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnOficinaButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnOficinaButtonActionPerformed");
+        this.setVisible(false);
+        dispose();
+
+        JanelaOficina j = new JanelaOficina();
+        j.setVisible(true);
     }
 
     private void btnEventosButtonActionPerformed(ActionEvent evt) {
@@ -53,7 +59,6 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnTransacoesButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnTransacoesButtonActionPerformed");
         this.setVisible(false);
         dispose();
 
@@ -70,7 +75,11 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void btnEstatisticasButtonActionPerformed(ActionEvent evt) {
-        System.out.println("Click no btnEstatisticasButtonActionPerformed");
+        this.setVisible(false);
+        dispose();
+
+        JanelaEstatistica j = new JanelaEstatistica();
+        j.setVisible(true);
     }
 
     public static void main(String[] args) {
