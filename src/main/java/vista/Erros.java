@@ -84,6 +84,10 @@ public class Erros {
     public static final int FALHA_REGISTO_CLIENTE = 63;
     public static final int NENHUM_VEICULO_EM_REPARACAO = 64;
     public static final int TRANSACOES_NAO_EXISTEM = 65;
+    public static final int NAO_EXISTEM_VEICULOS_REPARADOS_MARCA = 66;
+    public static final int NAO_SELECIONOU_FILTRO = 67;
+    public static final int MARCA_VAZIA = 68;
+    public static final int DATA_INVALIDA = 69;
 
 
     public static void mostrarErro(Window parent, int numero){
@@ -280,6 +284,18 @@ public class Erros {
                 break;
             case TRANSACOES_NAO_EXISTEM:
                 JOptionPane.showMessageDialog(parent, "Não existem transações registadas. Registe primeiro uma transação.");
+                break;
+            case NAO_EXISTEM_VEICULOS_REPARADOS_MARCA:
+                JOptionPane.showMessageDialog(parent, "Não existem veículos com estado reparado para a marca introduzida.");
+                break;
+            case NAO_SELECIONOU_FILTRO:
+                JOptionPane.showMessageDialog(parent, "Precisa de escolher uma das opções.");
+                break;
+            case MARCA_VAZIA:
+                JOptionPane.showMessageDialog(parent, "Precisa de preencher o campo da marca para a opção selecionada.");
+                break;
+            case DATA_INVALIDA:
+                JOptionPane.showMessageDialog(parent, "Data inválida. A data deve ter o formato dd/mm/aaaa");
                 break;
             default:
         }

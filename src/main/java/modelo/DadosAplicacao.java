@@ -14,6 +14,7 @@ public class DadosAplicacao {
     private Hashtable<Local, List<Veiculo>> listaVeiculosPorLocal;
 
     private Hashtable<String, GestorVeiculosPorModelo> listaPecasUsadasEmReparacaoPorMarca;
+    private int totalPecasUsadasNaReparacao;
 
     private List<Veiculo> veiculosVendidos;
     private List<Veiculo> veiculosPorReparar;
@@ -52,6 +53,7 @@ public class DadosAplicacao {
         listaVeiculosPorLocal = new Hashtable<>();
         listaVeiculosVendidosPorLocal = new Hashtable<>();
         listaPecasUsadasEmReparacaoPorMarca = new Hashtable<>();
+        totalPecasUsadasNaReparacao = 0;
 
         initListaVeiculosEstabelecimento();
 
@@ -179,14 +181,19 @@ public class DadosAplicacao {
 
     public List<String> getPecasUsadasDaMarca(String marca){
         GestorVeiculosPorModelo gestor = listaPecasUsadasEmReparacaoPorMarca.get(marca);
-        //TODO
-        return null;
+        return gestor == null? new ArrayList<>() : gestor.getPecasUsadasDaMarca();
     }
 
     public List<String> getPecasUsadasTodasAsMarcas(){
         //TODO
         //iterar hashtable para ir buscar cada modelo das marcas
-        return null;
+        List<String> pecasParaTodasAsMarcas = new ArrayList<>();
+        Enumeration<String> keys = listaPecasUsadasEmReparacaoPorMarca.keys();
+        while(keys.hasMoreElements()) {
+            String marca = keys.nextElement();
+            pecasParaTodasAsMarcas.addAll(getPecasUsadasDaMarca(marca));
+        }
+        return pecasParaTodasAsMarcas;
     }
 
     public List<Evento> getEventos(Distrito distrito, Data dataInicio, Data dataFim) {
@@ -696,6 +703,13 @@ public class DadosAplicacao {
         veiculosPorReparar.remove(veiculo);
         veiculosProntosParaVenda.add(veiculo);
         veiculo.adicionarPecasUsadas(total);
+        GestorVeiculosPorModelo gestor = listaPecasUsadasEmReparacaoPorMarca.get(veiculo.getMarca());
+        if(gestor==null){
+            gestor = new GestorVeiculosPorModelo();
+            listaPecasUsadasEmReparacaoPorMarca.put(veiculo.getMarca(),gestor);
+        }
+        gestor.inserirModelo(veiculo);
+        totalPecasUsadasNaReparacao+=total;
     }
 
     public List<Veiculo> getVeiculosPorReparar(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
@@ -762,5 +776,9 @@ public class DadosAplicacao {
         }
 
         return transacoes.isEmpty() ? new ArrayList<>() : transacoes;
+    }
+
+    public int getTotalPecasUsadasNaReparacao() {
+        return totalPecasUsadasNaReparacao;
     }
 }
