@@ -137,7 +137,4 @@ public class JanelaEventos extends JFrame{
         j.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new JanelaEventos();
-    }
 }

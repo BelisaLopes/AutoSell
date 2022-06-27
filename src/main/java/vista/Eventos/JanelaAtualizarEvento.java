@@ -270,7 +270,4 @@ public class JanelaAtualizarEvento extends JFrame{
         je.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new JanelaAtualizarEvento();
-    }
 }

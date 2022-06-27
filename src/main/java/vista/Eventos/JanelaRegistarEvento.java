@@ -177,7 +177,4 @@ public class JanelaRegistarEvento extends JDialog{
         je.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new JanelaRegistarEvento();
-    }
 }

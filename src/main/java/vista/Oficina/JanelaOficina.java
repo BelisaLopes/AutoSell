@@ -49,10 +49,6 @@ public class JanelaOficina extends JFrame {
         btnTransacoes.addActionListener(this::abrirTransacoes);
     }
 
-    public static void main(String[] args) {
-        new JanelaOficina();
-    }
-
     private void abrirTransacoes(ActionEvent actionEvent) {
         System.out.println("Click no abrirTransacoes");
         fechar();

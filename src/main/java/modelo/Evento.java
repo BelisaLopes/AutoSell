@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Evento extends Local {
     private String nome;
-    private Estabelecimento estabelecimento;
     private Data dataInicio;
     private Data dataFim;
 
@@ -14,11 +13,6 @@ public class Evento extends Local {
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-    }
-
-    public Evento(Distrito distrito, String nome, Data dataInicio, Data dataFim, Estabelecimento estabelecimento){
-        this(distrito,nome,dataInicio,dataFim);
-        this.estabelecimento = estabelecimento;
     }
 
     public String getNome() {
@@ -43,10 +37,6 @@ public class Evento extends Local {
 
     public void setDataFim(Data dataFim) {
         this.dataFim = dataFim;
-    }
-
-    public Estabelecimento getEstabelecimento() {
-        return estabelecimento;
     }
 
     @Override

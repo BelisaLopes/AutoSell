@@ -42,7 +42,7 @@ public class DadosAplicacao {
         filiais.add(new Filial(Distrito.CASTELO_BRANCO, 100));
         filiais.add(new Filial(Distrito.LEIRIA, 100));
         filiais.add(new Filial(Distrito.SANTAREM, 100));
-//        filiais.add(new Filial(Distrito.LISBOA, 100));
+        filiais.add(new Filial(Distrito.LISBOA, 100));
         filiais.add(new Filial(Distrito.PORTALEGRE, 100));
         filiais.add(new Filial(Distrito.SETUBAL, 100));
         filiais.add(new Filial(Distrito.BEJA, 100));
@@ -57,28 +57,28 @@ public class DadosAplicacao {
 
         initListaVeiculosEstabelecimento();
 
-        Veiculo v = new Veiculo("Opel", "Corsa", 2001, "AA-11-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
-        veiculosPorReparar.add(v);
-        adicionarVeiculoAoLocal(sede,v);
-
-        v = new Veiculo("Opel", "Corsa", 2001, "BB-22-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
-        veiculosPorReparar.add(v);
-        adicionarVeiculoAoLocal(sede,v);
-
-        v = new Veiculo("Opel", "Corsa", 2001, "CC-33-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
-        v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
-        adicionarVeiculoAoLocal(sede,v);
-        veiculosProntosParaVenda.add(v);
-
-        v = new Veiculo("Opel", "Corsa", 2001, "DD-44-CC", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
-        v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
-        adicionarVeiculoAoLocal(sede,v);
-        veiculosProntosParaVenda.add(v);
-
+//        Veiculo v = new Veiculo("Opel", "Corsa", 2001, "AA-11-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+//        veiculosPorReparar.add(v);
+//        adicionarVeiculoAoLocal(sede,v);
+//
+//        v = new Veiculo("Opel", "Corsa", 2001, "BB-22-BB", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+//        veiculosPorReparar.add(v);
+//        adicionarVeiculoAoLocal(sede,v);
+//
+//        v = new Veiculo("Opel", "Corsa", 2001, "CC-33-AA", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+//        v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
+//        adicionarVeiculoAoLocal(sede,v);
+//        veiculosProntosParaVenda.add(v);
+//
+//        v = new Veiculo("Opel", "Corsa", 2001, "DD-44-CC", "Branco", 3, TipoCombustivel.GASOLINA, 100000,1, "Bom", 10000,sede);
+//        v.setEstadoVeiculo(EstadoVeiculo.REPARADO);
+//        adicionarVeiculoAoLocal(sede,v);
+//        veiculosProntosParaVenda.add(v);
+//
         clientes.add(new Cliente("Joana", "Rua da Escola2", new Data(1,1,2002), "199999999", "915295625"));
         clientes.add(new Cliente("Joaquim", "Rua da Escola", new Data(18,6,2000), "123456789", "911234567"));
-        Evento e = new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022));
-        adicionarEvento(e);
+//        Evento e = new Evento(Distrito.LEIRIA, "Feira de Maio", new Data(1,5,2022), new Data(31,5,2022));
+//        adicionarEvento(e);
     }
 
     private void initListaVeiculosEstabelecimento() {
@@ -185,8 +185,6 @@ public class DadosAplicacao {
     }
 
     public List<String> getPecasUsadasTodasAsMarcas(){
-        //TODO
-        //iterar hashtable para ir buscar cada modelo das marcas
         List<String> pecasParaTodasAsMarcas = new ArrayList<>();
         Enumeration<String> keys = listaPecasUsadasEmReparacaoPorMarca.keys();
         while(keys.hasMoreElements()) {
@@ -628,35 +626,6 @@ public class DadosAplicacao {
 
         return veiculos.size() == 0 ? null : veiculos;
     }
-
-//    public List<Veiculo> getVeiculosEstabelecimento(Estabelecimento estabelecimento, String marca, String modelo, String matricula) {
-//        List<Veiculo> veiculos = new ArrayList<>();
-//        List<Veiculo> veiculosLocal = new ArrayList<>();
-//        veiculosLocal = getVeiculosLocal(estabelecimento);
-//
-//
-//        Veiculo v;
-//        for (Veiculo veiculo : veiculosLocal) {
-//            v = veiculo;
-//
-//            if(!marca.isEmpty() && !v.getMarca().equals(marca)){
-//                continue;
-//            }
-//
-//            if(!modelo.isEmpty() && !v.getModelo().equals(modelo)){
-//                continue;
-//            }
-//
-//            if(!matricula.isEmpty() && !v.getMatricula().equals(matricula)){
-//                continue;
-//            }
-//
-//            veiculos.add(v);
-//        }
-//
-//        return veiculos.size() == 0 ? null : veiculos;
-//    }
-
 
     public List<Veiculo> getVeiculosReparados(Estabelecimento estabelecimento, String marca, String modelo, String matricula){
         List<Veiculo> veiculos = new ArrayList<>();

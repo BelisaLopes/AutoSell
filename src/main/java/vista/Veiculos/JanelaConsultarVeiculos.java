@@ -86,23 +86,23 @@ public class JanelaConsultarVeiculos extends JFrame{
 
     private void mostrarInformacaoVeiculo(Veiculo veiculo) {
         String local = veiculo.getLocal().toString();
-        localVeiculoLabel.setText(local); //diagrama para o local
+        localVeiculoLabel.setText(local);
         marcaVeiculoLabel.setText(veiculo.getMarca());
         anoVeiculoLabel.setText(veiculo.getAno() + "");
         matriculaVeiculoLabel.setText(veiculo.getMatricula());
         String combustivel = veiculo.getCombustivel().toString();
-        combustivelVeiculoLabel.setText(combustivel); //diagrama para o TipoCombustivel
+        combustivelVeiculoLabel.setText(combustivel);
 
         String nomeCliente;
         try {
-            nomeCliente = veiculo.getDonoAnterior().getNome(); //diagrama para o Cliente
+            nomeCliente = veiculo.getDonoAnterior().getNome();
         }catch (Exception ex){
             nomeCliente = "n/a";
         }
         nomeDonoAnteriorLabel.setText(nomeCliente);
 
         String estado = veiculo.getEstadoVeiculo().toString();
-        estadoVeiculoLabel.setText(estado); // //diagrama para o EstadoVeiculo
+        estadoVeiculoLabel.setText(estado);
         modeloVeiculoLabel.setText(veiculo.getModelo());
         corVeiculoLabel.setText(veiculo.getCor());
         portasVeiculoLabel.setText(veiculo.getNumeroPortas() + "");
@@ -112,6 +112,8 @@ public class JanelaConsultarVeiculos extends JFrame{
 
 
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
+        limpar();
+
         modeloListaVeiculos.removeAllElements();
         Estabelecimento estabelecimento;
         try {
@@ -217,5 +219,20 @@ public class JanelaConsultarVeiculos extends JFrame{
         fechar();
         JanelaEstatistica je = new JanelaEstatistica();
         je.setVisible(true);
+    }
+
+    private void limpar(){
+        localVeiculoLabel.setText("");
+        marcaVeiculoLabel.setText("");
+        anoVeiculoLabel.setText("");
+        matriculaVeiculoLabel.setText("");
+        combustivelVeiculoLabel.setText("");
+        nomeDonoAnteriorLabel.setText("");
+        estadoVeiculoLabel.setText("");
+        modeloVeiculoLabel.setText("");
+        corVeiculoLabel.setText("");
+        portasVeiculoLabel.setText("");
+        kmVeiculoLabel.setText("");
+        numeroDonosVeiculoLabel.setText("");
     }
 }

@@ -11,4 +11,12 @@ public class DataTestCase {
         assertEquals(2022, data.getAno());
     }
 
+    @Test
+    public void testCreateDataNotEquals() {
+        var data = new Data(26,6,2022);
+        assertNotEquals(30, data.getDia());
+        assertNotEquals(12, data.getMes());
+        assertNotEquals(2023, data.getAno());
+    }
+
 }
