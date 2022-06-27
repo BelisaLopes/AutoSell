@@ -6,11 +6,6 @@ public class Filial extends Estabelecimento {
     }
 
     @Override
-    public void transportarVeiculo(Veiculo veiculo, Local localDestino) {
-
-    }
-
-    @Override
     public String toString() {
         return "Filial "+ distrito;
     }

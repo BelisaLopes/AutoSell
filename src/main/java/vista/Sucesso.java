@@ -22,6 +22,7 @@ public class Sucesso {
     public static final int VEICULO_REPARADO_AVISO_STOCK = 16;
     public static final int PECA_TRANSFERIDA = 17;
     public static final int COMPRA_REGISTADA = 18;
+    public static final int VEICULO_TRANSFERIDO = 19;
 
     public static void mostrarSucesso(Window parent, int numero){
         switch (numero) {
@@ -78,6 +79,9 @@ public class Sucesso {
                 break;
             case COMPRA_REGISTADA:
                 JOptionPane.showMessageDialog(parent, "A compra do veículo foi registada com sucesso!");
+                break;
+            case VEICULO_TRANSFERIDO:
+                JOptionPane.showMessageDialog(parent, "O veículo foi transferido com sucesso!");
                 break;
             default:
         }

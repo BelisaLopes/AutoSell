@@ -69,13 +69,13 @@ public class JanelaTransportarVeiculos extends JFrame{
     }
 
     private void btnTransportarVeiculoActionPerformed(ActionEvent evt) {
-        boolean valido = !modeloListaVeiculos.isEmpty();
+        boolean valido = isListaVeiculosEmpty();
         if(!valido){
             Erros.mostrarErro(this, Erros.LISTA_VEICULOS_VAZIA);
             return;
         }
         veiculo = listaVeiculosEvento.getSelectedValue();
-        valido = veiculo != null;
+        valido = escolheuVeiculo();
         if(!valido){
             Erros.mostrarErro(this, Erros.SELECIONAR_VEICULO);
             return;
@@ -88,8 +88,20 @@ public class JanelaTransportarVeiculos extends JFrame{
 
     }
 
+    private boolean escolheuVeiculo(){
+        return veiculo != null;
+    }
+
+    private boolean isListaVeiculosEmpty(){
+        return !modeloListaVeiculos.isEmpty();
+    }
+
+    private boolean existemEventosTerminados(){
+        return modeloListaEventosOrigem.getSize() != 0;
+    }
+
     private void btnConfirmarEventosActionPerformed(ActionEvent evt) {
-        boolean valido = modeloListaEventosOrigem.getSize() != 0;
+        boolean valido = existemEventosTerminados();
         if(!valido){
             Erros.mostrarErro(this, Erros.SEM_EVENTOS_TERMINADOS);
             return;
@@ -130,8 +142,12 @@ public class JanelaTransportarVeiculos extends JFrame{
         eventoOrigemLabel.setText(eventoOrigem.getNome());
     }
 
+    private boolean existemEventosOrigemEDestino(){
+        return eventoOrigem != null && eventoDestino != null;
+    }
+
     private void btnApresentarVeiculosActionPerformed(ActionEvent evt) {
-        boolean valido = eventoOrigem != null && eventoDestino != null;
+        boolean valido = existemEventosOrigemEDestino();
         if(!valido){
             Erros.mostrarErro(this,Erros.SEM_LOCAL_ORIGEM_OU_LOCAL_DESTINO);
             return;
@@ -162,16 +178,24 @@ public class JanelaTransportarVeiculos extends JFrame{
         DadosAplicacao da = DadosAplicacao.INSTANCE;
         List<Veiculo> veiculos = da.getVeiculosParaTransportar(eventoOrigem, eventoDestino, marca, modelo, matricula);
 
-        valido = veiculos != null;
+        valido = isResultEmpty(veiculos);
         if(!valido){
             Erros.mostrarErro(this,Erros.NENHUM_RESULTADO);
             return;
         }
 
+        atualizarListaVeiculos(veiculos);
+    }
+
+    private void atualizarListaVeiculos(List<Veiculo> veiculos){
         modeloListaVeiculos.removeAllElements();
         for (Veiculo veiculo : veiculos) {
             modeloListaVeiculos.add(modeloListaVeiculos.getSize(), veiculo);
         }
+    }
+
+    private boolean isResultEmpty(List<Veiculo> veiculos){
+        return veiculos != null;
     }
 
     private boolean isMatriculaValida(String matricula) {
